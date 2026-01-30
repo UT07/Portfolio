@@ -165,7 +165,7 @@ const GigTimeline = () => {
                   className="absolute top-4 right-4 px-3 py-1 bg-fuchsia-500/20 border border-fuchsia-500/50 text-fuchsia-400 text-xs font-bold uppercase tracking-wider"
                   whileHover={{ scale: 1.1 }}
                 >
-                  {new Date(gig.date).toLocaleDateString('en', { month: 'short', day: 'numeric' })}
+                  {formatDate(gig.date)}
                 </motion.div>
 
                 <div className="mb-4">
