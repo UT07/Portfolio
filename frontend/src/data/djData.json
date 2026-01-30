@@ -204,6 +204,36 @@
       "clips": []
     }
   ],
+  "sets": {
+    "title": "Featured Sets",
+    "description": "Listen to my recent sets and mixes",
+    "platforms": [
+      {
+        "name": "SoundCloud",
+        "url": "https://soundcloud.com/utkarsh-singh-199724584",
+        "sets": [
+          {
+            "title": "Recent Mix - Hard Bounce & Trance",
+            "url": "https://soundcloud.com/utkarsh-singh-199724584",
+            "date": "2025",
+            "duration": "60 min"
+          }
+        ]
+      },
+      {
+        "name": "YouTube",
+        "url": "https://www.youtube.com/@utmixes",
+        "sets": [
+          {
+            "title": "Live Set Recordings",
+            "url": "https://www.youtube.com/@utmixes",
+            "date": "2025",
+            "duration": "Various"
+          }
+        ]
+      }
+    ]
+  },
   "pressKit": {
     "title": "Press Kit",
     "description": "Download materials for promoters, press, and media",
