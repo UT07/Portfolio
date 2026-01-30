@@ -131,6 +131,18 @@
         "Linear Algebra for CSE",
         "Probability and Statistics"
       ],
+      "projects": [
+        {
+          "name": "CARZZ - Car Rental Platform",
+          "description": "Developed a full-stack car rental web application with booking system, user authentication, vehicle management, and payment integration using React, Node.js, and MySQL.",
+          "outcomes": "Implemented complete booking workflow, real-time availability checking, and admin dashboard for fleet management."
+        },
+        {
+          "name": "COVID-19 Tracker App",
+          "description": "Built a comprehensive COVID-19 tracking application providing real-time statistics, visualizations, and regional data analysis for monitoring pandemic trends.",
+          "outcomes": "Integrated multiple data APIs, created interactive data visualizations, and deployed production-ready tracking dashboard."
+        }
+      ],
       "leadership": [
         "Teaching Assistant — CSE 3318 Data Structures and Algorithms (50+ students)",
         "Freshman Orientation Leader"
