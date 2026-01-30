@@ -1,0 +1,246 @@
+{
+  "hero": {
+    "name": "UT",
+    "badge": "DJ & Producer (Dublin)",
+    "headline": "High-energy club music with a silly grin and a serious pulse.",
+    "subheadline": "Fast, bouncy, euphoric sets between hard groove, trance flavours, hard dance pressure, donk, and 240-leaning chaos — built for the room, never on autopilot.",
+    "genres": "Hard Bounce (240) · Hard Dance · Trance · Hard Groove · Donk · Tribal / Makina",
+    "ctas": [
+      { "text": "Listen", "href": "https://soundcloud.com/utkarsh-singh-199724584", "external": true },
+      { "text": "Watch", "href": "https://www.youtube.com/@utmixes", "external": true },
+      { "text": "Press Kit", "href": "#presskit" }
+    ]
+  },
+  "artist": {
+    "title": "Built for the dancefloor",
+    "bio": "I'm UT — a Dublin-based DJ who treats every set like a conversation with the crowd. My sound lives in the sweet spot where punchy grooves meet euphoric melodies: hard bounce and hard dance pressure, trancey peaks, and playful curveballs when the room's ready.\n\nI'm not here to maintain a vibe. I'm here to move it — fast mixes, cheeky switches, and momentum that keeps climbing. Whether it's a packed club night, a rooftop session, or a festival stage, the goal is the same: shared release.",
+    "highlights": [
+      "Typical tempo: 155–180 BPM (higher when it makes sense)",
+      "Styles: hard bounce, hard dance, trance, hard groove, donk, tribal/makina",
+      "Sets: high-energy, cheeky, euphoric, crowd-led"
+    ]
+  },
+  "gigs": [
+    {
+      "id": "gig-15",
+      "event": "Redline — The Horizon",
+      "collective": "Redline",
+      "date": "2026-01-23",
+      "location": "Racket Space, Dublin, Ireland",
+      "time": "1:00 AM – 2:00 AM",
+      "genre": ["Hard Dance", "Hard Bounce"],
+      "tags": ["240 km/h sound", "SOLD OUT", "300+ crowd"],
+      "description": "Closing set at Redline's biggest event with 300+ attendees. High-energy 240 km/h sound.",
+      "clips": []
+    },
+    {
+      "id": "gig-14",
+      "event": "Politeknik — Back to the Future (Terrace Closing)",
+      "collective": "Politeknik",
+      "date": "2026-01-17",
+      "location": "Soundhouse Terrace, Dublin, Ireland",
+      "time": "12:00 AM – 1:00 AM (closing)",
+      "genre": ["Hard Bounce", "Donk", "Tribal", "Makina"],
+      "tags": ["terrace SOLD OUT", "closing set"],
+      "description": "Closing the terrace at Politeknik's Back to the Future event.",
+      "clips": []
+    },
+    {
+      "id": "gig-13",
+      "event": "Immersive x Politeknik (Terrace Closing)",
+      "collective": "Immersive",
+      "date": "2025-10-24",
+      "location": "Soundhouse Terrace, Dublin, Ireland",
+      "time": "12:00 AM – 1:00 AM (closing)",
+      "genre": ["Hard Bounce", "Donk", "Tribal", "Makina"],
+      "tags": ["terrace SOLD OUT", "closing set"],
+      "description": "Closing the terrace at Immersive x Politeknik collaboration.",
+      "clips": []
+    },
+    {
+      "id": "gig-12",
+      "event": "Immersive — EREBUS",
+      "collective": "Immersive",
+      "date": "2025-10-03",
+      "location": "Racket Space, Dublin, Ireland",
+      "time": "1:00 AM – 2:00 AM",
+      "genre": ["Hard Groove", "Hard Bounce"],
+      "tags": [],
+      "description": "Late-night set at Immersive's EREBUS event blending hard groove with hard bounce.",
+      "clips": []
+    },
+    {
+      "id": "gig-11",
+      "event": "Electric Picnic — Cerebral Fortress Stage",
+      "collective": "Festival",
+      "date": "2025-09-01",
+      "location": "Ireland",
+      "time": "4:30 PM – 5:30 PM",
+      "genre": ["Hard Bounce", "Hard Trance"],
+      "tags": ["festival"],
+      "description": "Festival performance at Electric Picnic's Cerebral Fortress Stage.",
+      "clips": []
+    },
+    {
+      "id": "gig-10",
+      "event": "Teknival",
+      "collective": "Underground",
+      "date": "2025-08-25",
+      "location": "Private",
+      "time": "Daytime · 2 hours",
+      "genre": ["Hard Bounce"],
+      "tags": ["240 km/h sound", "teknival"],
+      "description": "Daytime set at underground teknival. Location kept private.",
+      "clips": []
+    },
+    {
+      "id": "gig-9",
+      "event": "Disconnect — The Unknown",
+      "collective": "Disconnect",
+      "date": "2025-08-16",
+      "location": "Opium Garden, Dublin, Ireland",
+      "time": "9:00 PM – 10:00 PM",
+      "genre": ["Melodic Techno"],
+      "tags": [],
+      "description": "Opening set exploring melodic techno territories.",
+      "clips": []
+    },
+    {
+      "id": "gig-8",
+      "event": "Redline — The Awakening",
+      "collective": "Redline",
+      "date": "2025-07-25",
+      "location": "Racket Space, Dublin, Ireland",
+      "time": "11:00 PM – 12:00 AM",
+      "genre": ["Trance", "Hard Dance"],
+      "tags": ["SOLD OUT"],
+      "description": "Second Redline event, sold out. Prime-time slot.",
+      "clips": []
+    },
+    {
+      "id": "gig-7",
+      "event": "Ravemate x D-EVENTZ — Sundown to Shutdown",
+      "collective": "Ravemate",
+      "date": "2025-06-20",
+      "location": "Hyde Rooftop, Dublin, Ireland",
+      "time": "11:15 PM – 12:15 AM",
+      "genre": ["Indo-melodic"],
+      "tags": ["rooftop"],
+      "description": "Rooftop session with Indo-melodic flavors at Hyde.",
+      "clips": []
+    },
+    {
+      "id": "gig-6",
+      "event": "Redline — The Beginning",
+      "collective": "Redline",
+      "date": "2025-05-30",
+      "location": "Racket Space, Dublin, Ireland",
+      "time": "11:00 PM – 12:00 AM",
+      "genre": ["Trance", "Hard Dance"],
+      "tags": ["collective debut", "SOLD OUT"],
+      "description": "Debut event of Redline collective. Sold out show.",
+      "clips": []
+    },
+    {
+      "id": "gig-5",
+      "event": "TRP (opening for TH;EN Music / Afterlife)",
+      "collective": "TRP",
+      "date": "2025-05-17",
+      "location": "The Grand Social, Dublin, Ireland",
+      "time": "10:00 PM – 11:00 PM",
+      "genre": ["Melodic Techno"],
+      "tags": ["opening act"],
+      "description": "Opening for TH;EN Music / Afterlife at The Grand Social.",
+      "clips": []
+    },
+    {
+      "id": "gig-4",
+      "event": "National College Spinoff Finals",
+      "collective": "Competition",
+      "date": "2025-03-28",
+      "location": "Workman's Cellar Club, Dublin, Ireland",
+      "time": "11:30 PM – 12:00 AM",
+      "genre": ["Hard Techno"],
+      "tags": ["competition", "All-Ireland student DJ competition"],
+      "description": "Finals performance at All-Ireland student DJ competition.",
+      "clips": []
+    },
+    {
+      "id": "gig-3",
+      "event": "Top Secret Party — Operation Shamrock",
+      "collective": "Top Secret Party",
+      "date": "2025-02-16",
+      "location": "Dublin, Ireland",
+      "time": "4:00 AM – 5:00 AM",
+      "genre": ["Hard Techno"],
+      "tags": ["closing set"],
+      "description": "Early morning closing set at Top Secret Party's Operation Shamrock.",
+      "clips": []
+    },
+    {
+      "id": "gig-2",
+      "event": "Ravemate — Pizza Room",
+      "collective": "Ravemate",
+      "date": "2025-01-26",
+      "location": "Jackie's, Dublin, Ireland",
+      "time": "Recorded set",
+      "genre": ["Indo-melodic techno"],
+      "tags": ["recorded"],
+      "description": "Recorded set for Ravemate's Pizza Room session.",
+      "clips": []
+    },
+    {
+      "id": "gig-1",
+      "event": "Immersive",
+      "collective": "Immersive",
+      "date": "2025-01-03",
+      "location": "Soundhouse, Dublin, Ireland",
+      "time": "11:00 PM – 12:00 AM",
+      "genre": ["Hard Techno"],
+      "tags": [],
+      "description": "First gig of 2025 at Soundhouse's Immersive event.",
+      "clips": []
+    }
+  ],
+  "pressKit": {
+    "title": "Press Kit",
+    "description": "Download materials for promoters, press, and media",
+    "bio_short": "UT is a Dublin-based DJ delivering high-energy club sets between hard bounce, hard dance, and trance. Fast, bouncy, euphoric — built for the room, never on autopilot.",
+    "bio_long": "UT is a Dublin-based DJ who treats every set like a conversation with the crowd. His sound lives in the sweet spot where punchy grooves meet euphoric melodies: hard bounce and hard dance pressure, trancey peaks, and playful curveballs when the room's ready.\n\nWith a typical tempo range of 155–180 BPM (going higher when it makes sense), UT delivers sets that are high-energy, cheeky, and crowd-led. Whether it's a packed club night, a rooftop session, or a festival stage, the goal is the same: shared release.\n\nUT has performed at major Dublin venues including Racket Space, Soundhouse, The Grand Social, and Hyde Rooftop, as well as festival stages like Electric Picnic. He's a core member of the Redline collective and has played with Immersive, Politeknik, Ravemate, and more.",
+    "downloads": [
+      {
+        "title": "Biography",
+        "description": "Short & long bio in text format",
+        "type": "document",
+        "placeholder": true
+      },
+      {
+        "title": "Photos",
+        "description": "High-resolution press photos",
+        "type": "images",
+        "placeholder": true
+      },
+      {
+        "title": "Logo Pack",
+        "description": "Logos in various formats (PNG, SVG)",
+        "type": "images",
+        "placeholder": true
+      },
+      {
+        "title": "Technical Rider",
+        "description": "Technical requirements for performances",
+        "type": "document",
+        "placeholder": true
+      }
+    ]
+  },
+  "contact": {
+    "email": "254utkarsh@gmail.com",
+    "booking_title": "Booking & Inquiries",
+    "booking_description": "For booking requests, collaboration opportunities, or general inquiries, reach out via email.",
+    "social": {
+      "soundcloud": "https://soundcloud.com/utkarsh-singh-199724584",
+      "youtube": "https://www.youtube.com/@utmixes"
+    }
+  }
+}
