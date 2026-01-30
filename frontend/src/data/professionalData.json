@@ -4,10 +4,11 @@
     "title": "Cloud + Systems Engineer",
     "headline": "Cloud + Systems Engineer building reliable platforms, with an MLOps focus.",
     "subtext": "Operating production systems, IaC/automation, reliability, observability, and upskilling to build AI products and deploy them on cloud at enterprise level.",
+    "headshot": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/5ifbtrq5_image.png",
     "ctas": [
       { "text": "View Projects", "href": "#projects", "primary": true },
       { "text": "Download Resume", "href": "#", "primary": false },
-      { "text": "Contact", "href": "#contact", "primary": false }
+      { "text": "LinkedIn", "href": "https://www.linkedin.com/in/utkarshsingh2001", "primary": false, "external": true }
     ]
   },
   "highlights": [
