@@ -75,7 +75,9 @@
         {
           "name": "qpAdm Genomic Modeling on AWS",
           "description": "Engineered automated benchmarking pipeline with Terraform-provisioned EC2 Auto Scaling Groups, implementing failure recovery, CloudWatch alerting, and S3 artifact versioning. Applied ML-driven optimization to predict optimal instance families.",
-          "outcomes": "Executed 15,000+ qpAdm runs. Reduced iterations by 40% and achieved 25-40% cost reduction with 15-30% faster runtimes."
+          "outcomes": "Executed 15,000+ qpAdm runs. Reduced iterations by 40% and achieved 25-40% cost reduction with 15-30% faster runtimes.",
+          "research_paper": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/1b3a260i_MSc%20Research%20Project%20Report%20Utkarsh.pdf",
+          "configuration_manual": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/ey360g8n_qpAdm_AWS_Configuration_Manual_Utkarsh_Singh.pdf"
         }
       ],
       "thesis": "Performance Optimization and Cost Analysis of qpAdm Genomic Modeling",
