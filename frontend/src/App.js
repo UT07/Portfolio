@@ -13,6 +13,7 @@ import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Artist from './components/Artist';
 import GigTimeline from './components/GigTimeline';
+import Sets from './components/Sets';
 import PressKit from './components/PressKit';
 import Contact from './components/Contact';
 import './App.css';
@@ -54,6 +55,7 @@ const AppContent = () => {
             <Experience />
             <Certifications />
             <Education />
+            <About />
             <Projects />
             <Skills />
             <Contact />
@@ -68,6 +70,7 @@ const AppContent = () => {
           >
             <DJHero />
             <Artist />
+            <Sets />
             <GigTimeline />
             <PressKit />
             <Contact />
