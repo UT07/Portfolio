@@ -85,8 +85,24 @@
       "location": "Manchester, NH",
       "dates": "Aug 2023 – May 2024",
       "status": "Completed",
-      "description": "Transfer program completing computational science requirements.",
-      "modules": []
+      "description": "Transfer program completing computational science requirements with focus on software development lifecycle and full-stack development.",
+      "modules": [
+        "CS 250 Software Development Lifecycle",
+        "CS 255 System Analysis and Design",
+        "CS 320 Software Testing, Automation, and Quality Assurance",
+        "CS 330 Computational Graphics and Visualization",
+        "CS 340 Client/Server Development",
+        "CS 370 Current and Emerging Trends in Computer Science",
+        "CS 465 Full Stack Development",
+        "MAT 230 Discrete Mathematics"
+      ],
+      "projects": [
+        {
+          "name": "Statify - Spotify Analytics Tool",
+          "description": "Developed a Flask-based web application that analyzes Spotify user listening statistics, displaying top songs, favorite artists, top genres, and personalized recommendations with visual representations.",
+          "outcomes": "Built full-stack application integrating Spotify API, implemented OAuth authentication, and created dynamic data visualizations for user engagement insights."
+        }
+      ]
     },
     {
       "institution": "The University of Texas at Arlington",
