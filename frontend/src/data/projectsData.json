@@ -1,0 +1,114 @@
+{
+  "featured": [
+    {
+      "title": "qpAdm Genomic Modeling on AWS",
+      "category": "MLOps/Research",
+      "timeline": "Sep 2024 – Dec 2024",
+      "description": "MSc thesis project automating genomic analysis at scale",
+      "problem": "Manual genomic modeling was time-consuming and lacked cost-performance insights across different AWS instance types.",
+      "approach": "Built automated benchmarking pipeline with Terraform-provisioned EC2 Auto Scaling Groups (c7g/m7g/r7g Graviton3), implementing failure recovery, CloudWatch alerting, and S3 artifact versioning. Applied ML-driven optimization using scikit-learn regression.",
+      "stack": ["AWS EC2", "Terraform", "Python", "Docker", "CloudWatch", "S3", "scikit-learn", "ADMIXTOOLS"],
+      "outcomes": [
+        "Executed 15,000+ qpAdm runs with structured logs",
+        "Reduced iterations by 40% through ML-driven optimization",
+        "Achieved 25-40% cost reduction",
+        "Delivered 15-30% faster runtimes"
+      ],
+      "links": {
+        "github": "https://github.com/UT07/Performance-Optimization-and-Cost-Analysis-of-qpAdm-Genomic-Modeling"
+      }
+    },
+    {
+      "title": "WhatsTheCraic: Event Management Platform",
+      "category": "Cloud/Backend",
+      "timeline": "Sep 2024 – Dec 2024",
+      "description": "Microservices platform for event discovery and management",
+      "problem": "Need for scalable, multi-service architecture handling event creation, user management, and real-time analytics.",
+      "approach": "Architected microservices platform with 4 containerized Node.js services on ECS Fargate behind ALB path routing. Implemented Aurora multi-AZ, S3 presigned uploads, and SQS/SNS notifications with idempotent processing. Deployed React via AWS Amplify with GitHub Actions CI/CD.",
+      "stack": ["Node.js", "React", "ECS Fargate", "Aurora MySQL", "ALB", "Route53", "DynamoDB", "S3", "SQS/SNS", "GitHub Actions", "AWS Amplify"],
+      "outcomes": [
+        "Integrated analytics tracking 500+ events",
+        "Auto-scaling based on CloudWatch metrics",
+        "Sub-200ms p95 latency",
+        "Deployed with GitHub Actions CI/CD"
+      ],
+      "links": {
+        "github": "https://github.com/UT07/whatsthecraic"
+      }
+    }
+  ],
+  "github_projects": {
+    "cloud_devops": [
+      {
+        "name": "Expense Tracker",
+        "description": "Flask app demonstrating DevOps security best practices",
+        "stack": ["Python", "Flask", "Docker"],
+        "repo": "https://github.com/UT07/Expense-Tracker"
+      },
+      {
+        "name": "Electronics Inventory Management",
+        "description": "Python-based inventory system",
+        "stack": ["Python"],
+        "repo": "https://github.com/UT07/electronics-inventory-management"
+      }
+    ],
+    "data_ml": [
+      {
+        "name": "Nutrient Analyzer",
+        "description": "Python tool for nutritional data analysis",
+        "stack": ["Python"],
+        "repo": "https://github.com/UT07/nutrient-analyzer"
+      }
+    ],
+    "backend_api": [
+      {
+        "name": "Riderz",
+        "description": "Taxi booking app backend",
+        "stack": ["Node.js", "MySQL"],
+        "repo": "https://github.com/UT07/riderz"
+      }
+    ],
+    "frontend_fullstack": [
+      {
+        "name": "CARZZ",
+        "description": "Car rental platform with booking system",
+        "stack": ["React", "Node.js", "MySQL"],
+        "repo": "https://github.com/UT07/carzz",
+        "demo": "https://carz3330.netlify.app"
+      },
+      {
+        "name": "Statify",
+        "description": "Spotify analytics tool showing user listening statistics",
+        "stack": ["Flask", "HTML", "Spotify API"],
+        "repo": "https://github.com/UT07/Statify"
+      },
+      {
+        "name": "Portfolio (UT Hub)",
+        "description": "Personal portfolio website",
+        "stack": ["React"],
+        "repo": "https://github.com/UT07/uthub",
+        "demo": "https://www.theuthub.com"
+      },
+      {
+        "name": "Shlack",
+        "description": "Real-time chat application with Redux and Firebase",
+        "stack": ["React", "Redux", "Firebase"],
+        "repo": "https://github.com/UT07/shlack"
+      }
+    ],
+    "mobile": [
+      {
+        "name": "Mingler",
+        "description": "Dating app (CalHacks UC Berkeley Hackathon project)",
+        "stack": ["Flutter", "Dart"],
+        "repo": "https://github.com/UT07/Mingler"
+      },
+      {
+        "name": "Wabble",
+        "description": "Cross-platform mobile puzzle game (word guessing)",
+        "stack": ["Flutter", "Dart"],
+        "repo": "https://github.com/UT07/Wabble"
+      }
+    ]
+  }
+}
