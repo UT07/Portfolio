@@ -108,7 +108,8 @@
         {
           "name": "Statify - Spotify Analytics Tool",
           "description": "Developed a Flask-based web application that analyzes Spotify user listening statistics, displaying top songs, favorite artists, top genres, and personalized recommendations with visual representations.",
-          "outcomes": "Built full-stack application integrating Spotify API, implemented OAuth authentication, and created dynamic data visualizations for user engagement insights."
+          "outcomes": "Built full-stack application integrating Spotify API, implemented OAuth authentication, and created dynamic data visualizations for user engagement insights.",
+          "github": "https://github.com/UT07/Statify"
         }
       ]
     },
