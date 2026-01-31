@@ -16,7 +16,8 @@
       ],
       "links": {
         "github": "https://github.com/UT07/Performance-Optimization-and-Cost-Analysis-of-qpAdm-Genomic-Modeling"
-      }
+      },
+      "demo_image": "https://via.placeholder.com/1200x600/2563eb/ffffff?text=qpAdm+AWS+Pipeline"
     },
     {
       "title": "WhatsTheCraic: Event Management Platform",
@@ -34,7 +35,27 @@
       ],
       "links": {
         "github": "https://github.com/UT07/whatsthecraic"
-      }
+      },
+      "demo_image": "https://via.placeholder.com/1200x600/10b981/ffffff?text=WhatsTheCraic+Platform"
+    },
+    {
+      "title": "Statify - Spotify Analytics Tool",
+      "category": "Full Stack",
+      "timeline": "2023 – 2024",
+      "description": "Flask-based web application analyzing Spotify user listening statistics",
+      "problem": "Users wanted insights into their Spotify listening habits, favorite artists, and personalized recommendations with visual representations.",
+      "approach": "Developed full-stack application integrating Spotify API with OAuth authentication. Created dynamic data visualizations for user engagement insights including top songs, favorite artists, top genres, and recommendations.",
+      "stack": ["Flask", "Python", "Spotify API", "HTML/CSS", "OAuth", "Data Visualization"],
+      "outcomes": [
+        "Built full-stack application with Spotify API integration",
+        "Implemented OAuth authentication flow",
+        "Created dynamic visualizations for music analytics",
+        "Delivered personalized music recommendations"
+      ],
+      "links": {
+        "github": "https://github.com/UT07/Statify"
+      },
+      "demo_image": "https://via.placeholder.com/1200x600/8b5cf6/ffffff?text=Statify+Analytics"
     }
   ],
   "github_projects": {
