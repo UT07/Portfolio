@@ -51,8 +51,8 @@ const AppContent = () => {
             transition={{ duration: 0.5 }}
           >
             <ProfessionalHero />
-            <Highlights />
             <About />
+            <Highlights />
             <Skills />
             <Experience />
             <Certifications />
