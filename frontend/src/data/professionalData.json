@@ -140,12 +140,14 @@
         {
           "name": "CARZZ - Car Rental Platform",
           "description": "Developed a full-stack car rental web application with booking system, user authentication, vehicle management, and payment integration using React, Node.js, and MySQL.",
-          "outcomes": "Implemented complete booking workflow, real-time availability checking, and admin dashboard for fleet management."
+          "outcomes": "Implemented complete booking workflow, real-time availability checking, and admin dashboard for fleet management.",
+          "github": "https://github.com/UT07/carzz"
         },
         {
           "name": "COVID-19 Tracker App",
           "description": "Built a comprehensive COVID-19 tracking application providing real-time statistics, visualizations, and regional data analysis for monitoring pandemic trends.",
-          "outcomes": "Integrated multiple data APIs, created interactive data visualizations, and deployed production-ready tracking dashboard."
+          "outcomes": "Integrated multiple data APIs, created interactive data visualizations, and deployed production-ready tracking dashboard.",
+          "github": "https://github.com/CSE-3310-Team-6/Covid19TrackerAppFinal"
         }
       ],
       "leadership": [
