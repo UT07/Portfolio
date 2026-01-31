@@ -41,6 +41,21 @@ const Projects = () => {
                 className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-neutral-300 transition-colors"
                 data-testid={`featured-project-${index}`}
               >
+                {/* Project image */}
+                {project.demo_image && (
+                  <motion.div 
+                    className="mb-6 rounded-xl overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <img 
+                      src={project.demo_image}
+                      alt={project.title}
+                      className="w-full h-64 object-cover"
+                    />
+                  </motion.div>
+                )}
+
                 <div className="mb-4">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="px-3 py-1 bg-black text-white text-xs font-medium rounded-full">
