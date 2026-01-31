@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Folder, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, Github, Folder, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
 import projectsData from '../data/projectsData.json';
 
 const Projects = () => {
   const { featured, github_projects } = projectsData;
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start', slidesToScroll: 1 });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   const openExternal = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
+
+  // Flatten all GitHub projects into a single array
+  const allGithubProjects = Object.entries(github_projects).flatMap(([category, projects]) => 
+    projects.map(project => ({ ...project, category }))
+  );
 
   return (
     <section id="projects" className="py-24 md:py-32 bg-neutral-50">
