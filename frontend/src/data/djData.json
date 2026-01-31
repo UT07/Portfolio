@@ -211,24 +211,42 @@
       {
         "name": "SoundCloud",
         "url": "https://soundcloud.com/utkarsh-singh-199724584",
+        "logo": "https://via.placeholder.com/200x200/FF5500/ffffff?text=SoundCloud",
         "sets": [
           {
-            "title": "Recent Mix - Hard Bounce & Trance",
+            "title": "Hard Bounce Mix - 240 KMH",
             "url": "https://soundcloud.com/utkarsh-singh-199724584",
             "date": "2025",
-            "duration": "60 min"
+            "duration": "60 min",
+            "thumbnail": "https://via.placeholder.com/400x400/FF5500/ffffff?text=Hard+Bounce+Mix"
+          },
+          {
+            "title": "Trance & Hard Dance Selection",
+            "url": "https://soundcloud.com/utkarsh-singh-199724584",
+            "date": "2025",
+            "duration": "45 min",
+            "thumbnail": "https://via.placeholder.com/400x400/FF5500/ffffff?text=Trance+Mix"
           }
         ]
       },
       {
         "name": "YouTube",
         "url": "https://www.youtube.com/@utmixes",
+        "logo": "https://via.placeholder.com/200x200/FF0000/ffffff?text=YouTube",
         "sets": [
           {
-            "title": "Live Set Recordings",
+            "title": "Live at Electric Picnic 2025",
             "url": "https://www.youtube.com/@utmixes",
             "date": "2025",
-            "duration": "Various"
+            "duration": "60 min",
+            "thumbnail": "https://via.placeholder.com/640x360/FF0000/ffffff?text=Electric+Picnic+Live"
+          },
+          {
+            "title": "Redline - The Horizon Set",
+            "url": "https://www.youtube.com/@utmixes",
+            "date": "2026",
+            "duration": "60 min",
+            "thumbnail": "https://via.placeholder.com/640x360/FF0000/ffffff?text=Redline+Set"
           }
         ]
       }
