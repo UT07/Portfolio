@@ -114,8 +114,45 @@ const Education = () => {
                     Key Academic Projects
                   </h4>
                   {edu.projects.map((project, idx) => (
-                    <div key={idx} className="bg-neutral-50 rounded-xl p-4 mb-3">
-                      <h5 className="font-semibold text-black mb-2">{project.name}</h5>
+                    <div key={idx} className="bg-neutral-50 rounded-xl p-4 mb-3 border border-neutral-200 hover:border-blue-500 transition-colors">
+                      <div className="flex items-start justify-between mb-2">
+                        <h5 className="font-semibold text-black">{project.name}</h5>
+                        <div className="flex gap-2">
+                          {project.github && (
+                            <motion.button
+                              onClick={() => openExternal(project.github)}
+                              className="p-2 bg-black text-white rounded-lg hover:bg-blue-600 transition-colors"
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                              title="View on GitHub"
+                            >
+                              <Github className="w-4 h-4" />
+                            </motion.button>
+                          )}
+                          {project.research_paper && (
+                            <motion.button
+                              onClick={() => openExternal(project.research_paper)}
+                              className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                              title="Research Paper"
+                            >
+                              <FileText className="w-4 h-4" />
+                            </motion.button>
+                          )}
+                          {project.configuration_manual && (
+                            <motion.button
+                              onClick={() => openExternal(project.configuration_manual)}
+                              className="p-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                              title="Configuration Manual"
+                            >
+                              <FileCode className="w-4 h-4" />
+                            </motion.button>
+                          )}
+                        </div>
+                      </div>
                       <p className="text-sm text-neutral-600 mb-2">{project.description}</p>
                       {project.outcomes && (
                         <p className="text-sm text-neutral-700 font-medium">{project.outcomes}</p>
