@@ -52,12 +52,12 @@ const AppContent = () => {
           >
             <ProfessionalHero />
             <Highlights />
+            <About />
+            <Skills />
             <Experience />
             <Certifications />
             <Education />
-            <About />
             <Projects />
-            <Skills />
             <Contact />
           </motion.div>
         ) : (
