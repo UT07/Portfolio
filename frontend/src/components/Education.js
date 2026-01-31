@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, GraduationCap, Award, BookOpen } from 'lucide-react';
+import { ChevronDown, GraduationCap, Award, BookOpen, Github, FileText, FileCode } from 'lucide-react';
 import professionalData from '../data/professionalData.json';
 
 const Education = () => {
@@ -9,6 +9,10 @@ const Education = () => {
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const openExternal = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
