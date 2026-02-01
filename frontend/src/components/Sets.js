@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, ExternalLink } from 'lucide-react';
 import djData from '../data/djData.json';
@@ -21,14 +21,14 @@ const Sets = () => {
     []
   );
 
-  const parseYear = (value) => {
+  const parseYear = useCallback((value) => {
     if (!value) return 'Live';
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return 'Live';
     return date.getFullYear().toString();
-  };
+  }, []);
 
-  const parseDuration = (durationText) => {
+  const parseDuration = useCallback((durationText) => {
     if (!durationText) return 'Mix';
     const cleaned = durationText.trim();
     if (!cleaned) return 'Mix';
@@ -40,7 +40,7 @@ const Sets = () => {
     if (parts.length === 1) seconds = parts[0];
     const minutes = Math.max(1, Math.round(seconds / 60));
     return `${minutes} min`;
-  };
+  }, []);
 
   const formatStatValue = (value) => {
     if (value === null || value === undefined) return '—';
@@ -74,7 +74,7 @@ const Sets = () => {
     return stats;
   };
 
-  const resolveSoundCloudUserId = async (profileUrl) => {
+  const resolveSoundCloudUserId = useCallback(async (profileUrl) => {
     if (!profileUrl) return null;
     const response = await fetch(
       `https://soundcloud.com/oembed?format=json&url=${encodeURIComponent(profileUrl)}`
@@ -84,9 +84,9 @@ const Sets = () => {
     const html = data?.html || '';
     const match = html.match(/users%2F(\\d+)/);
     return match ? match[1] : null;
-  };
+  }, []);
 
-  const parseSoundCloudRss = (xmlText) => {
+  const parseSoundCloudRss = useCallback((xmlText) => {
     const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
     const items = Array.from(doc.getElementsByTagName('item'));
     const channelImage = doc
@@ -112,9 +112,9 @@ const Sets = () => {
         thumbnail
       };
     });
-  };
+  }, [fallbackThumbnail, parseDuration, parseYear]);
 
-  const parseYouTubeRss = (xmlText) => {
+  const parseYouTubeRss = useCallback((xmlText) => {
     const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
     const entries = Array.from(doc.getElementsByTagName('entry'));
 
@@ -134,7 +134,7 @@ const Sets = () => {
         thumbnail: thumbnail || fallbackThumbnail
       };
     });
-  };
+  }, [fallbackThumbnail, parseYear]);
 
   useEffect(() => {
     const scClientId = process.env.REACT_APP_SOUNDCLOUD_CLIENT_ID;
@@ -343,7 +343,16 @@ const Sets = () => {
     };
 
     fetchRemote();
-  }, [sets.platforms, fallbackThumbnail, feedProxy, fallbackYouTubeChannelId]);
+  }, [
+    sets.platforms,
+    fallbackThumbnail,
+    feedProxy,
+    fallbackYouTubeChannelId,
+    parseSoundCloudRss,
+    parseYouTubeRss,
+    parseYear,
+    resolveSoundCloudUserId
+  ]);
 
   const openExternal = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');

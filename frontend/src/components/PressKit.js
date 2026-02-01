@@ -6,9 +6,12 @@ import { resolveAssetUrl } from '../utils/assetUrl';
 
 const PressKit = () => {
   const { pressKit } = djData;
-  const galleryImages = pressKit.gallery?.images || [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeSection, setActiveSection] = useState(0);
+  const galleryImages = useMemo(
+    () => pressKit.gallery?.images ?? [],
+    [pressKit.gallery?.images]
+  );
   const resolvedGalleryImages = useMemo(
     () => galleryImages.map((image) => resolveAssetUrl(image)),
     [galleryImages]
