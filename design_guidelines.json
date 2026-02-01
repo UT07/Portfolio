@@ -1,0 +1,136 @@
+{
+  "project_identity": {
+    "name_professional": "Utkarsh Singh",
+    "name_dj": "UT",
+    "app_type": "hybrid_fullstack",
+    "core_concept": "Dual Persona Endless Scroll"
+  },
+  "modes": {
+    "professional": {
+      "theme": "light",
+      "aesthetic": "Apple-clean, Minimal, Precision, High Contrast",
+      "emotional_tone": "Competence, Clarity, Trust",
+      "keywords": ["Cloud", "DevOps", "MLOps", "Architecture"]
+    },
+    "dj": {
+      "theme": "dark",
+      "aesthetic": "Neopunk, Rave, Industrial, High Energy",
+      "emotional_tone": "Mystery, Rhythm, Underground, Electric",
+      "keywords": ["Techno", "Club", "Rave", "Artist"]
+    }
+  },
+  "typography": {
+    "professional": {
+      "font_family_heading": "Plus Jakarta Sans, sans-serif",
+      "font_family_body": "Inter, sans-serif",
+      "scale": {
+        "h1": "text-5xl md:text-7xl font-bold tracking-tight",
+        "h2": "text-3xl md:text-4xl font-semibold tracking-tight",
+        "body": "text-base md:text-lg leading-relaxed text-neutral-600"
+      }
+    },
+    "dj": {
+      "font_family_heading": "Unbounded, display",
+      "font_family_body": "Space Mono, monospace",
+      "scale": {
+        "h1": "text-6xl md:text-9xl font-black uppercase tracking-tighter",
+        "h2": "text-4xl md:text-6xl font-bold uppercase tracking-widest",
+        "body": "text-sm md:text-base font-medium tracking-wide text-neutral-400"
+      }
+    },
+    "google_fonts_import": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Mono:wght@400;700&family=Unbounded:wght@400;700;900&display=swap"
+  },
+  "colors": {
+    "professional": {
+      "background": "#ffffff",
+      "foreground": "#0a0a0a",
+      "primary": "#0a0a0a",
+      "secondary": "#f5f5f5",
+      "accent": "#2563eb",
+      "muted": "#737373",
+      "border": "#e5e5e5"
+    },
+    "dj": {
+      "background": "#050505",
+      "foreground": "#ededed",
+      "primary": "#d946ef",
+      "secondary": "#171717",
+      "accent": "#06b6d4",
+      "muted": "#404040",
+      "border": "#262626",
+      "neon_glow": "0 0 10px rgba(217, 70, 239, 0.5), 0 0 20px rgba(6, 182, 212, 0.3)"
+    }
+  },
+  "layout_strategy": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "spacing": {
+      "section_gap": "py-24 md:py-32",
+      "element_gap": "gap-8 md:gap-12"
+    },
+    "grids": {
+      "professional": "grid grid-cols-1 md:grid-cols-12 gap-8 (Bento Grid Mode A)",
+      "dj": "grid grid-cols-1 md:grid-cols-6 gap-4 (Asymmetrical / Broken Grid)"
+    }
+  },
+  "components": {
+    "header": {
+      "position": "sticky top-0 z-50",
+      "style_professional": "bg-white/80 backdrop-blur-md border-b border-neutral-100",
+      "style_dj": "bg-black/80 backdrop-blur-xl border-b border-white/10",
+      "toggle_switch": "Must be prominent. Smooth transition between 'Tech' and 'Rave' icons."
+    },
+    "buttons": {
+      "professional": "rounded-full px-8 py-3 bg-black text-white hover:bg-neutral-800 transition-all duration-300 font-medium",
+      "dj": "rounded-none px-8 py-3 border border-fuchsia-500 text-fuchsia-500 hover:bg-fuchsia-500 hover:text-black transition-all duration-200 font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(217,70,239,0.3)]"
+    },
+    "cards": {
+      "professional": "bg-neutral-50 border border-neutral-200 rounded-2xl p-8 hover:border-neutral-300 transition-colors",
+      "dj": "bg-neutral-900/50 border border-white/10 backdrop-blur-sm p-6 hover:border-cyan-500/50 transition-colors rounded-none"
+    }
+  },
+  "image_assets": {
+    "professional": {
+      "hero_bg": "https://images.unsplash.com/photo-1658901167484-48bf77a5c305?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "workspace": "https://images.unsplash.com/photo-1765371512336-99c2b1c6975f?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "abstract_tech": "https://images.unsplash.com/photo-1765371514743-45bd8e6c0a28?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    "dj": {
+      "hero_bg": "https://images.unsplash.com/photo-1768327240007-2f45398639d5?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "club_crowd": "https://images.unsplash.com/photo-1768885514740-d64d25ac9a64?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "neon_abstract": "https://images.unsplash.com/photo-1767477665628-802a3e2c09bf?crop=entropy&cs=srgb&fm=jpg&q=85"
+    }
+  },
+  "motion_guidelines": {
+    "library": "framer-motion",
+    "transitions": {
+      "mode_switch": "duration-700 ease-in-out",
+      "hover": "duration-200 ease-out"
+    },
+    "professional_animations": "Fade in up, staggered list reveals, smooth scaling.",
+    "dj_animations": "Glitch effects on text hover, fast cuts, marquee scrolling, neon pulse."
+  },
+  "accessibility": {
+    "contrast": "Ensure WCAG AA compliance in both modes. Use lighter greys for text in DJ mode, not dark grey.",
+    "reduced_motion": "Respect prefers-reduced-motion media query.",
+    "focus_states": "Visible focus rings: Blue for Pro, Fuchsia for DJ."
+  },
+  "instructions_to_main_agent": [
+    "1. Install dependencies: framer-motion lucide-react clsx tailwind-merge",
+    "2. Update index.html to include the Google Fonts specified in typography section.",
+    "3. Create a 'ThemeContext' to manage the 'professional' vs 'dj' state and persist to localStorage.",
+    "4. Use the 'mode' state to conditionally render the entire layout wrapper (fonts, colors, spacing).",
+    "5. Implement the 'ToggleSwitch' component first, as it drives the entire UI.",
+    "6. For the 'Gig Timeline', use a JSON data structure that can be easily filtered.",
+    "7. Ensure the 'Contact' section adapts: Simple form for Pro, Booking Agent details for DJ.",
+    "8. Use the provided image URLs for backgrounds and section headers.",
+    "9. DO NOT use generic gradients. Use the specific colors defined in the palette.",
+    "10. Add 'data-testid' to all interactive elements."
+  ],
+  "universal_guidelines": [
+    "Avoid 'AI slop' - no generic centered layouts.",
+    "Use 2-3x more spacing than typical.",
+    "Every interaction needs a micro-animation.",
+    "Never use pure black (#000000) for backgrounds in Pro mode.",
+    "Never use pure white (#ffffff) for text in DJ mode (use #ededed)."
+  ]
+}

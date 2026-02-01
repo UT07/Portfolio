@@ -1,0 +1,293 @@
+{
+  "hero": {
+    "name": "Utkarsh Singh",
+    "title": "Cloud + Systems Engineer",
+    "headline": "Cloud + Systems Engineer building reliable platforms, with an MLOps focus.",
+    "subtext": "Operating production systems, IaC/automation, reliability, observability, and upskilling to build AI products and deploy them on cloud at enterprise level.",
+    "headshot": "/images/utkarsh-headshot.jpg",
+    "ctas": [
+      { "text": "View Projects", "href": "#projects", "primary": true },
+      { "text": "Download Resume", "href": "#", "primary": false },
+      { "text": "LinkedIn", "href": "https://www.linkedin.com/in/utkarshsingh2001", "primary": false, "external": true }
+    ]
+  },
+  "highlights": [
+    {
+      "title": "AWS Certified Professional",
+      "description": "Solutions Architect Professional (SAP-C02) + Developer Associate",
+      "icon": "award"
+    },
+    {
+      "title": "2+ Years Production Experience",
+      "description": "Built and maintained multi-region AWS infrastructure serving 1,000+ users",
+      "icon": "cloud"
+    },
+    {
+      "title": "85% Faster Deployments",
+      "description": "Reduced release cycles from 3 days to 4-6 hours, enabling 10-15 releases/week",
+      "icon": "zap"
+    },
+    {
+      "title": "22% Cost Reduction",
+      "description": "Optimized multi-account AWS costs through proactive monitoring and right-sizing",
+      "icon": "trending-down"
+    },
+    {
+      "title": "MLOps Pipeline Expert",
+      "description": "Delivered end-to-end SageMaker pipelines reducing model deployment from 5 days to 2 days",
+      "icon": "cpu"
+    },
+    {
+      "title": "35% Lower MTTR",
+      "description": "Cut Mean Time To Resolution from 45 min to 29 min with custom observability stack",
+      "icon": "activity"
+    }
+  ],
+  "about": {
+    "title": "About",
+    "paragraphs": [
+      "I'm a Cloud/DevOps Engineer with 2+ years building production infrastructure and MLOps solutions on AWS. Currently pursuing MSc in Cloud Computing at National College of Ireland (graduating April 2026).",
+      "My work centers on architecting containerized microservices (Docker/ECS/EKS), automating CI/CD pipelines, and implementing robust observability systems. I've reduced deployment cycles by 85%, cut MTTR by 35%, and achieved 22% AWS cost optimization across multi-account environments.",
+      "I'm particularly focused on the intersection of cloud infrastructure and machine learning operations—building SageMaker pipelines, Model Registry workflows, and automated retraining systems that enable rapid, reliable model deployments.",
+      "I'm seeking Cloud Architecture, DevOps Engineering, or Technical Leadership roles where I can apply my experience in infrastructure automation, observability, and MLOps to help teams ship faster and more reliably."
+    ]
+  },
+  "education": [
+    {
+      "institution": "National College of Ireland",
+      "degree": "MSc Cloud Computing",
+      "location": "Dublin, Ireland",
+      "dates": "Sep 2024 – Apr 2026",
+      "status": "In Progress",
+      "description": "Specializing in distributed systems, DevOpsSec, and scalable cloud programming with AWS, Kubernetes, and Terraform.",
+      "modules": [
+        "Cloud Architectures",
+        "Cloud Platform Programming",
+        "Cloud DevOpsSec",
+        "Scalable Cloud Programming",
+        "Fog and Edge Computing",
+        "Cloud Machine Learning",
+        "Data Governance, Compliance and Ethics",
+        "Blockchain Concepts",
+        "Research in Computing"
+      ],
+      "projects": [
+        {
+          "name": "qpAdm Genomic Modeling on AWS",
+          "description": "Engineered automated benchmarking pipeline with Terraform-provisioned EC2 Auto Scaling Groups, implementing failure recovery, CloudWatch alerting, and S3 artifact versioning. Applied ML-driven optimization to predict optimal instance families.",
+          "outcomes": "Executed 15,000+ qpAdm runs. Reduced iterations by 40% and achieved 25-40% cost reduction with 15-30% faster runtimes.",
+          "github": "https://github.com/UT07/Performance-Optimization-and-Cost-Analysis-of-qpAdm-Genomic-Modeling",
+          "research_paper": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/1b3a260i_MSc%20Research%20Project%20Report%20Utkarsh.pdf",
+          "configuration_manual": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/ey360g8n_qpAdm_AWS_Configuration_Manual_Utkarsh_Singh.pdf"
+        }
+      ],
+      "thesis": "Performance Optimization and Cost Analysis of qpAdm Genomic Modeling",
+      "leadership": [
+        "Head of DJ Society — National College of Ireland",
+        "Winner of Student Club and Organization Award 2024-25"
+      ]
+    },
+    {
+      "institution": "Southern New Hampshire University",
+      "degree": "BS Computer Science (Transfer)",
+      "location": "Manchester, NH",
+      "dates": "Aug 2023 – May 2024",
+      "status": "Completed",
+      "description": "Transfer program completing computational science requirements with focus on software development lifecycle and full-stack development.",
+      "modules": [
+        "CS 250 Software Development Lifecycle",
+        "CS 255 System Analysis and Design",
+        "CS 320 Software Testing, Automation, and Quality Assurance",
+        "CS 330 Computational Graphics and Visualization",
+        "CS 340 Client/Server Development",
+        "CS 370 Current and Emerging Trends in Computer Science",
+        "CS 465 Full Stack Development",
+        "MAT 230 Discrete Mathematics"
+      ],
+      "projects": [
+        {
+          "name": "Statify - Spotify Analytics Tool",
+          "description": "Developed a Flask-based web application that analyzes Spotify user listening statistics, displaying top songs, favorite artists, top genres, and personalized recommendations with visual representations.",
+          "outcomes": "Built full-stack application integrating Spotify API, implemented OAuth authentication, and created dynamic data visualizations for user engagement insights.",
+          "github": "https://github.com/UT07/Statify"
+        }
+      ]
+    },
+    {
+      "institution": "The University of Texas at Arlington",
+      "degree": "BS Software Engineering",
+      "location": "Arlington, TX",
+      "dates": "Aug 2019 – May 2022",
+      "status": "Completed",
+      "description": "Strong foundation in secure system design, software testing, and object-oriented programming principles.",
+      "modules": [
+        "Algorithms and Data Structures",
+        "Operating Systems",
+        "Computer Organization",
+        "Databases",
+        "Software Testing",
+        "Object-Oriented Software Engineering",
+        "Software Design Patterns",
+        "Software Project Management",
+        "Information Security",
+        "Computer Networks",
+        "Theoretical Computer Science",
+        "Programming Languages",
+        "Linear Algebra for CSE",
+        "Probability and Statistics"
+      ],
+      "projects": [
+        {
+          "name": "CARZZ - Car Rental Platform",
+          "description": "Developed a full-stack car rental web application with booking system, user authentication, vehicle management, and payment integration using React, Node.js, and MySQL.",
+          "outcomes": "Implemented complete booking workflow, real-time availability checking, and admin dashboard for fleet management.",
+          "github": "https://github.com/UT07/carzz"
+        },
+        {
+          "name": "COVID-19 Tracker App",
+          "description": "Built a comprehensive COVID-19 tracking application providing real-time statistics, visualizations, and regional data analysis for monitoring pandemic trends.",
+          "outcomes": "Integrated multiple data APIs, created interactive data visualizations, and deployed production-ready tracking dashboard.",
+          "github": "https://github.com/CSE-3310-Team-6/Covid19TrackerAppFinal"
+        }
+      ],
+      "leadership": [
+        "Teaching Assistant — CSE 3318 Data Structures and Algorithms (50+ students)",
+        "Freshman Orientation Leader"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Clover IT Services",
+      "role": "DevOps Engineer (Team Lead)",
+      "location": "New York, NY (Remote)",
+      "dates": "Jun 2022 – Jul 2024",
+      "duration": "2 years 2 months",
+      "responsibilities": [
+        "Managed multi-client AWS infrastructure across 5+ accounts and 3 regions (us-east-1, us-west-1, ap-south-1), supporting 8 microservices serving 1,000+ users",
+        "Containerized 8 legacy Python/Node.js services into multi-stage Docker images with Trivy scanning",
+        "Orchestrated Kubernetes clusters and deployed to EKS with blue/green deployments via CodeDeploy",
+        "Re-architected CI/CD for 10+ microservices using Jenkins shared libraries and CodePipeline templates",
+        "Built production observability with Prometheus metrics, 15+ Grafana dashboards, and CloudWatch Log Insights",
+        "Delivered end-to-end MLOps pipelines using SageMaker Pipelines, Model Registry, and EventBridge-triggered retraining",
+        "Led 3-4 engineers to standardize deployment workflows across client accounts (promoted after 1.5 years)"
+      ],
+      "achievements": [
+        "Cut Docker image sizes by 55%",
+        "Achieved 98% deployment success rate",
+        "Reduced release cycles from 3 days to 4-6 hours (85% faster)",
+        "Cut MTTR from 45 min to 29 min (35% reduction)",
+        "Decreased false-positive alerts by 30%",
+        "Reduced model deployment from 5 days to 2 days across 8-12 campaigns/month",
+        "Optimized multi-account AWS costs by 22%"
+      ]
+    },
+    {
+      "company": "Seattle Kraken",
+      "role": "Data Analyst Intern",
+      "location": "Seattle, WA",
+      "dates": "Jun 2022 – Dec 2022",
+      "duration": "7 months",
+      "responsibilities": [
+        "Supported the hockey analytics team with game-day and weekly reporting, delivering stat packs, streaks, and matchup storylines for broadcast and content teams",
+        "Optimized PySpark + Azure Data Factory pipelines to ingest play-by-play, player, and historical datasets; validated data quality and reconciled discrepancies",
+        "Created dashboards for team performance (shot quality, special teams, goalie trends) and opponent scouting summaries",
+        "Collaborated on market-odds trend tracking to surface interesting insights and pregame notes",
+        "Automated recurring reports and data pulls with Python to reduce manual preparation time",
+        "Partnered with engineering to improve ETL reliability and keep data refreshed for stakeholders"
+      ],
+      "achievements": [
+        "Cut report preparation time by ~30% through automation",
+        "Improved data refresh reliability for game-day reporting",
+        "Delivered weekly insight packs used across internal and public-facing content",
+        "Increased coverage of opponent scouting notes with standardized templates"
+      ]
+    }
+  ],
+  "skills": {
+    "categories": [
+      {
+        "name": "Core Languages & Tools",
+        "skills": [
+          "Python", "Bash", "Go", "JavaScript/TypeScript", "SQL",
+          "Linux/Unix", "Git/GitHub", "YAML", "REST APIs"
+        ]
+      },
+      {
+        "name": "AWS Cloud",
+        "skills": [
+          "EC2", "ECS/Fargate", "EKS", "Lambda", "Auto Scaling",
+          "S3", "EBS", "EFS", "DynamoDB", "RDS/Aurora",
+          "Redshift", "Athena", "Glue", "EMR",
+          "VPC", "ALB", "Route53", "CloudFront", "API Gateway",
+          "SQS", "SNS", "EventBridge", "Step Functions",
+          "IAM", "Secrets Manager", "WAF", "ECR"
+        ]
+      },
+      {
+        "name": "Containers & Orchestration",
+        "skills": [
+          "Docker (multi-stage, Trivy)", "Docker Compose",
+          "Kubernetes/EKS", "kubectl", "Helm", "Kustomize",
+          "ECS/Fargate", "ECR", "Ingress (ALB/NGINX)"
+        ]
+      },
+      {
+        "name": "DevOps & Infrastructure as Code",
+        "skills": [
+          "Terraform", "CloudFormation", "GitHub Actions", "Jenkins",
+          "AWS CodeCommit", "AWS CodeBuild", "AWS CodeDeploy", "AWS CodePipeline",
+          "Blue/Green Deployments"
+        ]
+      },
+      {
+        "name": "Observability & MLOps",
+        "skills": [
+          "Prometheus/Grafana", "CloudWatch (Logs, Metrics, Log Insights)", "OpenTelemetry", "New Relic", "X-Ray",
+          "SageMaker (Pipelines, Feature Store, Model Registry, Endpoints, Monitor, Experiments)",
+          "MLflow", "DVC", "Airflow/MWAA", "EventBridge", "Step Functions"
+        ]
+      },
+      {
+        "name": "Data & Web",
+        "skills": [
+          "MySQL", "PostgreSQL", "Redis",
+          "Redshift", "Athena", "Glue", "EMR", "Kinesis",
+          "Flask", "Django", "FastAPI", "React.js", "Express.js",
+          "Pandas", "NumPy", "PySpark", "SciPy", "scikit-learn",
+          "Matplotlib", "Seaborn", "Jupyter"
+        ]
+      }
+    ]
+  },
+  "certifications": [
+    {
+      "name": "AWS Solutions Architect – Professional",
+      "code": "SAP-C02",
+      "issuer": "Amazon Web Services",
+      "year": "2024",
+      "link": "https://www.credly.com/earner/earned/badge/6e22a6c0-9922-49d5-b59f-34cc593c82c3"
+    },
+    {
+      "name": "AWS Developer – Associate",
+      "code": "DVA-C01",
+      "issuer": "Amazon Web Services",
+      "year": "2023",
+      "link": "https://www.credly.com/earner/earned/badge/84671bf4-ce9f-4d8b-a0de-0ef606ad5646"
+    },
+    {
+      "name": "AWS Cloud Practitioner",
+      "code": "CLF-C01",
+      "issuer": "Amazon Web Services",
+      "year": "2022",
+      "link": "https://www.credly.com/earner/earned/badge/e671b9de-e72a-48cb-82fc-33776c285174"
+    }
+  ],
+  "contact": {
+    "email": "254utkarsh@gmail.com",
+    "phone": "+353 892515620",
+    "location": "Dublin, Ireland",
+    "linkedin": "https://www.linkedin.com/in/utkarshsingh2001",
+    "github": "https://github.com/UT07"
+  }
+}
