@@ -37,7 +37,7 @@ const Header = () => {
           className={`text-xl md:text-2xl font-bold ${
             isProfessional
               ? 'text-black font-plus-jakarta'
-              : 'text-white font-unbounded tracking-wider'
+              : 'text-red-500 font-unbounded tracking-wider'
           }`}
         >
           {isProfessional ? 'Utkarsh Singh' : 'UT'}
@@ -51,7 +51,7 @@ const Header = () => {
               className={`text-sm font-medium transition-colors ${
                 isProfessional
                   ? 'text-neutral-600 hover:text-black'
-                  : 'text-neutral-400 hover:text-fuchsia-500 uppercase tracking-widest'
+                  : 'text-neutral-400 hover:text-red-500 uppercase tracking-widest'
               }`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ const Header = () => {
                 : 'text-neutral-400 uppercase tracking-widest font-space-mono'
             }`}
           >
-            {isProfessional ? 'Toggle to meet my alter ego' : 'Toggle to see the pro side'}
+            {isProfessional ? 'Toggle to meet my alter ego' : 'Toggle to see how I pay the bills'}
           </div>
           <motion.button
             onClick={toggleMode}
@@ -84,7 +84,7 @@ const Header = () => {
           >
             <motion.div
               className={`absolute top-1 left-1 w-6 h-6 rounded-full flex items-center justify-center ${
-                isProfessional ? 'bg-black' : 'bg-fuchsia-500'
+                isProfessional ? 'bg-black' : 'bg-red-500'
               }`}
               animate={{
                 x: isProfessional ? 0 : 32,

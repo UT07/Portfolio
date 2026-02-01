@@ -6,9 +6,23 @@
     "subtext": "Operating production systems, IaC/automation, reliability, observability, and upskilling to build AI products and deploy them on cloud at enterprise level.",
     "headshot": "/images/utkarsh-headshot.jpg",
     "ctas": [
-      { "text": "View Projects", "href": "#projects", "primary": true },
-      { "text": "Download Resume", "href": "#", "primary": false },
-      { "text": "LinkedIn", "href": "https://www.linkedin.com/in/utkarshsingh2001", "primary": false, "external": true }
+      {
+        "text": "View Projects",
+        "href": "#projects",
+        "primary": true
+      },
+      {
+        "text": "Download Resume",
+        "href": "https://ut-portfolio-website.s3.eu-west-1.amazonaws.com/assets/UTKARSH_SINGH_DUBLIN.pdf",
+        "primary": false,
+        "external": true
+      },
+      {
+        "text": "LinkedIn",
+        "href": "https://www.linkedin.com/in/utkarshsingh2001",
+        "primary": false,
+        "external": true
+      }
     ]
   },
   "highlights": [
@@ -48,7 +62,7 @@
     "paragraphs": [
       "I'm a Cloud/DevOps Engineer with 2+ years building production infrastructure and MLOps solutions on AWS. Currently pursuing MSc in Cloud Computing at National College of Ireland (graduating April 2026).",
       "My work centers on architecting containerized microservices (Docker/ECS/EKS), automating CI/CD pipelines, and implementing robust observability systems. I've reduced deployment cycles by 85%, cut MTTR by 35%, and achieved 22% AWS cost optimization across multi-account environments.",
-      "I'm particularly focused on the intersection of cloud infrastructure and machine learning operations—building SageMaker pipelines, Model Registry workflows, and automated retraining systems that enable rapid, reliable model deployments.",
+      "I'm particularly focused on the intersection of cloud infrastructure and machine learning operations\u2014building SageMaker pipelines, Model Registry workflows, and automated retraining systems that enable rapid, reliable model deployments.",
       "I'm seeking Cloud Architecture, DevOps Engineering, or Technical Leadership roles where I can apply my experience in infrastructure automation, observability, and MLOps to help teams ship faster and more reliably."
     ]
   },
@@ -57,7 +71,7 @@
       "institution": "National College of Ireland",
       "degree": "MSc Cloud Computing",
       "location": "Dublin, Ireland",
-      "dates": "Sep 2024 – Apr 2026",
+      "dates": "Sep 2024 \u2013 Apr 2026",
       "status": "In Progress",
       "description": "Specializing in distributed systems, DevOpsSec, and scalable cloud programming with AWS, Kubernetes, and Terraform.",
       "modules": [
@@ -83,7 +97,7 @@
       ],
       "thesis": "Performance Optimization and Cost Analysis of qpAdm Genomic Modeling",
       "leadership": [
-        "Head of DJ Society — National College of Ireland",
+        "Head of DJ Society \u2014 National College of Ireland",
         "Winner of Student Club and Organization Award 2024-25"
       ]
     },
@@ -91,7 +105,7 @@
       "institution": "Southern New Hampshire University",
       "degree": "BS Computer Science (Transfer)",
       "location": "Manchester, NH",
-      "dates": "Aug 2023 – May 2024",
+      "dates": "Aug 2023 \u2013 May 2024",
       "status": "Completed",
       "description": "Transfer program completing computational science requirements with focus on software development lifecycle and full-stack development.",
       "modules": [
@@ -117,7 +131,7 @@
       "institution": "The University of Texas at Arlington",
       "degree": "BS Software Engineering",
       "location": "Arlington, TX",
-      "dates": "Aug 2019 – May 2022",
+      "dates": "Aug 2019 \u2013 May 2022",
       "status": "Completed",
       "description": "Strong foundation in secure system design, software testing, and object-oriented programming principles.",
       "modules": [
@@ -151,7 +165,7 @@
         }
       ],
       "leadership": [
-        "Teaching Assistant — CSE 3318 Data Structures and Algorithms (50+ students)",
+        "Teaching Assistant \u2014 CSE 3318 Data Structures and Algorithms (50+ students)",
         "Freshman Orientation Leader"
       ]
     }
@@ -161,7 +175,7 @@
       "company": "Clover IT Services",
       "role": "DevOps Engineer (Team Lead)",
       "location": "New York, NY (Remote)",
-      "dates": "Jun 2022 – Jul 2024",
+      "dates": "Jun 2022 \u2013 Jul 2024",
       "duration": "2 years 2 months",
       "responsibilities": [
         "Managed multi-client AWS infrastructure across 5+ accounts and 3 regions (us-east-1, us-west-1, ap-south-1), supporting 8 microservices serving 1,000+ users",
@@ -186,7 +200,7 @@
       "company": "Seattle Kraken",
       "role": "Data Analyst Intern",
       "location": "Seattle, WA",
-      "dates": "Jun 2022 – Dec 2022",
+      "dates": "Jun 2022 \u2013 Dec 2022",
       "duration": "7 months",
       "responsibilities": [
         "Supported the hockey analytics team with game-day and weekly reporting, delivering stat packs, streaks, and matchup storylines for broadcast and content teams",
@@ -209,78 +223,147 @@
       {
         "name": "Core Languages & Tools",
         "skills": [
-          "Python", "Bash", "Go", "JavaScript/TypeScript", "SQL",
-          "Linux/Unix", "Git/GitHub", "YAML", "REST APIs"
+          "Python",
+          "Bash",
+          "Go",
+          "JavaScript/TypeScript",
+          "SQL",
+          "Linux/Unix",
+          "Git/GitHub",
+          "YAML",
+          "REST APIs"
         ]
       },
       {
         "name": "AWS Cloud",
         "skills": [
-          "EC2", "ECS/Fargate", "EKS", "Lambda", "Auto Scaling",
-          "S3", "EBS", "EFS", "DynamoDB", "RDS/Aurora",
-          "Redshift", "Athena", "Glue", "EMR",
-          "VPC", "ALB", "Route53", "CloudFront", "API Gateway",
-          "SQS", "SNS", "EventBridge", "Step Functions",
-          "IAM", "Secrets Manager", "WAF", "ECR"
+          "EC2",
+          "ECS/Fargate",
+          "EKS",
+          "Lambda",
+          "Auto Scaling",
+          "S3",
+          "EBS",
+          "EFS",
+          "DynamoDB",
+          "RDS/Aurora",
+          "Redshift",
+          "Athena",
+          "Glue",
+          "EMR",
+          "VPC",
+          "ALB",
+          "Route53",
+          "CloudFront",
+          "API Gateway",
+          "SQS",
+          "SNS",
+          "EventBridge",
+          "Step Functions",
+          "IAM",
+          "Secrets Manager",
+          "WAF",
+          "ECR"
         ]
       },
       {
         "name": "Containers & Orchestration",
         "skills": [
-          "Docker (multi-stage, Trivy)", "Docker Compose",
-          "Kubernetes/EKS", "kubectl", "Helm", "Kustomize",
-          "ECS/Fargate", "ECR", "Ingress (ALB/NGINX)"
+          "Docker (multi-stage, Trivy)",
+          "Docker Compose",
+          "Kubernetes/EKS",
+          "kubectl",
+          "Helm",
+          "Kustomize",
+          "ECS/Fargate",
+          "ECR",
+          "Ingress (ALB/NGINX)"
         ]
       },
       {
         "name": "DevOps & Infrastructure as Code",
         "skills": [
-          "Terraform", "CloudFormation", "GitHub Actions", "Jenkins",
-          "AWS CodeCommit", "AWS CodeBuild", "AWS CodeDeploy", "AWS CodePipeline",
+          "Terraform",
+          "CloudFormation",
+          "GitHub Actions",
+          "Jenkins",
+          "AWS CodeCommit",
+          "AWS CodeBuild",
+          "AWS CodeDeploy",
+          "AWS CodePipeline",
           "Blue/Green Deployments"
         ]
       },
       {
         "name": "Observability & MLOps",
         "skills": [
-          "Prometheus/Grafana", "CloudWatch (Logs, Metrics, Log Insights)", "OpenTelemetry", "New Relic", "X-Ray",
+          "Prometheus/Grafana",
+          "CloudWatch (Logs, Metrics, Log Insights)",
+          "OpenTelemetry",
+          "New Relic",
+          "X-Ray",
           "SageMaker (Pipelines, Feature Store, Model Registry, Endpoints, Monitor, Experiments)",
-          "MLflow", "DVC", "Airflow/MWAA", "EventBridge", "Step Functions"
+          "MLflow",
+          "DVC",
+          "Airflow/MWAA",
+          "EventBridge",
+          "Step Functions"
         ]
       },
       {
         "name": "Data & Web",
         "skills": [
-          "MySQL", "PostgreSQL", "Redis",
-          "Redshift", "Athena", "Glue", "EMR", "Kinesis",
-          "Flask", "Django", "FastAPI", "React.js", "Express.js",
-          "Pandas", "NumPy", "PySpark", "SciPy", "scikit-learn",
-          "Matplotlib", "Seaborn", "Jupyter"
+          "MySQL",
+          "PostgreSQL",
+          "MongoDB",
+          "Redis",
+          "Redshift",
+          "Athena",
+          "Glue",
+          "EMR",
+          "Kinesis",
+          "Flask",
+          "Django",
+          "FastAPI",
+          "React.js",
+          "Express.js",
+          "Pandas",
+          "NumPy",
+          "PySpark",
+          "PyTorch",
+          "Tensorflow",
+          "SciPy",
+          "scikit-learn",
+          "Matplotlib",
+          "Tableau",          
+          "Seaborn",
+          "Jupyter"
+
         ]
       }
     ]
   },
   "certifications": [
     {
-      "name": "AWS Solutions Architect – Professional",
+      "name": "AWS Solutions Architect \u2013 Professional",
       "code": "SAP-C02",
       "issuer": "Amazon Web Services",
       "year": "2024",
-      "link": "https://www.credly.com/earner/earned/badge/6e22a6c0-9922-49d5-b59f-34cc593c82c3"
+      "link": "https://www.credly.com/badges/6e22a6c0-9922-49d5-b59f-34cc593c82c3/public_url"
     },
     {
-      "name": "AWS Developer – Associate",
+      "name": "AWS Developer \u2013 Associate",
       "code": "DVA-C01",
       "issuer": "Amazon Web Services",
       "year": "2023",
-      "link": "https://www.credly.com/earner/earned/badge/84671bf4-ce9f-4d8b-a0de-0ef606ad5646"
+      "link": "https://www.credly.com/badges/84671bf4-ce9f-4d8b-a0de-0ef606ad5646/public_url"
     },
     {
       "name": "AWS Cloud Practitioner",
       "code": "CLF-C01",
       "issuer": "Amazon Web Services",
       "year": "2022",
-      "link": "https://www.credly.com/earner/earned/badge/e671b9de-e72a-48cb-82fc-33776c285174"
+      "link": "https://www.credly.com/badges/e671b9de-e72a-48cb-82fc-33776c285174/public_url"
     }
   ],
   "contact": {

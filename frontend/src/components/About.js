@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import professionalData from '../data/professionalData.json';
+import { resolveAssetUrl } from '../utils/assetUrl';
 
 const About = () => {
   const { about, hero } = professionalData;
@@ -80,7 +81,7 @@ const About = () => {
               {/* Image with gradient border */}
               <div className="relative p-2 bg-gradient-to-br from-blue-600 to-blue-400 rounded-3xl shadow-2xl">
                 <img 
-                  src={hero.headshot}
+                  src={resolveAssetUrl(hero.headshot)}
                   alt="Utkarsh Singh"
                   className="w-full h-[320px] sm:h-[420px] lg:h-[520px] object-cover rounded-2xl"
                   loading="lazy"

@@ -3,12 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Clock, Music, Users, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { formatDate } from '../utils/helpers';
+import { resolveAssetUrl } from '../utils/assetUrl';
 import djData from '../data/djData.json';
 import { DayPicker } from 'react-day-picker';
 
 const GigTimeline = () => {
   const { gigs, hero } = djData;
-  const fallbackGigImage = hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg';
+  const fallbackGigImage = resolveAssetUrl(
+    hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg'
+  );
   const [selectedGenre, setSelectedGenre] = useState('all');
   const [selectedCollective, setSelectedCollective] = useState('all');
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
@@ -54,6 +57,11 @@ const GigTimeline = () => {
     setActiveGig(gig);
   }, [emblaApi]);
 
+  const resolveGigAsset = useCallback(
+    (url) => resolveAssetUrl(url) || fallbackGigImage,
+    [fallbackGigImage]
+  );
+
   const closeGig = () => setActiveGig(null);
 
   const gigDates = useMemo(() => {
@@ -83,7 +91,7 @@ const GigTimeline = () => {
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(217,70,239,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.2) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(255,26,64,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,94,112,0.2) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
       </div>
@@ -105,7 +113,7 @@ const GigTimeline = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="w-16 h-1 bg-gradient-to-r from-fuchsia-500 to-cyan-500"
+              className="w-16 h-1 bg-gradient-to-r from-red-500 to-red-300"
               initial={{ width: 0 }}
               whileInView={{ width: 64 }}
               viewport={{ once: true }}
@@ -146,11 +154,11 @@ const GigTimeline = () => {
           className="mb-12 flex flex-wrap gap-4"
         >
           <div className="flex items-center gap-2">
-            <Music className="w-4 h-4 text-fuchsia-400" />
+            <Music className="w-4 h-4 text-red-400" />
             <select
               value={selectedGenre}
               onChange={(e) => setSelectedGenre(e.target.value)}
-              className="px-4 py-2 bg-neutral-900 border border-fuchsia-500/50 text-fuchsia-400 text-sm font-space-mono uppercase tracking-wider focus:outline-none focus:border-fuchsia-500 cursor-pointer"
+              className="px-4 py-2 bg-neutral-900 border border-red-500/50 text-red-400 text-sm font-space-mono uppercase tracking-wider focus:outline-none focus:border-red-500 cursor-pointer"
               data-testid="gig-genre-filter"
             >
               {allGenres.map(genre => (
@@ -162,11 +170,11 @@ const GigTimeline = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Users className="w-4 h-4 text-fuchsia-400" />
+            <Users className="w-4 h-4 text-red-400" />
             <select
               value={selectedCollective}
               onChange={(e) => setSelectedCollective(e.target.value)}
-              className="px-4 py-2 bg-neutral-900 border border-fuchsia-500/50 text-fuchsia-400 text-sm font-space-mono uppercase tracking-wider focus:outline-none focus:border-fuchsia-500 cursor-pointer"
+              className="px-4 py-2 bg-neutral-900 border border-red-500/50 text-red-400 text-sm font-space-mono uppercase tracking-wider focus:outline-none focus:border-red-500 cursor-pointer"
               data-testid="gig-collective-filter"
             >
               {allCollectives.map(collective => (
@@ -183,20 +191,20 @@ const GigTimeline = () => {
           {/* Navigation buttons */}
           <motion.button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-fuchsia-500 text-black rounded-full flex items-center justify-center hover:bg-fuchsia-400 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-red-500 text-black rounded-full flex items-center justify-center hover:bg-red-400 transition-colors"
             whileHover={{ scale: 1.1, x: -5 }}
             whileTap={{ scale: 0.9 }}
-            style={{ boxShadow: '0 0 30px rgba(217,70,239,0.5)' }}
+            style={{ boxShadow: '0 0 30px rgba(255,26,64,0.5)' }}
           >
             <ChevronLeft className="w-8 h-8" />
           </motion.button>
 
           <motion.button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-cyan-500 text-black rounded-full flex items-center justify-center hover:bg-cyan-400 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-red-500 text-black rounded-full flex items-center justify-center hover:bg-red-400 transition-colors"
             whileHover={{ scale: 1.1, x: 5 }}
             whileTap={{ scale: 0.9 }}
-            style={{ boxShadow: '0 0 30px rgba(6,182,212,0.5)' }}
+            style={{ boxShadow: '0 0 30px rgba(255,94,112,0.5)' }}
           >
             <ChevronRight className="w-8 h-8" />
           </motion.button>
@@ -222,16 +230,21 @@ const GigTimeline = () => {
                       }}
                       className="relative h-[420px] md:h-[600px] overflow-hidden border-2 border-white/10 cursor-pointer"
                       style={{
-                        boxShadow: '0 0 50px rgba(217,70,239,0.2)'
+                        boxShadow: '0 0 50px rgba(255,26,64,0.2)'
                       }}
                     >
                       {/* Large gig image */}
                       <img 
-                        src={gig.image || fallbackGigImage}
+                        src={resolveGigAsset(gig.image)}
                         alt={gig.event}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         decoding="async"
+                        onError={(event) => {
+                          if (!gig.image || event.currentTarget.dataset.fallback === 'true') return;
+                          event.currentTarget.dataset.fallback = 'true';
+                          event.currentTarget.src = gig.image;
+                        }}
                       />
                       
                       {/* Dark gradient overlay */}
@@ -242,9 +255,9 @@ const GigTimeline = () => {
                         {/* Date badge */}
                         <motion.button
                           type="button"
-                          className="absolute top-6 right-6 md:top-8 md:right-8 px-5 py-3 bg-fuchsia-500/90 border-2 border-fuchsia-400"
+                          className="absolute top-6 right-6 md:top-8 md:right-8 px-5 py-3 bg-red-500/90 border-2 border-red-400"
                           whileHover={{ scale: 1.05 }}
-                          style={{ boxShadow: '0 0 20px rgba(217,70,239,0.6)' }}
+                          style={{ boxShadow: '0 0 20px rgba(255,26,64,0.6)' }}
                           onClick={(event) => {
                             event.stopPropagation();
                             openCalendar(new Date(gig.date));
@@ -272,7 +285,7 @@ const GigTimeline = () => {
                           <h3 className="text-5xl md:text-6xl font-black text-white mb-4 font-unbounded uppercase tracking-tight leading-tight">
                             {gig.event}
                           </h3>
-                          <p className="text-2xl text-cyan-400 font-bold font-space-mono mb-6">
+                          <p className="text-2xl text-red-400 font-bold font-space-mono mb-6">
                             {gig.collective}
                           </p>
                         </motion.div>
@@ -285,15 +298,15 @@ const GigTimeline = () => {
                           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6"
                         >
                           <div className="flex items-center gap-3 text-neutral-300 font-space-mono">
-                            <MapPin className="w-5 h-5 text-fuchsia-400" />
+                            <MapPin className="w-5 h-5 text-red-400" />
                             <span className="text-sm">{gig.location}</span>
                           </div>
                           <div className="flex items-center gap-3 text-neutral-300 font-space-mono">
-                            <Clock className="w-5 h-5 text-fuchsia-400" />
+                            <Clock className="w-5 h-5 text-red-400" />
                             <span className="text-sm">{gig.time}</span>
                           </div>
                           <div className="flex items-center gap-3 text-neutral-300 font-space-mono">
-                            <Music className="w-5 h-5 text-fuchsia-400" />
+                            <Music className="w-5 h-5 text-red-400" />
                             <span className="text-sm">{gig.genre.join(' · ')}</span>
                           </div>
                         </motion.div>
@@ -309,8 +322,8 @@ const GigTimeline = () => {
                             {gig.tags.map((tag, idx) => (
                               <span
                                 key={idx}
-                                className="px-4 py-2 bg-fuchsia-500/20 border border-fuchsia-500/50 text-fuchsia-400 text-xs font-bold uppercase tracking-wider font-space-mono"
-                                style={{ boxShadow: '0 0 10px rgba(217,70,239,0.3)' }}
+                                className="px-4 py-2 bg-red-500/20 border border-red-500/50 text-red-400 text-xs font-bold uppercase tracking-wider font-space-mono"
+                                style={{ boxShadow: '0 0 10px rgba(255,26,64,0.3)' }}
                               >
                                 {tag}
                               </span>
@@ -356,8 +369,8 @@ const GigTimeline = () => {
               onClick={closeGig}
             >
               <motion.div
-                className="relative max-w-5xl w-full bg-neutral-950 border border-fuchsia-500/40"
-                style={{ boxShadow: '0 0 40px rgba(217,70,239,0.4)' }}
+                className="relative max-w-5xl w-full bg-neutral-950 border border-red-500/40"
+                style={{ boxShadow: '0 0 40px rgba(255,26,64,0.4)' }}
                 initial={{ scale: 0.92, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
@@ -367,7 +380,7 @@ const GigTimeline = () => {
                 <button
                   type="button"
                   onClick={closeGig}
-                  className="absolute top-4 right-4 p-2 border border-fuchsia-500/50 text-fuchsia-400 hover:bg-fuchsia-500 hover:text-black transition-colors"
+                  className="absolute top-4 right-4 p-2 border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-black transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -375,17 +388,22 @@ const GigTimeline = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
                   <div>
                     <img
-                      src={activeGig.image || fallbackGigImage}
+                      src={resolveGigAsset(activeGig.image)}
                       alt={activeGig.event}
                       className="w-full h-80 object-cover"
                       loading="lazy"
                       decoding="async"
+                      onError={(event) => {
+                        if (!activeGig.image || event.currentTarget.dataset.fallback === 'true') return;
+                        event.currentTarget.dataset.fallback = 'true';
+                        event.currentTarget.src = activeGig.image;
+                      }}
                     />
                     <div className="mt-4">
                       <h3 className="text-3xl font-black text-white font-unbounded uppercase tracking-tight">
                         {activeGig.event}
                       </h3>
-                      <p className="text-cyan-400 font-space-mono mt-2">{activeGig.collective}</p>
+                      <p className="text-red-400 font-space-mono mt-2">{activeGig.collective}</p>
                       <p className="text-neutral-400 font-space-mono text-sm mt-2">
                         {formatDate(activeGig.date)} · {activeGig.location}
                       </p>
@@ -394,20 +412,30 @@ const GigTimeline = () => {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-bold text-fuchsia-400 uppercase tracking-widest font-unbounded mb-3">
+                    <h4 className="text-lg font-bold text-red-400 uppercase tracking-widest font-unbounded mb-3">
                       Clips from the night
                     </h4>
                     {activeGig.clips && activeGig.clips.length > 0 ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {activeGig.clips.map((clip, idx) => {
                           if (clip.type === 'video') {
-                            if (clip.url.endsWith('.mp4') || clip.url.endsWith('.mov')) {
+                            const clipUrl = clip.url || '';
+                            const lowerUrl = clipUrl.toLowerCase();
+                            if (lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.mov')) {
                               return (
                                 <video
                                   key={idx}
-                                  src={clip.url}
+                                  src={resolveAssetUrl(clipUrl)}
+                                  poster={resolveGigAsset(activeGig.image)}
+                                  preload="metadata"
+                                  playsInline
                                   controls
                                   className="w-full h-48 object-cover border border-white/10"
+                                  onError={(event) => {
+                                    if (!clipUrl || event.currentTarget.dataset.fallback === 'true') return;
+                                    event.currentTarget.dataset.fallback = 'true';
+                                    event.currentTarget.src = clipUrl;
+                                  }}
                                 />
                               );
                             }
@@ -419,6 +447,7 @@ const GigTimeline = () => {
                                 className="w-full h-48 border border-white/10"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
+                                loading="lazy"
                               />
                             );
                           }
@@ -432,11 +461,16 @@ const GigTimeline = () => {
                                 className="group relative w-full h-48 overflow-hidden border border-white/10"
                               >
                                 <img
-                                  src={clip.thumbnail || fallbackGigImage}
+                                  src={resolveGigAsset(clip.thumbnail)}
                                   alt="Instagram clip"
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                                   loading="lazy"
                                   decoding="async"
+                                  onError={(event) => {
+                                    if (!clip.thumbnail || event.currentTarget.dataset.fallback === 'true') return;
+                                    event.currentTarget.dataset.fallback = 'true';
+                                    event.currentTarget.src = clip.thumbnail;
+                                  }}
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-xs uppercase tracking-widest text-white font-space-mono">
                                   View on Instagram
@@ -447,11 +481,17 @@ const GigTimeline = () => {
                           return (
                             <img
                               key={idx}
-                              src={clip.url || clip.thumbnail || fallbackGigImage}
+                              src={resolveGigAsset(clip.url || clip.thumbnail)}
                               alt={`${activeGig.event} clip`}
                               className="w-full h-48 object-cover border border-white/10"
                               loading="lazy"
                               decoding="async"
+                              onError={(event) => {
+                                const fallback = clip.url || clip.thumbnail;
+                                if (!fallback || event.currentTarget.dataset.fallback === 'true') return;
+                                event.currentTarget.dataset.fallback = 'true';
+                                event.currentTarget.src = fallback;
+                              }}
                             />
                           );
                         })}
@@ -478,8 +518,8 @@ const GigTimeline = () => {
               onClick={() => setShowCalendar(false)}
             >
               <motion.div
-                className="relative bg-neutral-950 border border-cyan-500/40 p-6"
-                style={{ boxShadow: '0 0 30px rgba(6,182,212,0.35)' }}
+                className="relative bg-neutral-950 border border-red-500/40 p-6"
+                style={{ boxShadow: '0 0 30px rgba(255,94,112,0.35)' }}
                 initial={{ scale: 0.92, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
@@ -488,11 +528,11 @@ const GigTimeline = () => {
                 <button
                   type="button"
                   onClick={() => setShowCalendar(false)}
-                  className="absolute top-4 right-4 p-2 border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500 hover:text-black transition-colors"
+                  className="absolute top-4 right-4 p-2 border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-black transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
-                <h4 className="text-lg font-bold text-cyan-400 uppercase tracking-widest font-unbounded mb-4">
+                <h4 className="text-lg font-bold text-red-400 uppercase tracking-widest font-unbounded mb-4">
                   Gig Calendar
                 </h4>
                 <DayPicker
@@ -511,7 +551,7 @@ const GigTimeline = () => {
                     caption: "flex justify-center pt-1 relative items-center",
                     caption_label: "text-sm font-semibold text-neutral-200",
                     nav: "space-x-1 flex items-center",
-                    nav_button: "h-7 w-7 bg-transparent p-0 opacity-60 hover:opacity-100 text-cyan-400",
+                    nav_button: "h-7 w-7 bg-transparent p-0 opacity-60 hover:opacity-100 text-red-400",
                     nav_button_previous: "absolute left-1",
                     nav_button_next: "absolute right-1",
                     table: "w-full border-collapse space-y-1",
@@ -519,9 +559,9 @@ const GigTimeline = () => {
                     head_cell: "text-neutral-500 rounded-md w-8 font-normal text-[0.75rem]",
                     row: "flex w-full mt-2",
                     cell: "relative p-0 text-center text-sm focus-within:relative focus-within:z-20",
-                    day: "h-8 w-8 p-0 font-medium text-neutral-200 hover:bg-fuchsia-500/20 rounded-md",
-                    day_selected: "bg-fuchsia-500 text-black hover:bg-fuchsia-500",
-                    day_today: "border border-cyan-500 text-cyan-300",
+                    day: "h-8 w-8 p-0 font-medium text-neutral-200 hover:bg-red-500/20 rounded-md",
+                    day_selected: "bg-red-500 text-black hover:bg-red-500",
+                    day_today: "border border-red-500 text-red-300",
                     day_outside: "text-neutral-700",
                     day_disabled: "text-neutral-700 opacity-50"
                   }}

@@ -87,7 +87,7 @@ const Contact = () => {
                   className={`w-full px-4 py-3 ${
                     isProfessional
                       ? 'bg-neutral-50 border border-neutral-200 rounded-xl focus:border-neutral-400 focus:outline-none text-black'
-                      : 'bg-neutral-900 border border-white/10 focus:border-fuchsia-500 focus:outline-none text-white font-space-mono'
+                      : 'bg-neutral-900 border border-white/10 focus:border-red-500 focus:outline-none text-white font-space-mono'
                   } transition-colors`}
                   data-testid="contact-name-input"
                 />
@@ -112,7 +112,7 @@ const Contact = () => {
                   className={`w-full px-4 py-3 ${
                     isProfessional
                       ? 'bg-neutral-50 border border-neutral-200 rounded-xl focus:border-neutral-400 focus:outline-none text-black'
-                      : 'bg-neutral-900 border border-white/10 focus:border-fuchsia-500 focus:outline-none text-white font-space-mono'
+                      : 'bg-neutral-900 border border-white/10 focus:border-red-500 focus:outline-none text-white font-space-mono'
                   } transition-colors`}
                   data-testid="contact-email-input"
                 />
@@ -137,7 +137,7 @@ const Contact = () => {
                   className={`w-full px-4 py-3 ${
                     isProfessional
                       ? 'bg-neutral-50 border border-neutral-200 rounded-xl focus:border-neutral-400 focus:outline-none text-black'
-                      : 'bg-neutral-900 border border-white/10 focus:border-fuchsia-500 focus:outline-none text-white font-space-mono'
+                      : 'bg-neutral-900 border border-white/10 focus:border-red-500 focus:outline-none text-white font-space-mono'
                   } transition-colors resize-none`}
                   data-testid="contact-message-input"
                 />
@@ -148,10 +148,10 @@ const Contact = () => {
                 className={`w-full flex items-center justify-center gap-2 px-8 py-3 font-medium transition-all duration-300 ${
                   isProfessional
                     ? 'bg-black text-white rounded-full hover:bg-neutral-800'
-                    : 'border border-fuchsia-500 text-fuchsia-500 hover:bg-fuchsia-500 hover:text-black font-bold uppercase tracking-widest font-space-mono'
+                    : 'border border-red-500 text-red-500 hover:bg-red-500 hover:text-black font-bold uppercase tracking-widest font-space-mono'
                 }`}
                 style={!isProfessional ? {
-                  boxShadow: '0 0 15px rgba(217,70,239,0.3)'
+                  boxShadow: '0 0 15px rgba(255,26,64,0.3)'
                 } : {}}
                 data-testid="contact-submit-button"
               >
@@ -181,7 +181,7 @@ const Contact = () => {
                 className={`flex items-center gap-3 text-lg ${
                   isProfessional 
                     ? 'text-neutral-700 hover:text-black' 
-                    : 'text-cyan-400 hover:text-cyan-300 font-space-mono'
+                    : 'text-red-400 hover:text-red-300 font-space-mono'
                 } transition-colors`}
               >
                 <Mail className="w-5 h-5" />
@@ -223,7 +223,7 @@ const Contact = () => {
                     href={contactData.social.soundcloud}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 transition-colors font-space-mono text-sm uppercase tracking-wider"
+                    className="flex items-center gap-2 px-4 py-2 border border-red-500/50 text-red-400 hover:bg-red-500/10 transition-colors font-space-mono text-sm uppercase tracking-wider"
                     data-testid="contact-soundcloud-link"
                   >
                     <Music className="w-4 h-4" />
@@ -233,7 +233,7 @@ const Contact = () => {
                     href={contactData.social.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 border border-fuchsia-500/50 text-fuchsia-400 hover:bg-fuchsia-500/10 transition-colors font-space-mono text-sm uppercase tracking-wider"
+                    className="flex items-center gap-2 px-4 py-2 border border-red-500/50 text-red-400 hover:bg-red-500/10 transition-colors font-space-mono text-sm uppercase tracking-wider"
                     data-testid="contact-youtube-link"
                   >
                     <Video className="w-4 h-4" />

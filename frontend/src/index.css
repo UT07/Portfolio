@@ -135,3 +135,68 @@
   }
 }
 
+@layer base {
+  .dj-mode {
+    --dj-red: 255 26 64;
+    --dj-red-soft: 255 94 112;
+    --dj-red-light: 255 160 160;
+  }
+
+  .dj-mode .text-red-500 {
+    color: rgb(var(--dj-red));
+  }
+  .dj-mode .text-red-400 {
+    color: rgb(var(--dj-red-soft));
+  }
+  .dj-mode .text-red-300 {
+    color: rgb(var(--dj-red-light));
+  }
+  .dj-mode .text-red-200 {
+    color: rgb(255 200 200);
+  }
+
+  .dj-mode .bg-red-500 {
+    background-color: rgb(var(--dj-red));
+  }
+  .dj-mode .bg-red-500\/90 {
+    background-color: rgb(var(--dj-red) / 0.9);
+  }
+  .dj-mode .bg-red-500\/20 {
+    background-color: rgb(var(--dj-red) / 0.2);
+  }
+  .dj-mode .bg-red-500\/10 {
+    background-color: rgb(var(--dj-red) / 0.1);
+  }
+
+  .dj-mode .border-red-500 {
+    border-color: rgb(var(--dj-red));
+  }
+  .dj-mode .border-red-500\/50 {
+    border-color: rgb(var(--dj-red) / 0.5);
+  }
+  .dj-mode .border-red-500\/40 {
+    border-color: rgb(var(--dj-red) / 0.4);
+  }
+  .dj-mode .border-red-500\/30 {
+    border-color: rgb(var(--dj-red) / 0.3);
+  }
+  .dj-mode .border-red-500\/20 {
+    border-color: rgb(var(--dj-red) / 0.2);
+  }
+  .dj-mode .border-red-500\/10 {
+    border-color: rgb(var(--dj-red) / 0.1);
+  }
+
+  .dj-mode .hover\\:bg-red-500:hover {
+    background-color: rgb(var(--dj-red));
+  }
+  .dj-mode .hover\\:bg-red-400:hover {
+    background-color: rgb(var(--dj-red-soft));
+  }
+  .dj-mode .hover\\:text-red-300:hover {
+    color: rgb(var(--dj-red-light));
+  }
+  .dj-mode .focus\\:border-red-500:focus {
+    border-color: rgb(var(--dj-red));
+  }
+}

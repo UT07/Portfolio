@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import djData from '../data/djData.json';
+import { resolveAssetUrl } from '../utils/assetUrl';
 
 const Artist = () => {
   const { artist } = djData;
@@ -13,7 +14,7 @@ const Artist = () => {
       {/* Background effects */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(rgba(217,70,239,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.3) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(255,26,64,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,94,112,0.3) 1px, transparent 1px)',
           backgroundSize: '30px 30px'
         }} />
       </div>
@@ -21,7 +22,7 @@ const Artist = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text content */}
-          <div>
+          <div className="lg:pr-10">
             {/* Animated title */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -32,7 +33,7 @@ const Artist = () => {
             >
               <div className="flex items-center gap-4 mb-4">
                 <motion.div
-                  className="w-16 h-1 bg-gradient-to-r from-fuchsia-500 to-cyan-500"
+                  className="w-16 h-1 bg-gradient-to-r from-red-500 to-red-300"
                   initial={{ width: 0 }}
                   whileInView={{ width: 64 }}
                   viewport={{ once: true }}
@@ -75,9 +76,9 @@ const Artist = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="border border-fuchsia-500/30 p-6"
+              className="border border-red-500/30 p-6"
               style={{
-                boxShadow: '0 0 15px rgba(217,70,239,0.2)'
+                boxShadow: '0 0 15px rgba(255,26,64,0.2)'
               }}
             >
               <ul className="space-y-3">
@@ -88,9 +89,9 @@ const Artist = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.9 + index * 0.1, duration: 0.4 }}
-                    className="text-sm text-cyan-400 font-space-mono flex items-start gap-3"
+                    className="text-sm text-red-400 font-space-mono flex items-start gap-3"
                   >
-                    <span className="text-fuchsia-500 mt-1">▸</span>
+                    <span className="text-red-500 mt-1">▸</span>
                     <span>{highlight}</span>
                   </motion.li>
                 ))}
@@ -113,7 +114,7 @@ const Artist = () => {
             >
               {/* Decorative glow */}
               <motion.div
-                className="absolute -inset-4 bg-gradient-to-br from-fuchsia-500/20 to-cyan-500/20 blur-3xl"
+                className="absolute -inset-4 bg-gradient-to-br from-red-500/25 to-red-300/25 blur-3xl"
                 animate={{
                   opacity: [0.3, 0.5, 0.3],
                   scale: [1, 1.05, 1],
@@ -126,41 +127,31 @@ const Artist = () => {
               />
               
               {/* Image container */}
-              <div className="relative overflow-hidden border-2 border-fuchsia-500/50" style={{
-                boxShadow: '0 0 30px rgba(217,70,239,0.3)'
+              <div className="relative overflow-hidden border-2 border-red-500/50" style={{
+                boxShadow: '0 0 30px rgba(255,26,64,0.3)'
               }}>
                 <img 
-                  src={artist.artist_image}
+                  src={resolveAssetUrl(artist.artist_image)}
                   alt="UT Artist"
-                  className="w-full h-[320px] sm:h-[420px] lg:h-[600px] object-cover"
+                  className="w-full h-[360px] sm:h-[500px] lg:h-[680px] object-cover"
                   loading="lazy"
                   decoding="async"
                 />
                 
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                
-                {/* Text overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-white font-bold text-xl font-unbounded uppercase tracking-wider">
-                    UT — Live Performance
-                  </p>
-                  <p className="text-cyan-400 text-sm font-space-mono">
-                    Dublin's Underground Scene
-                  </p>
-                </div>
               </div>
 
               {/* Corner accents */}
               <motion.div
-                className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-fuchsia-500"
+                className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-red-500"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 1, duration: 0.6 }}
               />
               <motion.div
-                className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-cyan-500"
+                className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-red-500"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

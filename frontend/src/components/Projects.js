@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, Folder, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import projectsData from '../data/projectsData.json';
+import { resolveAssetUrl } from '../utils/assetUrl';
 
 const Projects = () => {
   const { featured, github_projects } = projectsData;
@@ -64,7 +65,7 @@ const Projects = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <img 
-                      src={project.demo_image}
+                      src={resolveAssetUrl(project.demo_image)}
                       alt={project.title}
                       className="w-full h-64 object-cover"
                       loading="lazy"
@@ -123,26 +124,48 @@ const Projects = () => {
                   </ul>
                 </div>
 
-                <div className="flex gap-3">
-                  {project.links.github && (
-                    <button
-                      onClick={() => openExternal(project.links.github)}
-                      className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full text-sm font-medium hover:bg-neutral-800 transition-colors"
-                      data-testid={`project-github-link-${index}`}
-                    >
-                      <Github className="w-4 h-4" />
-                      View on GitHub
-                    </button>
-                  )}
-                  {project.links.demo && (
-                    <button
-                      onClick={() => openExternal(project.links.demo)}
-                      className="flex items-center gap-2 px-4 py-2 bg-neutral-100 text-black rounded-full text-sm font-medium hover:bg-neutral-200 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
-                    </button>
-                  )}
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    {
+                      key: 'github',
+                      label: 'View on GitHub',
+                      className: 'bg-black text-white hover:bg-neutral-800',
+                      icon: Github
+                    },
+                    {
+                      key: 'paper',
+                      label: 'Research Paper',
+                      className: 'bg-white border border-neutral-300 text-black hover:bg-black hover:text-white',
+                      icon: ExternalLink
+                    },
+                    {
+                      key: 'manual',
+                      label: 'Config Manual',
+                      className: 'bg-white border border-neutral-300 text-black hover:bg-black hover:text-white',
+                      icon: ExternalLink
+                    },
+                    {
+                      key: 'demo',
+                      label: 'Live Demo',
+                      className: 'bg-neutral-100 text-black hover:bg-neutral-200',
+                      icon: ExternalLink
+                    }
+                  ].map((link) => {
+                    const url = project.links?.[link.key];
+                    if (!url) return null;
+                    const Icon = link.icon;
+                    return (
+                      <button
+                        key={link.key}
+                        onClick={() => openExternal(url)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${link.className}`}
+                        data-testid={`project-${link.key}-link-${index}`}
+                      >
+                        <Icon className="w-4 h-4" />
+                        {link.label}
+                      </button>
+                    );
+                  })}
                 </div>
               </motion.div>
             ))}

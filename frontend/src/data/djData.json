@@ -7,15 +7,26 @@
     "genres": "Hard Bounce (240 KMH) · Hard Techno · Hard Dance · Trance · Hard Groove · Donk · Tribal / Makina · Melodic Techno",
     "hero_image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3202.jpg",
     "ctas": [
-      { "text": "Listen", "href": "https://soundcloud.com/utkarsh-singh-199724584", "external": true },
-      { "text": "Watch", "href": "https://www.youtube.com/@utmixes", "external": true },
-      { "text": "Press Kit", "href": "#presskit" }
+      {
+        "text": "Listen",
+        "href": "https://soundcloud.com/utkarsh-singh-199724584",
+        "external": true
+      },
+      {
+        "text": "Watch",
+        "href": "https://www.youtube.com/@utmixes",
+        "external": true
+      },
+      {
+        "text": "Press Kit",
+        "href": "#presskit"
+      }
     ]
   },
   "artist": {
     "title": "Raised in India, shaping Dublin's dancefloors",
     "bio": "I'm UT — a Dublin-based DJ who grew up in India and brings that energy to every set. I treat each performance like a conversation with the crowd. My sound lives in the sweet spot where punchy grooves meet euphoric melodies: hard bounce and hard dance pressure, trancey peaks, and playful curveballs when the room's ready.\n\nI'm not here to maintain a vibe. I'm here to move it — fast mixes, cheeky switches, and momentum that keeps climbing. Whether it's a packed club night, a rooftop session, or a festival stage, the goal is the same: shared release.",
-    "artist_image": "/images/PICTURES/IMG_4013.jpeg",
+    "artist_image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_4073.jpg",
     "highlights": [
       "Typical tempo: 155–180 BPM (higher when it makes sense)",
       "Styles: hard bounce, hard techno, hard dance, trance, hard groove, donk, tribal/makina, melodic techno",
@@ -30,13 +41,26 @@
       "date": "2026-01-23",
       "location": "Racket Space, Dublin, Ireland",
       "time": "1:00 AM – 2:00 AM",
-      "genre": ["Hard Dance", "Hard Bounce"],
-      "tags": ["240 km/h sound", "SOLD OUT", "300+ crowd"],
+      "genre": [
+        "Hard Dance",
+        "Hard Bounce"
+      ],
+      "tags": [
+        "240 km/h sound",
+        "SOLD OUT",
+        "300+ crowd"
+      ],
       "description": "Closing set at Redline's biggest event with 300+ attendees. High-energy 240 km/h sound.",
       "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3212.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/REDLINE%20HORIZON/C1833%20Edit.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/REDLINE%20HORIZON/C1836%20Edit.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20HORIZON/C1833%20Edit.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20HORIZON/C1836%20Edit.mp4"
+        }
       ]
     },
     {
@@ -46,12 +70,35 @@
       "date": "2026-01-17",
       "location": "Soundhouse Terrace, Dublin, Ireland",
       "time": "12:00 AM – 1:00 AM (closing)",
-      "genre": ["Hard Bounce", "Donk", "Tribal", "Makina"],
-      "tags": ["terrace SOLD OUT", "closing set"],
+      "genre": [
+        "Hard Bounce",
+        "Donk",
+        "Tribal",
+        "Makina"
+      ],
+      "tags": [
+        "terrace SOLD OUT",
+        "closing set"
+      ],
       "description": "Closing the terrace at Politeknik's Back to the Future event.",
-      "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_4073.jpg",
+      "image": "/images/THUMBS/politeknik_b2f.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/POLITEKNIK%20B2F/IMG_0477.mov" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/POLITEKNIK%20B2F/IMG_0477.MOV"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/POLITEKNIK%20B2F/IMG_0478.MOV"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/POLITEKNIK%20B2F/IMG_0479.MOV"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/POLITEKNIK%20B2F/IMG_0480.MOV"
+        }
       ]
     },
     {
@@ -61,12 +108,23 @@
       "date": "2025-10-24",
       "location": "Soundhouse Terrace, Dublin, Ireland",
       "time": "12:00 AM – 1:00 AM (closing)",
-      "genre": ["Hard Bounce", "Donk", "Tribal", "Makina"],
-      "tags": ["terrace SOLD OUT", "closing set"],
+      "genre": [
+        "Hard Bounce",
+        "Donk",
+        "Tribal",
+        "Makina"
+      ],
+      "tags": [
+        "terrace SOLD OUT",
+        "closing set"
+      ],
       "description": "Closing the terrace at Immersive x Politeknik collaboration.",
       "image": "/images/PICTURES/IMMERSIVE%20X%20POLITEKNIK/IMG_9246.JPG",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/IMMERSIVE%20X%20POLITEKNIK/4db8f1318b8f45c08c36cecc16a501e0.mov" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/IMMERSIVE%20X%20POLITEKNIK/4db8f1318b8f45c08c36cecc16a501e0.mov"
+        }
       ]
     },
     {
@@ -76,13 +134,22 @@
       "date": "2025-10-03",
       "location": "Racket Space, Dublin, Ireland",
       "time": "1:00 AM – 2:00 AM",
-      "genre": ["Hard Groove", "Hard Bounce"],
+      "genre": [
+        "Hard Groove",
+        "Hard Bounce"
+      ],
       "tags": [],
       "description": "Late-night set at Immersive's EREBUS event blending hard groove with hard bounce.",
-      "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3202.jpg",
+      "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3146.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/IMMERSIVE%20EREBUS/9132c64c-491d-4d74-b94d-34ed70edd376.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/IMMERSIVE%20EREBUS/a50d0880afc04f09a1836a5e08f17193.mov" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/IMMERSIVE%20EREBUS/9132c64c-491d-4d74-b94d-34ed70edd376.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/IMMERSIVE%20EREBUS/a50d0880afc04f09a1836a5e08f17193.mov"
+        }
       ]
     },
     {
@@ -92,11 +159,21 @@
       "date": "2025-09-01",
       "location": "Ireland",
       "time": "4:30 PM – 5:30 PM",
-      "genre": ["Hard Bounce", "Hard Trance"],
-      "tags": ["festival"],
+      "genre": [
+        "Hard Bounce",
+        "Hard Trance"
+      ],
+      "tags": [
+        "festival"
+      ],
       "description": "Festival performance at Electric Picnic's Cerebral Fortress Stage.",
-      "image": "/images/PICTURES/HYDE/IMG_6640.JPG",
-      "clips": []
+      "image": "/images/THUMBS/electric_picnic.jpg",
+      "clips": [
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/ELECTRIC%20PICNIC/2e475f53-38b9-4708-a227-aadfbe46c6b3.mp4"
+        }
+      ]
     },
     {
       "id": "gig-10",
@@ -105,13 +182,32 @@
       "date": "2025-08-25",
       "location": "Private",
       "time": "Daytime · 2 hours",
-      "genre": ["Hard Bounce"],
-      "tags": ["240 km/h sound", "teknival"],
+      "genre": [
+        "Hard Bounce"
+      ],
+      "tags": [
+        "240 km/h sound",
+        "teknival"
+      ],
       "description": "Daytime set at underground teknival. Location kept private.",
-      "image": "/images/VIDEOS/TEKNIVAL/c8a00a82-663f-4c16-9208-c5e57adcb6e4.jpg",
+      "image": "/images/THUMBS/teknival.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/TEKNIVAL/09ed75bc-d955-4016-be7a-12c4c154fdf8.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/TEKNIVAL/9cb300cc-1d7f-477d-891f-0973d730d5da.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TEKNIVAL/09ed75bc-d955-4016-be7a-12c4c154fdf8.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TEKNIVAL/3efdeb4c-5e5e-47b7-a692-bbe0556dd15d.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TEKNIVAL/7fd3102c-1c96-4e3a-8a63-41b5229323e3.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TEKNIVAL/d84409e6-fc5f-4e36-bc21-4d3b59ba3b0e.mp4"
+        }
       ]
     },
     {
@@ -121,10 +217,12 @@
       "date": "2025-08-16",
       "location": "Opium Garden, Dublin, Ireland",
       "time": "9:00 PM – 10:00 PM",
-      "genre": ["Melodic Techno"],
+      "genre": [
+        "Melodic Techno"
+      ],
       "tags": [],
       "description": "Opening set exploring melodic techno territories.",
-      "image": "/images/PICTURES/HYDE/DSC_0644.JPG",
+      "image": "/images/PICTURES/DISCONNECT/IMG_5062.jpeg",
       "clips": []
     },
     {
@@ -134,13 +232,32 @@
       "date": "2025-07-25",
       "location": "Racket Space, Dublin, Ireland",
       "time": "11:00 PM – 12:00 AM",
-      "genre": ["Trance", "Hard Dance"],
-      "tags": ["SOLD OUT"],
+      "genre": [
+        "Trance",
+        "Hard Dance"
+      ],
+      "tags": [
+        "SOLD OUT"
+      ],
       "description": "Second Redline event, sold out. Prime-time slot.",
-      "image": "/images/PICTURES/REDLINE%20ASCENSION/c43212f2-5ae8-4256-af23-9fbcac4d2f32.jpg",
+      "image": "/images/PICTURES/REDLINE%20ASCENSION/1%C2%BA%20portada%20_DSC4368-1.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/REDLINE%20ASCENSION/Copy%20of%20C3286.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/REDLINE%20ASCENSION/Copy%20of%20IMG_9047.MOV" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20ASCENSION/Copy%20of%20IMG_9045.MOV"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20ASCENSION/Copy%20of%20IMG_9046.MOV"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20ASCENSION/Copy%20of%20IMG_9047.MOV"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20ASCENSION/Copy%20of%20IMG_9049.MOV"
+        }
       ]
     },
     {
@@ -150,13 +267,23 @@
       "date": "2025-06-20",
       "location": "Hyde Rooftop, Dublin, Ireland",
       "time": "11:15 PM – 12:15 AM",
-      "genre": ["Indo-melodic"],
-      "tags": ["rooftop"],
+      "genre": [
+        "Indo-melodic"
+      ],
+      "tags": [
+        "rooftop"
+      ],
       "description": "Rooftop session with Indo-melodic flavors at Hyde.",
       "image": "/images/PICTURES/HYDE/DSC_0646.JPG",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/HYDE/C0235.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/HYDE/C0244.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/HYDE/C0235.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/HYDE/C0244.mp4"
+        }
       ]
     },
     {
@@ -166,27 +293,51 @@
       "date": "2025-05-30",
       "location": "Racket Space, Dublin, Ireland",
       "time": "11:00 PM – 12:00 AM",
-      "genre": ["Trance", "Hard Dance"],
-      "tags": ["collective debut", "SOLD OUT"],
+      "genre": [
+        "Trance",
+        "Hard Dance"
+      ],
+      "tags": [
+        "collective debut",
+        "SOLD OUT"
+      ],
       "description": "Debut event of Redline collective. Sold out show.",
       "image": "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5803-1.JPEG",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/REDLINE%20BEGINNING/Copy%20of%20C3284.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/REDLINE%20BEGINNING/Copy%20of%20C3284.mp4"
+        }
       ]
     },
     {
       "id": "gig-5",
-      "event": "TRP (opening for TH;EN Music / Afterlife)",
+      "event": "Celestial",
       "collective": "TRP",
       "date": "2025-05-17",
       "location": "The Grand Social, Dublin, Ireland",
       "time": "10:00 PM – 11:00 PM",
-      "genre": ["Melodic Techno"],
-      "tags": ["opening act"],
-      "description": "Opening for TH;EN Music / Afterlife at The Grand Social.",
-      "image": "/images/PICTURES/IMG_5062.jpeg",
+      "genre": [
+        "Melodic Techno"
+      ],
+      "tags": [
+        "opening act"
+      ],
+      "description": "Opening set for TH;EN Music / Afterlife during TRP’s Celestial night.",
+      "image": "/images/PICTURES/TRP/IMG_4013.jpeg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/TRP/horizontal%20videos%20trp%20la%20pach.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TRP/horizontal%20videos%20trp%20la%20pach.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TRP/horizontal%20videos%20trp%20la%20pach_2.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/TRP/horizontal%20videos%20trp%20la%20pach_3.mp4"
+        }
       ]
     },
     {
@@ -196,13 +347,32 @@
       "date": "2025-03-28",
       "location": "Workman's Cellar Club, Dublin, Ireland",
       "time": "11:30 PM – 12:00 AM",
-      "genre": ["Hard Techno"],
-      "tags": ["competition", "All-Ireland student DJ competition"],
+      "genre": [
+        "Hard Techno"
+      ],
+      "tags": [
+        "competition",
+        "All-Ireland student DJ competition"
+      ],
       "description": "Finals performance at All-Ireland student DJ competition.",
-      "image": "/images/PICTURES/IMG_4457.PNG",
+      "image": "/images/THUMBS/college_spinoff.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/COLLEGE%20SPINOFF/0b85a644-b94c-4557-8c80-786f3fc446b6.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/COLLEGE%20SPINOFF/817e5488-b305-4fcb-9169-d9ef9cdecefb.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/COLLEGE%20SPINOFF/0b85a644-b94c-4557-8c80-786f3fc446b6.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/COLLEGE%20SPINOFF/95980f52-67f2-45de-b747-68f40a3b9562.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/COLLEGE%20SPINOFF/ab2a66f6-60f1-4a26-9336-c7ac9460c827.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/COLLEGE%20SPINOFF/d4036b96-3efe-4fb3-9743-6bca4c788e16.mp4"
+        }
       ]
     },
     {
@@ -212,11 +382,28 @@
       "date": "2025-03-16",
       "location": "Dublin, Ireland",
       "time": "4:00 AM – 5:00 AM",
-      "genre": ["Hard Techno"],
-      "tags": ["closing set"],
+      "genre": [
+        "Hard Techno"
+      ],
+      "tags": [
+        "closing set"
+      ],
       "description": "Early morning closing set at Top Secret Party's Operation Shamrock.",
-      "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3362.jpg",
-      "clips": []
+      "image": "/images/THUMBS/operation_shamrock.jpg",
+      "clips": [
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/OPERATION%20SHAMROCK/051d6776-fec0-41df-a518-cedbb114e677.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/OPERATION%20SHAMROCK/07cf0cc5-7c29-4f3e-b643-3556376d3a16.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/OPERATION%20SHAMROCK/53666a51-aa73-4a03-8b27-7116b05a17c9.mp4"
+        }
+      ]
     },
     {
       "id": "gig-2",
@@ -225,13 +412,27 @@
       "date": "2025-01-26",
       "location": "Jackie's, Dublin, Ireland",
       "time": "Recorded set",
-      "genre": ["Indo-melodic techno"],
-      "tags": ["recorded"],
+      "genre": [
+        "Indo-melodic techno"
+      ],
+      "tags": [
+        "recorded"
+      ],
       "description": "Recorded set for Ravemate's Pizza Room session.",
-      "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3154.jpg",
+      "image": "/images/THUMBS/pizza_room.jpg",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/PIZZA%20ROOM/6df9103f-7cec-4d14-ba1d-8ae313e15afe.mp4" },
-        { "type": "video", "url": "/images/VIDEOS/PIZZA%20ROOM/ca4c6365-e575-4fa2-b769-3ccb4101909c.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/PIZZA%20ROOM/UT.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/PIZZA%20ROOM/Pizza%20Room%20UT.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/PIZZA%20ROOM/6df9103f-7cec-4d14-ba1d-8ae313e15afe.mp4"
+        }
       ]
     },
     {
@@ -241,12 +442,21 @@
       "date": "2025-01-03",
       "location": "Soundhouse, Dublin, Ireland",
       "time": "11:00 PM – 12:00 AM",
-      "genre": ["Hard Techno"],
+      "genre": [
+        "Hard Techno"
+      ],
       "tags": [],
       "description": "First gig of 2025 at Soundhouse's Immersive event.",
-      "image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3164.jpg",
+      "image": "/images/PICTURES/IMMERSIVE/immersive-soundhouse.png",
       "clips": [
-        { "type": "video", "url": "/images/VIDEOS/IMMERSIVE%20SH/Imm3rsiv3%20video.mp4" }
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/IMMERSIVE%20SH/Imm3rsiv3%20video.mp4"
+        },
+        {
+          "type": "video",
+          "url": "/images/VIDEOS/IMMERSIVE%20SH/8b7f6dbbe548429fb6a3cafe51e9c3ec.mov"
+        }
       ]
     }
   ],
@@ -260,18 +470,18 @@
         "logo": "/images/logo-soundcloud.svg",
         "sets": [
           {
-            "title": "Hard Bounce Mix - 240 KMH",
-            "url": "https://soundcloud.com/utkarsh-singh-199724584",
+            "title": "National College Spinoff",
+            "url": "https://soundcloud.com/utkarsh-singh-199724584/national-college-spinoff",
             "date": "2025",
-            "duration": "60 min",
-            "thumbnail": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3263.jpg"
+            "duration": "20 min",
+            "thumbnail": "https://i1.sndcdn.com/artworks-nhHeLC1TgXyhP2XM-fm5Bsw-t3000x3000.png"
           },
           {
-            "title": "Trance & Hard Dance Selection",
-            "url": "https://soundcloud.com/utkarsh-singh-199724584",
+            "title": "Crimson Pulse",
+            "url": "https://soundcloud.com/utkarsh-singh-199724584/crimson-pulse",
             "date": "2025",
-            "duration": "45 min",
-            "thumbnail": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg"
+            "duration": "58 min",
+            "thumbnail": "https://i1.sndcdn.com/artworks-eqs2EO950gzUGVKm-Umagdw-t3000x3000.png"
           }
         ]
       },
@@ -281,18 +491,32 @@
         "logo": "/images/logo-youtube.svg",
         "sets": [
           {
-            "title": "Live at Electric Picnic 2025",
-            "url": "https://www.youtube.com/@utmixes",
-            "date": "2025",
-            "duration": "60 min",
-            "thumbnail": "/images/PICTURES/HYDE/DSC_0647.JPG"
+            "title": "Pizza Room",
+            "url": "https://www.youtube.com/watch?v=3xFDSBm4cbI",
+            "date": "2026",
+            "duration": "Live",
+            "thumbnail": "https://i.ytimg.com/vi/3xFDSBm4cbI/mqdefault.jpg"
           },
           {
-            "title": "Redline - The Horizon Set",
-            "url": "https://www.youtube.com/@utmixes",
-            "date": "2026",
-            "duration": "60 min",
-            "thumbnail": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3146.jpg"
+            "title": "Crimson Pulse",
+            "url": "https://www.youtube.com/watch?v=peSF99XH3Go",
+            "date": "2025",
+            "duration": "Live",
+            "thumbnail": "https://i.ytimg.com/vi/peSF99XH3Go/mqdefault.jpg"
+          },
+          {
+            "title": "Indo Deep Organic Spiritual House Mix from the Library",
+            "url": "https://www.youtube.com/watch?v=Ser-bmbJ6Gk",
+            "date": "2025",
+            "duration": "Live",
+            "thumbnail": "https://i.ytimg.com/vi/Ser-bmbJ6Gk/mqdefault.jpg"
+          },
+          {
+            "title": "Holy Cow Mix",
+            "url": "https://www.youtube.com/watch?v=8gXrC0tloiE",
+            "date": "2024",
+            "duration": "Live",
+            "thumbnail": "https://i.ytimg.com/vi/8gXrC0tloiE/mqdefault.jpg"
           }
         ]
       }
@@ -306,21 +530,45 @@
     "technical_rider": {
       "title": "Technical Rider (Pioneer-focused)",
       "notes": "Industry-standard club setup preferred. No DJM‑V10.",
-      "items": [
-        "Mixer: Pioneer DJM-900NXS2 or DJM-750MK2 (no DJM‑V10); standalone options: XDJ-RX3, XDJ-RX2, or XDJ-XZ",
-        "Players: 2x or 3x Pioneer CDJ-2000NXS2 or CDJ-3000 (linked via Pro DJ Link)",
-        "Monitoring: 1x booth monitor with adjustable EQ/level",
-        "Media: Rekordbox-formatted USB (2x); USB hub if needed",
-        "Cabling: RCA/XLR available, stable grounding"
+      "sections": [
+        {
+          "title": "Mixers",
+          "items": [
+            "Pioneer DJM-900NXS2",
+            "Pioneer DJM-750MK2",
+            "Standalone: XDJ-RX3, XDJ-RX2, XDJ-XZ"
+          ]
+        },
+        {
+          "title": "Players",
+          "items": [
+            "2x or 3x CDJ-2000NXS2",
+            "or CDJ-3000 (Pro DJ Link ready)"
+          ]
+        },
+        {
+          "title": "Monitoring",
+          "items": [
+            "1x booth monitor with EQ/level control"
+          ]
+        },
+        {
+          "title": "Media",
+          "items": [
+            "Rekordbox-formatted USBs (x2)",
+            "USB hub if needed"
+          ]
+        },
+        {
+          "title": "Cabling",
+          "items": [
+            "RCA/XLR available",
+            "Stable grounding"
+          ]
+        }
       ]
     },
     "downloads": [
-      {
-        "title": "Biography",
-        "description": "Short & long bio in text format",
-        "type": "document",
-        "placeholder": true
-      },
       {
         "title": "Photos",
         "description": "High-resolution press photos",
@@ -332,8 +580,37 @@
         "description": "Logos in various formats (PNG, SVG)",
         "type": "images",
         "placeholder": true
+      },
+      {
+        "title": "Technical Rider",
+        "description": "Pioneer-focused tech requirements",
+        "type": "document",
+        "placeholder": true
       }
-    ]
+    ],
+    "gallery": {
+      "title": "Featured Photos",
+      "subtitle": "Swipe through live moments and press-ready shots",
+      "images": [
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3202.jpg",
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg",
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3212.jpg",
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3144.jpg",
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3146.jpg",
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3154.jpg",
+        "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3263.jpg",
+        "/images/PICTURES/IMMERSIVE%20X%20POLITEKNIK/IMG_9246.JPG",
+        "/images/PICTURES/REDLINE%20ASCENSION/1%C2%BA%20portada%20_DSC4368-1.jpg",
+        "/images/PICTURES/REDLINE%20ASCENSION/3%C2%BA_DSC4419-1%20copia.jpg",
+        "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5816-1%20copia.JPEG",
+        "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5803-1.JPEG",
+        "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5811-1%20copia.JPEG",
+        "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5821-1.JPEG",
+        "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5871-1%20copia.JPEG",
+        "/images/PICTURES/REDINE%20THE%20BEGINNING/_DSC5899-1.JPEG",
+        "/images/PICTURES/TRP/IMG_4013.jpeg"
+      ]
+    }
   },
   "contact": {
     "email": "254utkarsh@gmail.com",
