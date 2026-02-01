@@ -1,7 +1,13 @@
-# Assets now served from S3
-/frontend/public/images/PICTURES/
-/frontend/public/images/VIDEOS/
-/frontend/public/images/THUMBS/
+# Dependencies / build outputs
+**/node_modules/
+frontend/build/
+**/dist/
+**/.next/
+
+# Assets now served from S3 (do NOT track)
+frontend/public/images/PICTURES/
+frontend/public/images/VIDEOS/
+frontend/public/images/THUMBS/
 
 # Keep small local assets that aren't on S3
 !frontend/public/images/logo-*.svg
