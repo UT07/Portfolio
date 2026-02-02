@@ -140,6 +140,7 @@ const Sets = () => {
     const scClientId = process.env.REACT_APP_SOUNDCLOUD_CLIENT_ID;
     const scUserId = process.env.REACT_APP_SOUNDCLOUD_USER_ID;
     const scProfileUrl = process.env.REACT_APP_SOUNDCLOUD_PROFILE_URL;
+    const scAllowApi = process.env.REACT_APP_SOUNDCLOUD_ALLOW_API === 'true';
     const ytApiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
     const ytPlaylistId = process.env.REACT_APP_YOUTUBE_PLAYLIST_ID;
     const ytChannelId = process.env.REACT_APP_YOUTUBE_CHANNEL_ID || fallbackYouTubeChannelId;
@@ -151,7 +152,7 @@ const Sets = () => {
         userId = await resolveSoundCloudUserId(scProfileUrl);
       }
 
-      if (scClientId && userId) {
+      if (scAllowApi && scClientId && userId) {
         try {
           let stats = null;
           try {
