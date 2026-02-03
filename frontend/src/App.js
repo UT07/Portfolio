@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Header from './components/Header';
@@ -20,6 +20,10 @@ import './App.css';
 
 const AppContent = () => {
   const { mode, isProfessional } = useTheme();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [mode]);
 
   return (
     <motion.div

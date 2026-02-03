@@ -83,13 +83,6 @@ const GigCarousel = () => {
     setFailedClips((prev) => ({ ...prev, [url]: true }));
   }, []);
 
-  const getVideoType = (url) => {
-    const lower = url.toLowerCase();
-    if (lower.endsWith('.mov')) return 'video/quicktime';
-    if (lower.endsWith('.webm')) return 'video/webm';
-    return 'video/mp4';
-  };
-
   return (
     <section id="gigs" className="py-24 md:py-32 bg-transparent relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 bg-black/65 pointer-events-none" />
@@ -295,9 +288,17 @@ const GigCarousel = () => {
                                 muted
                                 playsInline
                                 controlsList="nodownload noplaybackrate"
-                                onError={() => markClipFailed(clipUrl)}
+                                src={clipUrl}
+                                onError={(event) => {
+                                  if (event.currentTarget.dataset.triedMp4 !== 'true' && /\.mov$/i.test(clipUrl)) {
+                                    event.currentTarget.dataset.triedMp4 = 'true';
+                                    event.currentTarget.src = clipUrl.replace(/\.mov$/i, '.mp4');
+                                    event.currentTarget.load();
+                                    return;
+                                  }
+                                  markClipFailed(clipUrl);
+                                }}
                               >
-                                <source src={clipUrl} type={getVideoType(clipUrl)} />
                                 Your browser does not support the video tag.
                               </video>
                             );

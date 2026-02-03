@@ -127,6 +127,14 @@ const TechStackSection = () => {
     }
   };
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   const awsServiceNames = new Set([
     'EC2',
     'ECS/Fargate',
@@ -202,14 +210,6 @@ const TechStackSection = () => {
     if (normalized.includes('yaml')) return SiYaml;
     return Code;
   };
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
 
   const displayedSkills = useMemo(() => {
     if (!currentCategory || currentCategory.skills.length === 0) return [];

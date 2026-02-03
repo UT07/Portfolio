@@ -448,7 +448,15 @@ const GigTimeline = () => {
                                   playsInline
                                   controls
                                   className="w-full h-48 object-cover border border-white/10"
-                                  onError={() => markClipFailed(clipUrl)}
+                                  onError={(event) => {
+                                    if (event.currentTarget.dataset.triedMp4 !== 'true' && /\.mov$/i.test(clipUrl)) {
+                                      event.currentTarget.dataset.triedMp4 = 'true';
+                                      event.currentTarget.src = clipUrl.replace(/\.mov$/i, '.mp4');
+                                      event.currentTarget.load();
+                                      return;
+                                    }
+                                    markClipFailed(clipUrl);
+                                  }}
                                 />
                               );
                             }
