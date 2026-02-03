@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import djData from '../data/djData.json';
-import { resolveAssetUrl } from '../utils/assetUrl';
+import placeholderImage from '../assets/asset-placeholder.svg';
+import { assetUrl } from '../utils/assets';
 
 const PressKit = () => {
   const { pressKit } = djData;
@@ -13,11 +14,15 @@ const PressKit = () => {
     [pressKit.gallery?.images]
   );
   const resolvedGalleryImages = useMemo(
-    () => galleryImages.map((image) => resolveAssetUrl(image)),
+    () => galleryImages.map((image) => assetUrl(image)),
     [galleryImages]
   );
   const activeImage = resolvedGalleryImages[currentSlide];
-  const fallbackImage = galleryImages[currentSlide];
+  const handleImgError = (event) => {
+    if (event.currentTarget.dataset.fallback === 'true') return;
+    event.currentTarget.dataset.fallback = 'true';
+    event.currentTarget.src = placeholderImage;
+  };
 
   useEffect(() => {
     if (resolvedGalleryImages.length === 0) return;
@@ -110,11 +115,7 @@ const PressKit = () => {
                       className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-40"
                       loading="lazy"
                       decoding="async"
-                      onError={(event) => {
-                        if (!fallbackImage || event.currentTarget.dataset.fallback === 'true') return;
-                        event.currentTarget.dataset.fallback = 'true';
-                        event.currentTarget.src = fallbackImage;
-                      }}
+                      onError={handleImgError}
                     />
                     <img
                       src={activeImage}
@@ -122,11 +123,7 @@ const PressKit = () => {
                       className="absolute inset-0 w-full h-full object-contain"
                       loading="lazy"
                       decoding="async"
-                      onError={(event) => {
-                        if (!fallbackImage || event.currentTarget.dataset.fallback === 'true') return;
-                        event.currentTarget.dataset.fallback = 'true';
-                        event.currentTarget.src = fallbackImage;
-                      }}
+                      onError={handleImgError}
                     />
                   </motion.div>
                 </AnimatePresence>

@@ -13,8 +13,24 @@ const Header = () => {
     }
   };
 
-  const professionalNav = ['About', 'Highlights', 'Skills', 'Experience', 'Certifications', 'Education', 'Projects', 'Contact'];
-  const djNav = ['Artist', 'Sets', 'Gigs', 'Press Kit', 'Contact'];
+  const professionalNav = [
+    { label: 'Home', id: 'home' },
+    { label: 'Highlights', id: 'highlights' },
+    { label: 'About', id: 'about' },
+    { label: 'Skills', id: 'tech-stack' },
+    { label: 'Experience', id: 'experience' },
+    { label: 'Projects', id: 'projects' },
+    { label: 'Certifications', id: 'certifications' },
+    { label: 'Education', id: 'education' },
+    { label: 'Contact', id: 'contact' }
+  ];
+  const djNav = [
+    { label: 'Artist', id: 'artist' },
+    { label: 'Sets', id: 'sets' },
+    { label: 'Gigs', id: 'gigs' },
+    { label: 'Press Kit', id: 'presskit' },
+    { label: 'Contact', id: 'contact' }
+  ];
   const navItems = isProfessional ? professionalNav : djNav;
 
   return (
@@ -28,7 +44,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+      <div className="w-full px-6 md:px-12 py-4 flex items-center">
         <motion.div
           key={mode}
           initial={{ opacity: 0, x: -20 }}
@@ -43,11 +59,11 @@ const Header = () => {
           {isProfessional ? 'Utkarsh Singh' : 'UT'}
         </motion.div>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 flex-1 justify-center">
           {navItems.map((item, index) => (
             <motion.button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase().replace(' ', ''))}
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
               className={`text-sm font-medium transition-colors ${
                 isProfessional
                   ? 'text-neutral-600 hover:text-black'
@@ -56,14 +72,14 @@ const Header = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              data-testid={`nav-${item.toLowerCase().replace(' ', '-')}`}
+              data-testid={`nav-${item.label.toLowerCase().replace(' ', '-')}`}
             >
-              {item}
+              {item.label}
             </motion.button>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 ml-auto">
           <div
             className={`hidden lg:block text-xs font-semibold ${
               isProfessional

@@ -1,13 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import professionalData from '../data/professionalData.json';
-import { resolveAssetUrl } from '../utils/assetUrl';
+import { assetUrl } from '../utils/assets';
+import placeholderImage from '../assets/asset-placeholder.svg';
 
 const About = () => {
-  const { about, hero } = professionalData;
+  const { about } = professionalData;
+  const headshotSrc = assetUrl('/images/utkarsh-headshot.jpg');
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section id="about" className="py-24 md:py-32 bg-white relative overflow-hidden scroll-mt-24">
       {/* Background decorative elements */}
       <div className="absolute top-20 left-0 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-20" />
       <div className="absolute bottom-20 right-0 w-96 h-96 bg-neutral-100 rounded-full blur-3xl opacity-30" />
@@ -59,63 +61,18 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="relative"
-            >
-              {/* Decorative background */}
-              <motion.div
-                className="absolute -top-6 -right-6 w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl opacity-20 blur-2xl"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0.2, 0.25, 0.2],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              {/* Image with gradient border */}
-              <div className="relative p-2 bg-gradient-to-br from-blue-600 to-blue-400 rounded-3xl shadow-2xl">
-                <img 
-                  src={resolveAssetUrl(hero.headshot)}
-                  alt="Utkarsh Singh"
-                  className="w-full h-[320px] sm:h-[420px] lg:h-[520px] object-cover rounded-2xl"
-                  loading="lazy"
-                  decoding="async"
-                />
-                
-                {/* Gradient overlay */}
-                <div className="absolute inset-2 rounded-2xl bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-              </div>
-
-              {/* Quote badge */}
-              <motion.div
-                className="absolute -bottom-6 -left-6 bg-white px-8 py-4 rounded-2xl shadow-2xl border-2 border-blue-100 max-w-xs"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                whileHover={{ scale: 1.05, rotate: -1 }}
-              >
-                <p className="text-sm font-semibold text-black mb-1">
-                  "Building reliability at scale"
-                </p>
-                <p className="text-xs text-blue-600">Cloud + MLOps Engineer</p>
-              </motion.div>
-
-              {/* Corner accent */}
-              <motion.div
-                className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-blue-600 rounded-tr-3xl"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-              />
-            </motion.div>
+            <img
+              src={headshotSrc}
+              alt="Headshot of Utkarsh Singh"
+              className="w-full h-[320px] sm:h-[420px] lg:h-[520px] object-cover rounded-2xl shadow-md"
+              loading="lazy"
+              decoding="async"
+              onError={(event) => {
+                if (event.currentTarget.dataset.fallback === 'true') return;
+                event.currentTarget.dataset.fallback = 'true';
+                event.currentTarget.src = placeholderImage;
+              }}
+            />
           </motion.div>
         </div>
       </div>

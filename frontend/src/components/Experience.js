@@ -7,14 +7,14 @@ const Experience = () => {
   const { experience } = professionalData;
 
   return (
-    <section id="experience" className="py-24 md:py-32 bg-white">
+    <section id="experience" className="py-24 md:py-32 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black mb-4">
             Experience
@@ -24,7 +24,7 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experience.map((exp, index) => (
             <motion.div
               key={index}
@@ -53,7 +53,7 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  <div className="mb-6">
+                  <div className="mb-5">
                     <h4 className="text-lg font-semibold text-black mb-3">Key Responsibilities</h4>
                     <ul className="space-y-2">
                       {exp.responsibilities.map((resp, idx) => (

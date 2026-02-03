@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Download, Linkedin, ExternalLink } from 'lucide-react';
 import professionalData from '../data/professionalData.json';
+import { assetUrl } from '../utils/assets';
 
 const ProfessionalHero = () => {
   const { hero } = professionalData;
@@ -19,11 +20,14 @@ const ProfessionalHero = () => {
   };
 
   const openExternal = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(assetUrl(url), '_blank', 'noopener,noreferrer');
   };
 
+  const highlightPhrase = 'MLOps focus';
+  const headlineParts = hero.headline.split(highlightPhrase);
+
   return (
-    <section className="min-h-screen flex items-center justify-center pt-24 pb-32 relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-white">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-24 pb-32 relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-white scroll-mt-24">
       {/* Animated geometric background */}
       <motion.div
         style={{ y }}
@@ -35,7 +39,7 @@ const ProfessionalHero = () => {
       />
       
       {/* Floating elements */}
-      {[...Array(10)].map((_, i) => (
+      {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
@@ -48,7 +52,7 @@ const ProfessionalHero = () => {
             opacity: [0.2, 0.5, 0.2],
           }}
           transition={{
-            duration: 3 + i * 0.5,
+            duration: 12 + i * 0.8,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -93,18 +97,17 @@ const ProfessionalHero = () => {
             className="text-5xl md:text-7xl font-bold tracking-tight text-black mb-8 font-plus-jakarta leading-tight"
             data-testid="professional-hero-headline"
           >
-            {hero.headline.split(' ').map((word, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
-                className="inline-block mr-3"
-                whileHover={{ scale: 1.05, color: '#2563eb' }}
-              >
-                {word}
-              </motion.span>
-            ))}
+            {headlineParts.length > 1 ? (
+              <>
+                {headlineParts[0]}
+                <span className="bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text">
+                  {highlightPhrase}
+                </span>
+                {headlineParts[1]}
+              </>
+            ) : (
+              hero.headline
+            )}
           </motion.h1>
 
           <motion.p
@@ -129,7 +132,7 @@ const ProfessionalHero = () => {
                 className={`group flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-300 ${
                   cta.primary
                     ? 'bg-black text-white hover:bg-blue-600 shadow-xl hover:shadow-2xl hover:scale-105'
-                    : 'bg-white border-2 border-black text-black hover:bg-black hover:text-white shadow-lg hover:shadow-xl'
+                    : 'bg-white border-2 border-black text-black hover:border-blue-600 hover:text-blue-600 shadow-lg hover:shadow-xl'
                 }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}

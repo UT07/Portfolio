@@ -16,8 +16,8 @@
       ],
       "links": {
         "github": "https://github.com/UT07/Performance-Optimization-and-Cost-Analysis-of-qpAdm-Genomic-Modeling",
-        "paper": "https://ut-portfolio-website.s3.eu-west-1.amazonaws.com/assets/MSc+Research+Project+Report+Utkarsh.pdf",
-        "manual": "https://ut-portfolio-website.s3.eu-west-1.amazonaws.com/assets/qpAdm_AWS_Configuration_Manual_Utkarsh_Singh.pdf"
+        "paper": "/MSc+Research+Project+Report+Utkarsh.pdf",
+        "manual": "/qpAdm_AWS_Configuration_Manual_Utkarsh_Singh.pdf"
       },
       "demo_image": "https://images.unsplash.com/photo-1765371514743-45bd8e6c0a28?crop=entropy&cs=srgb&fm=jpg&q=85"
     },

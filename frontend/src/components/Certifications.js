@@ -7,14 +7,14 @@ const Certifications = () => {
   const { certifications } = professionalData;
 
   return (
-    <section id="certifications" className="py-24 md:py-32 bg-neutral-50">
+    <section id="certifications" className="py-24 md:py-32 bg-neutral-50 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black mb-4">
             Certifications
@@ -48,9 +48,9 @@ const Certifications = () => {
                   <span className="text-neutral-500">{cert.year}</span>
                 </div>
               </div>
-              {cert.link && (
+              {cert.verify_url ? (
                 <a
-                  href={cert.link}
+                  href={cert.verify_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
@@ -59,6 +59,16 @@ const Certifications = () => {
                   View credential
                   <ExternalLink className="w-4 h-4" />
                 </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  title="Verification link needed"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-400 cursor-not-allowed"
+                >
+                  View credential
+                  <ExternalLink className="w-4 h-4" />
+                </button>
               )}
             </motion.div>
           ))}

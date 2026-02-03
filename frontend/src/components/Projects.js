@@ -1,40 +1,89 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Folder, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { ExternalLink, Github, FileText, FileCode } from 'lucide-react';
 import projectsData from '../data/projectsData.json';
-import { resolveAssetUrl } from '../utils/assetUrl';
+import placeholderImage from '../assets/asset-placeholder.svg';
+import { assetUrl } from '../utils/assets';
 
 const Projects = () => {
   const { featured, github_projects } = projectsData;
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start', slidesToScroll: 1 });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const openExternal = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const handleImgError = (event) => {
+    if (event.currentTarget.dataset.fallback === 'true') return;
+    event.currentTarget.dataset.fallback = 'true';
+    event.currentTarget.src = placeholderImage;
   };
 
-  // Flatten all GitHub projects into a single array
-  const allGithubProjects = Object.entries(github_projects).flatMap(([category, projects]) => 
-    projects.map(project => ({ ...project, category }))
+  const allGithubProjects = Object.entries(github_projects).flatMap(([category, projects]) =>
+    projects.map((project) => ({ ...project, category }))
   );
 
+  const getRepoName = (repoUrl) => {
+    if (!repoUrl) return null;
+    try {
+      const { pathname } = new URL(repoUrl);
+      const parts = pathname.split('/').filter(Boolean);
+      return parts.length >= 2 ? parts[1] : null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const getOgImage = (repoUrl) => {
+    const repoName = getRepoName(repoUrl);
+    if (!repoName) return null;
+    return `https://opengraph.githubassets.com/1/UT07/${repoName}`;
+  };
+
+  const renderLinks = (links) => {
+    if (!links) return null;
+    return (
+      <div className="flex flex-wrap gap-3">
+        {links.github && (
+          <a
+            href={links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-800"
+          >
+            <Github className="h-4 w-4" />
+            View on GitHub
+          </a>
+        )}
+        {links.paper && (
+          <a
+            href={assetUrl(links.paper)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:border-neutral-500"
+          >
+            <FileText className="h-4 w-4" />
+            Research paper
+          </a>
+        )}
+        {links.manual && (
+          <a
+            href={assetUrl(links.manual)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:border-neutral-500"
+          >
+            <FileCode className="h-4 w-4" />
+            Configuration manual
+          </a>
+        )}
+      </div>
+    );
+  };
+
   return (
-    <section id="projects" className="py-24 md:py-32 bg-neutral-50">
+    <section id="projects" className="py-24 md:py-32 bg-neutral-50 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black mb-4">
             Projects
@@ -44,237 +93,138 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="mb-20">
-          <h3 className="text-2xl font-semibold text-black mb-8">Featured Projects</h3>
-          <div className="space-y-12">
-            {featured.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="bg-white border border-neutral-200 rounded-2xl p-8 hover:border-neutral-300 transition-colors"
-                data-testid={`featured-project-${index}`}
-              >
-                {/* Project image */}
-                {project.demo_image && (
-                  <motion.div 
-                    className="mb-6 rounded-xl overflow-hidden"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img 
-                      src={resolveAssetUrl(project.demo_image)}
-                      alt={project.title}
-                      className="w-full h-64 object-cover"
+        <div className="mb-12">
+          <h3 className="text-2xl font-semibold text-black mb-6">Featured Projects</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featured.map((project, index) => {
+              const repoUrl = project.links?.github;
+              const ogImage = getOgImage(repoUrl);
+              return (
+                <motion.article
+                  key={project.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05, duration: 0.5 }}
+                  className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  data-testid={`featured-project-${index}`}
+                >
+                  {ogImage ? (
+                    <img
+                      src={ogImage}
+                      alt={`${project.title} preview`}
+                      className="w-full h-48 object-cover"
                       loading="lazy"
                       decoding="async"
+                      onError={handleImgError}
                     />
-                  </motion.div>
-                )}
-
-                <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="px-3 py-1 bg-black text-white text-xs font-medium rounded-full">
-                      {project.category}
-                    </span>
-                    <span className="text-sm text-neutral-500">{project.timeline}</span>
-                  </div>
-                  <h4 className="text-2xl font-semibold text-black mb-2">{project.title}</h4>
-                  <p className="text-neutral-600">{project.description}</p>
-                </div>
-
-                <div className="mb-6">
-                  <h5 className="text-sm font-semibold text-black mb-2">Problem</h5>
-                  <p className="text-neutral-600 text-sm">{project.problem}</p>
-                </div>
-
-                <div className="mb-6">
-                  <h5 className="text-sm font-semibold text-black mb-2">Approach</h5>
-                  <p className="text-neutral-600 text-sm">{project.approach}</p>
-                </div>
-
-                <div className="mb-6">
-                  <h5 className="text-sm font-semibold text-black mb-3">Technology Stack</h5>
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-neutral-100 text-neutral-700 text-xs rounded-full"
-                      >
-                        {tech}
+                  ) : (
+                    <div className="w-full h-48 bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center text-neutral-500 text-sm">
+                      Preview unavailable
+                    </div>
+                  )}
+                  <div className="p-6 space-y-4">
+                    <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-neutral-500">
+                      <span className="px-2 py-1 rounded-full bg-neutral-100 text-neutral-700 font-semibold">
+                        {project.category}
                       </span>
-                    ))}
+                      <span>{project.timeline}</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-semibold text-black mb-2">{project.title}</h4>
+                      <p className="text-sm text-neutral-600">{project.description}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {renderLinks(project.links)}
                   </div>
-                </div>
-
-                <div className="mb-6">
-                  <h5 className="text-sm font-semibold text-black mb-3 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-600" />
-                    Outcomes
-                  </h5>
-                  <ul className="space-y-2">
-                    {project.outcomes.map((outcome, idx) => (
-                      <li key={idx} className="text-sm text-neutral-600 flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>{outcome}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  {[
-                    {
-                      key: 'github',
-                      label: 'View on GitHub',
-                      className: 'bg-black text-white hover:bg-neutral-800',
-                      icon: Github
-                    },
-                    {
-                      key: 'paper',
-                      label: 'Research Paper',
-                      className: 'bg-white border border-neutral-300 text-black hover:bg-black hover:text-white',
-                      icon: ExternalLink
-                    },
-                    {
-                      key: 'manual',
-                      label: 'Config Manual',
-                      className: 'bg-white border border-neutral-300 text-black hover:bg-black hover:text-white',
-                      icon: ExternalLink
-                    },
-                    {
-                      key: 'demo',
-                      label: 'Live Demo',
-                      className: 'bg-neutral-100 text-black hover:bg-neutral-200',
-                      icon: ExternalLink
-                    }
-                  ].map((link) => {
-                    const url = project.links?.[link.key];
-                    if (!url) return null;
-                    const Icon = link.icon;
-                    return (
-                      <button
-                        key={link.key}
-                        onClick={() => openExternal(url)}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${link.className}`}
-                        data-testid={`project-${link.key}-link-${index}`}
-                      >
-                        <Icon className="w-4 h-4" />
-                        {link.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            ))}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
 
         <div>
-          <h3 className="text-2xl font-semibold text-black mb-8">GitHub Projects</h3>
-          
-          {/* Carousel container */}
-          <div className="relative">
-            {/* Navigation buttons */}
-            <motion.button
-              onClick={scrollPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors shadow-xl"
-              whileHover={{ scale: 1.1, x: -5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </motion.button>
-
-            <motion.button
-              onClick={scrollNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors shadow-xl"
-              whileHover={{ scale: 1.1, x: 5 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </motion.button>
-
-            {/* Embla carousel */}
-            <div className="overflow-hidden mx-12" ref={emblaRef}>
-              <div className="flex gap-6">
-                {allGithubProjects.map((project, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="flex-[0_0_350px] min-w-0"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05, duration: 0.4 }}
-                  >
-                    <motion.div
-                      whileHover={{ y: -8, scale: 1.02 }}
-                      className="h-full bg-white border-2 border-neutral-200 rounded-2xl p-6 hover:border-blue-500 hover:shadow-2xl transition-all cursor-pointer"
-                      onClick={() => openExternal(project.repo)}
-                      data-testid={`github-project-${idx}`}
-                    >
-                      {/* Category badge */}
-                      <div className="mb-3">
-                        <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">
-                          {project.category.replace(/_/g, ' / ')}
+          <h3 className="text-2xl font-semibold text-black mb-6">GitHub Projects</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allGithubProjects.map((project, index) => {
+              const ogImage = getOgImage(project.repo);
+              return (
+                <motion.article
+                  key={`${project.name}-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.03, duration: 0.4 }}
+                  className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  data-testid={`github-project-${index}`}
+                >
+                  {ogImage ? (
+                    <img
+                      src={ogImage}
+                      alt={`${project.name} preview`}
+                      className="w-full h-40 object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      onError={handleImgError}
+                    />
+                  ) : (
+                    <div className="w-full h-40 bg-gradient-to-br from-neutral-100 to-neutral-200 flex items-center justify-center text-neutral-500 text-sm">
+                      Preview unavailable
+                    </div>
+                  )}
+                  <div className="p-5 space-y-4">
+                    <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-neutral-500">
+                      <span className="px-2 py-1 rounded-full bg-neutral-100 text-neutral-700 font-semibold">
+                        {project.category.replace(/_/g, ' / ')}
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-black mb-2">{project.name}</h4>
+                      <p className="text-sm text-neutral-600">{project.description}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 text-xs font-medium"
+                        >
+                          {tech}
                         </span>
-                      </div>
-
-                      <div className="flex items-start justify-between mb-4">
-                        <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
-                          <Folder className="w-10 h-10 text-blue-500" />
-                        </motion.div>
-                        <div className="flex gap-2">
-                          <motion.button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              openExternal(project.repo);
-                            }}
-                            className="p-2 bg-black text-white rounded-lg hover:bg-blue-600 transition-colors"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Github className="w-4 h-4" />
-                          </motion.button>
-                          {project.demo && (
-                            <motion.button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                openExternal(project.demo);
-                              }}
-                              className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                            </motion.button>
-                          )}
-                        </div>
-                      </div>
-
-                      <h5 className="text-xl font-bold text-black mb-3 group-hover:text-blue-600 transition-colors">
-                        {project.name}
-                      </h5>
-                      <p className="text-sm text-neutral-600 mb-4 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {project.stack.map((tech, techIdx) => (
-                          <span
-                            key={techIdx}
-                            className="px-2 py-1 bg-neutral-100 text-neutral-700 text-xs rounded-full font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+                      ))}
+                    </div>
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-800"
+                    >
+                      <Github className="h-4 w-4" />
+                      View on GitHub
+                    </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-700 transition-colors hover:border-neutral-500"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        Live demo
+                      </a>
+                    )}
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </div>

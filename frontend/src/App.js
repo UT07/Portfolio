@@ -9,10 +9,10 @@ import About from './components/About';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
+import TechStackSection from './components/TechStackSection';
 import Certifications from './components/Certifications';
 import Artist from './components/Artist';
-import GigTimeline from './components/GigTimeline';
+import GigCarousel from './components/GigCarousel';
 import Sets from './components/Sets';
 import PressKit from './components/PressKit';
 import Contact from './components/Contact';
@@ -65,7 +65,7 @@ const AppContent = () => {
               backgroundSize: '220px 220px'
             }}
             animate={{ backgroundPosition: ['0px 0px', '220px 220px'] }}
-            transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
             className="absolute inset-0 opacity-25"
@@ -75,19 +75,19 @@ const AppContent = () => {
               backgroundSize: '100% 6px'
             }}
             animate={{ opacity: [0.15, 0.3, 0.15] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.div
             className="absolute -top-48 -left-40 w-[640px] h-[640px] rounded-full border border-red-500/30 blur-[1px]"
             style={{ boxShadow: '0 0 90px rgba(255,26,64,0.6)' }}
             animate={{ rotate: 360, scale: [1, 1.06, 1], opacity: [0.2, 0.5, 0.2] }}
-            transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
             className="absolute -bottom-56 -right-48 w-[740px] h-[740px] rounded-full border border-red-500/20 blur-[2px]"
             style={{ boxShadow: '0 0 100px rgba(255,94,112,0.5)' }}
             animate={{ rotate: -360, scale: [1, 1.08, 1], opacity: [0.2, 0.45, 0.2] }}
-            transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
             className="absolute -inset-32 opacity-30"
@@ -96,7 +96,7 @@ const AppContent = () => {
                 'conic-gradient(from 90deg, rgba(255,26,64,0.0), rgba(255,26,64,0.45), rgba(255,94,112,0.25), rgba(255,26,64,0.0) 70%)'
             }}
             animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
             className="absolute -inset-32 opacity-35"
@@ -105,7 +105,7 @@ const AppContent = () => {
                 'linear-gradient(135deg, rgba(255,26,64,0.0) 0%, rgba(255,26,64,0.35) 30%, rgba(255,94,112,0.25) 50%, rgba(255,26,64,0.0) 70%)'
             }}
             animate={{ x: ['-15%', '15%', '-15%'] }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 45, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.div
             className="absolute top-0 -left-1/3 h-full w-1/3 opacity-35 blur-2xl"
@@ -114,7 +114,7 @@ const AppContent = () => {
                 'linear-gradient(90deg, rgba(255,26,64,0.0) 0%, rgba(255,26,64,0.65) 40%, rgba(255,94,112,0.25) 80%, rgba(255,26,64,0.0) 100%)'
             }}
             animate={{ x: ['-30%', '120%'] }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
             className="absolute bottom-0 -right-1/2 h-full w-1/2 opacity-25 blur-3xl"
@@ -123,7 +123,7 @@ const AppContent = () => {
                 'linear-gradient(90deg, rgba(255,94,112,0.0) 0%, rgba(255,94,112,0.6) 35%, rgba(255,26,64,0.25) 75%, rgba(255,94,112,0.0) 100%)'
             }}
             animate={{ x: ['30%', '-120%'] }}
-            transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 70, repeat: Infinity, ease: 'linear' }}
           />
         </div>
       )}
@@ -141,13 +141,13 @@ const AppContent = () => {
               transition={{ duration: 0.5 }}
             >
               <ProfessionalHero />
-              <About />
               <Highlights />
-              <Skills />
+              <About />
+              <TechStackSection />
               <Experience />
+              <Projects />
               <Certifications />
               <Education />
-              <Projects />
               <Contact />
             </motion.div>
           ) : (
@@ -161,7 +161,7 @@ const AppContent = () => {
               <DJHero />
               <Artist />
               <Sets />
-              <GigTimeline />
+              <GigCarousel />
               <PressKit />
               <Contact />
             </motion.div>

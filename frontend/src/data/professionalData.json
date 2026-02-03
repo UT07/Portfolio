@@ -13,7 +13,7 @@
       },
       {
         "text": "Download Resume",
-        "href": "https://ut-portfolio-website.s3.eu-west-1.amazonaws.com/assets/UTKARSH_SINGH_DUBLIN.pdf",
+        "href": "/UTKARSH_SINGH_DUBLIN.pdf",
         "primary": false,
         "external": true
       },
@@ -27,33 +27,39 @@
   },
   "highlights": [
     {
+      "category": "Certification",
       "title": "AWS Certified Professional",
-      "description": "Solutions Architect Professional (SAP-C02) + Developer Associate",
+      "description": "Solutions Architect Professional + Developer Associate.",
       "icon": "award"
     },
     {
+      "category": "Performance",
       "title": "2+ Years Production Experience",
-      "description": "Built and maintained multi-region AWS infrastructure serving 1,000+ users",
+      "description": "Operated multi-region AWS for 1,000+ users.",
       "icon": "cloud"
     },
     {
+      "category": "Performance",
       "title": "85% Faster Deployments",
-      "description": "Reduced release cycles from 3 days to 4-6 hours, enabling 10-15 releases/week",
+      "description": "Release cycles cut from days to hours.",
       "icon": "zap"
     },
     {
-      "title": "22% Cost Reduction",
-      "description": "Optimized multi-account AWS costs through proactive monitoring and right-sizing",
-      "icon": "trending-down"
-    },
-    {
+      "category": "Performance",
       "title": "MLOps Pipeline Expert",
-      "description": "Delivered end-to-end SageMaker pipelines reducing model deployment from 5 days to 2 days",
+      "description": "SageMaker pipelines shortened model ship time.",
       "icon": "cpu"
     },
     {
+      "category": "Cost",
+      "title": "22% Cost Reduction",
+      "description": "Right-sized AWS with proactive monitoring.",
+      "icon": "trending-down"
+    },
+    {
+      "category": "MTTR",
       "title": "35% Lower MTTR",
-      "description": "Cut Mean Time To Resolution from 45 min to 29 min with custom observability stack",
+      "description": "Custom observability cut resolution time.",
       "icon": "activity"
     }
   ],
@@ -76,13 +82,10 @@
       "description": "Specializing in distributed systems, DevOpsSec, and scalable cloud programming with AWS, Kubernetes, and Terraform.",
       "modules": [
         "Cloud Architectures",
-        "Cloud Platform Programming",
         "Cloud DevOpsSec",
         "Scalable Cloud Programming",
-        "Fog and Edge Computing",
         "Cloud Machine Learning",
         "Data Governance, Compliance and Ethics",
-        "Blockchain Concepts",
         "Research in Computing"
       ],
       "projects": [
@@ -91,8 +94,8 @@
           "description": "Engineered automated benchmarking pipeline with Terraform-provisioned EC2 Auto Scaling Groups, implementing failure recovery, CloudWatch alerting, and S3 artifact versioning. Applied ML-driven optimization to predict optimal instance families.",
           "outcomes": "Executed 15,000+ qpAdm runs. Reduced iterations by 40% and achieved 25-40% cost reduction with 15-30% faster runtimes.",
           "github": "https://github.com/UT07/Performance-Optimization-and-Cost-Analysis-of-qpAdm-Genomic-Modeling",
-          "research_paper": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/1b3a260i_MSc%20Research%20Project%20Report%20Utkarsh.pdf",
-          "configuration_manual": "https://customer-assets.emergentagent.com/job_6b485456-a33d-4076-8a81-096bb9696e3a/artifacts/ey360g8n_qpAdm_AWS_Configuration_Manual_Utkarsh_Singh.pdf"
+          "research_paper": "/MSc+Research+Project+Report+Utkarsh.pdf",
+          "configuration_manual": "/qpAdm_AWS_Configuration_Manual_Utkarsh_Singh.pdf"
         }
       ],
       "thesis": "Performance Optimization and Cost Analysis of qpAdm Genomic Modeling",
@@ -109,14 +112,11 @@
       "status": "Completed",
       "description": "Transfer program completing computational science requirements with focus on software development lifecycle and full-stack development.",
       "modules": [
-        "CS 250 Software Development Lifecycle",
-        "CS 255 System Analysis and Design",
-        "CS 320 Software Testing, Automation, and Quality Assurance",
-        "CS 330 Computational Graphics and Visualization",
-        "CS 340 Client/Server Development",
-        "CS 370 Current and Emerging Trends in Computer Science",
-        "CS 465 Full Stack Development",
-        "MAT 230 Discrete Mathematics"
+        "Software Development Lifecycle",
+        "System Analysis and Design",
+        "Software Testing, Automation, and Quality Assurance",
+        "Client/Server Development",
+        "Full Stack Development"
       ],
       "projects": [
         {
@@ -137,18 +137,10 @@
       "modules": [
         "Algorithms and Data Structures",
         "Operating Systems",
-        "Computer Organization",
         "Databases",
-        "Software Testing",
-        "Object-Oriented Software Engineering",
-        "Software Design Patterns",
-        "Software Project Management",
-        "Information Security",
         "Computer Networks",
-        "Theoretical Computer Science",
-        "Programming Languages",
-        "Linear Algebra for CSE",
-        "Probability and Statistics"
+        "Software Design Patterns",
+        "Information Security"
       ],
       "projects": [
         {
@@ -222,124 +214,172 @@
     "categories": [
       {
         "name": "Core Languages & Tools",
-        "skills": [
-          "Python",
-          "Bash",
-          "Go",
-          "JavaScript/TypeScript",
-          "SQL",
-          "Linux/Unix",
-          "Git/GitHub",
-          "YAML",
-          "REST APIs"
-        ]
+        "skills": {
+          "languages": [
+            "Python",
+            "Go",
+            "JavaScript/TypeScript",
+            "SQL",
+            "Bash"
+          ],
+          "tooling": [
+            "Linux/Unix",
+            "Git/GitHub",
+            "REST APIs",
+            "YAML"
+          ]
+        }
       },
       {
         "name": "AWS Cloud",
-        "skills": [
-          "EC2",
-          "ECS/Fargate",
-          "EKS",
-          "Lambda",
-          "Auto Scaling",
-          "S3",
-          "EBS",
-          "EFS",
-          "DynamoDB",
-          "RDS/Aurora",
-          "Redshift",
-          "Athena",
-          "Glue",
-          "EMR",
-          "VPC",
-          "ALB",
-          "Route53",
-          "CloudFront",
-          "API Gateway",
-          "SQS",
-          "SNS",
-          "EventBridge",
-          "Step Functions",
-          "IAM",
-          "Secrets Manager",
-          "WAF",
-          "ECR"
-        ]
+        "skills": {
+          "compute": [
+            "EC2",
+            "ECS/Fargate",
+            "EKS",
+            "Lambda",
+            "Auto Scaling"
+          ],
+          "storage": [
+            "S3",
+            "EBS",
+            "EFS"
+          ],
+          "databases": [
+            "DynamoDB",
+            "RDS/Aurora",
+            "Redshift"
+          ],
+          "analytics": [
+            "Athena",
+            "Glue",
+            "EMR"
+          ],
+          "networking": [
+            "VPC",
+            "ALB",
+            "Route53",
+            "CloudFront",
+            "API Gateway"
+          ],
+          "integration": [
+            "SQS",
+            "SNS",
+            "EventBridge",
+            "Step Functions"
+          ],
+          "security": [
+            "IAM",
+            "Secrets Manager",
+            "WAF",
+            "ECR"
+          ]
+        }
       },
       {
         "name": "Containers & Orchestration",
-        "skills": [
-          "Docker (multi-stage, Trivy)",
-          "Docker Compose",
-          "Kubernetes/EKS",
-          "kubectl",
-          "Helm",
-          "Kustomize",
-          "ECS/Fargate",
-          "ECR",
-          "Ingress (ALB/NGINX)"
-        ]
+        "skills": {
+          "containerization": [
+            "Docker (multi-stage, Trivy)",
+            "Docker Compose"
+          ],
+          "kubernetes": [
+            "Kubernetes/EKS",
+            "kubectl",
+            "Helm",
+            "Kustomize",
+            "Ingress (ALB/NGINX)"
+          ],
+          "aws": [
+            "ECS/Fargate",
+            "ECR"
+          ]
+        }
       },
       {
         "name": "DevOps & Infrastructure as Code",
-        "skills": [
-          "Terraform",
-          "CloudFormation",
-          "GitHub Actions",
-          "Jenkins",
-          "AWS CodeCommit",
-          "AWS CodeBuild",
-          "AWS CodeDeploy",
-          "AWS CodePipeline",
-          "Blue/Green Deployments"
-        ]
+        "skills": {
+          "iac": [
+            "Terraform",
+            "AWS CloudFormation"
+          ],
+          "ci_cd": [
+            "GitHub Actions",
+            "Jenkins",
+            "AWS CodeCommit",
+            "AWS CodeBuild",
+            "AWS CodeDeploy",
+            "AWS CodePipeline"
+          ],
+          "release": [
+            "Blue/Green Deployments"
+          ]
+        }
       },
       {
-        "name": "Observability & MLOps",
-        "skills": [
-          "Prometheus/Grafana",
-          "CloudWatch (Logs, Metrics, Log Insights)",
-          "OpenTelemetry",
-          "New Relic",
-          "X-Ray",
-          "SageMaker (Pipelines, Feature Store, Model Registry, Endpoints, Monitor, Experiments)",
-          "MLflow",
-          "DVC",
-          "Airflow/MWAA",
-          "EventBridge",
-          "Step Functions"
-        ]
+        "name": "Observability",
+        "skills": {
+          "monitoring": [
+            "Prometheus/Grafana",
+            "AWS CloudWatch (Logs, Metrics, Log Insights)",
+            "OpenTelemetry",
+            "New Relic",
+            "AWS X-Ray"
+          ]
+        }
+      },
+      {
+        "name": "MLOps",
+        "skills": {
+          "platforms": [
+            "AWS SageMaker (Pipelines, Feature Store, Model Registry, Endpoints, Monitor, Experiments)",
+            "MLflow",
+            "DVC"
+          ],
+          "orchestration": [
+            "Airflow/MWAA",
+            "AWS EventBridge",
+            "AWS Step Functions"
+          ]
+        }
       },
       {
         "name": "Data & Web",
-        "skills": [
-          "MySQL",
-          "PostgreSQL",
-          "MongoDB",
-          "Redis",
-          "Redshift",
-          "Athena",
-          "Glue",
-          "EMR",
-          "Kinesis",
-          "Flask",
-          "Django",
-          "FastAPI",
-          "React.js",
-          "Express.js",
-          "Pandas",
-          "NumPy",
-          "PySpark",
-          "PyTorch",
-          "Tensorflow",
-          "SciPy",
-          "scikit-learn",
-          "Matplotlib",
-          "Tableau",          
-          "Seaborn",
-          "Jupyter"
-
-        ]
+        "skills": {
+          "datastores": [
+            "MySQL",
+            "PostgreSQL",
+            "MongoDB",
+            "Redis"
+          ],
+          "aws_data": [
+            "AWS Redshift",
+            "AWS Athena",
+            "AWS Glue",
+            "AWS EMR",
+            "AWS Kinesis"
+          ],
+          "frameworks": [
+            "Flask",
+            "Django",
+            "FastAPI",
+            "React.js",
+            "Express.js"
+          ],
+          "data_science": [
+            "Pandas",
+            "NumPy",
+            "PySpark",
+            "PyTorch",
+            "Tensorflow",
+            "SciPy",
+            "scikit-learn",
+            "Matplotlib",
+            "Seaborn",
+            "Jupyter",
+            "Tableau"
+          ]
+        }
       }
     ]
   },
@@ -349,21 +389,21 @@
       "code": "SAP-C02",
       "issuer": "Amazon Web Services",
       "year": "2024",
-      "link": "https://www.credly.com/badges/6e22a6c0-9922-49d5-b59f-34cc593c82c3/public_url"
+      "verify_url": "https://www.credly.com/badges/6e22a6c0-9922-49d5-b59f-34cc593c82c3/public_url"
     },
     {
       "name": "AWS Developer \u2013 Associate",
       "code": "DVA-C01",
       "issuer": "Amazon Web Services",
       "year": "2023",
-      "link": "https://www.credly.com/badges/84671bf4-ce9f-4d8b-a0de-0ef606ad5646/public_url"
+      "verify_url": "https://www.credly.com/badges/84671bf4-ce9f-4d8b-a0de-0ef606ad5646/public_url"
     },
     {
       "name": "AWS Cloud Practitioner",
       "code": "CLF-C01",
       "issuer": "Amazon Web Services",
       "year": "2022",
-      "link": "https://www.credly.com/badges/e671b9de-e72a-48cb-82fc-33776c285174/public_url"
+      "verify_url": "https://www.credly.com/badges/e671b9de-e72a-48cb-82fc-33776c285174/public_url"
     }
   ],
   "contact": {

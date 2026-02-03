@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, GraduationCap, Award, BookOpen, Github, FileText, FileCode } from 'lucide-react';
 import professionalData from '../data/professionalData.json';
+import { assetUrl } from '../utils/assets';
 
 const Education = () => {
   const { education } = professionalData;
@@ -12,18 +13,18 @@ const Education = () => {
   };
 
   const openExternal = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(assetUrl(url), '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="education" className="py-24 md:py-32 bg-neutral-50">
+    <section id="education" className="py-24 md:py-32 bg-neutral-50 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-black mb-4">
             Education
@@ -70,12 +71,16 @@ const Education = () => {
               {edu.modules && edu.modules.length > 0 && (
                 <div className="mb-6">
                   <button
+                    type="button"
                     onClick={() => toggleExpand(index)}
                     className="flex items-center gap-2 text-black font-medium hover:text-neutral-700 transition-colors mb-4"
+                    aria-expanded={expandedIndex === index}
+                    aria-controls={`education-modules-${index}`}
+                    aria-label={`Toggle relevant coursework for ${edu.degree} at ${edu.institution}`}
                     data-testid={`education-modules-toggle-${index}`}
                   >
                     <BookOpen className="w-5 h-5" />
-                    <span>Relevant Coursework ({edu.modules.length} modules)</span>
+                    <span>Relevant coursework ({edu.modules.length} modules)</span>
                     <ChevronDown
                       className={`w-5 h-5 transition-transform ${expandedIndex === index ? 'rotate-180' : ''}`}
                     />
@@ -84,6 +89,7 @@ const Education = () => {
                   <AnimatePresence>
                     {expandedIndex === index && (
                       <motion.div
+                        id={`education-modules-${index}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -173,14 +179,14 @@ const Education = () => {
               {edu.leadership && edu.leadership.length > 0 && (
                 <div className="mt-6 pt-6 border-t border-neutral-200">
                   <h4 className="text-lg font-semibold text-black mb-3">Teaching & Leadership</h4>
-                  <div className="space-y-2">
+                  <ul className="space-y-2">
                     {edu.leadership.map((role, idx) => (
-                      <p key={idx} className="text-neutral-600 flex items-start gap-2">
+                      <li key={idx} className="text-neutral-600 flex items-start gap-2">
                         <span className="text-neutral-400">•</span>
                         <span>{role}</span>
-                      </p>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               )}
             </motion.div>

@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, ExternalLink } from 'lucide-react';
+import { SiSoundcloud, SiYoutube } from 'react-icons/si';
 import djData from '../data/djData.json';
-import { resolveAssetUrl } from '../utils/assetUrl';
+import placeholderImage from '../assets/asset-placeholder.svg';
+import { assetUrl } from '../utils/assets';
 
 const Sets = () => {
   const { sets, hero } = djData;
@@ -11,7 +13,7 @@ const Sets = () => {
   const [loadError, setLoadError] = useState(null);
 
   const fallbackThumbnail = useMemo(
-    () => resolveAssetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg'),
+    () => assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg'),
     [hero?.hero_image]
   );
   const feedProxy = process.env.REACT_APP_FEED_PROXY || 'https://api.allorigins.win/raw?url=';
@@ -20,6 +22,12 @@ const Sets = () => {
     () => new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }),
     []
   );
+
+  const getPlatformIcon = (platformName) => {
+    if (platformName === 'SoundCloud') return SiSoundcloud;
+    if (platformName === 'YouTube') return SiYoutube;
+    return null;
+  };
 
   const parseYear = useCallback((value) => {
     if (!value) return 'Live';
@@ -451,19 +459,22 @@ const Sets = () => {
                 {/* Platform header with logo */}
                 <div className="flex items-center gap-6 mb-8">
                   <motion.div
-                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    whileHover={{ scale: 1.05, rotate: 3 }}
                     className="relative"
                   >
-                    <img 
-                      src={resolveAssetUrl(platform.logo)}
-                      alt={`${platform.name} logo`}
-                      className="w-24 h-24 rounded-2xl border-2 border-white/20 object-cover"
-                      loading="lazy"
-                      decoding="async"
-                      style={{
-                        boxShadow: `0 0 30px rgba(${accentColor === 'red' ? '255,26,64' : '255,94,112'},0.4)`
-                      }}
-                    />
+                    {(() => {
+                      const Icon = getPlatformIcon(platform.name);
+                      return (
+                        <div
+                          className="w-20 h-20 rounded-2xl border border-red-500/40 bg-neutral-950/60 flex items-center justify-center text-red-400"
+                          style={{
+                            boxShadow: `0 0 30px rgba(${accentColor === 'red' ? '255,26,64' : '255,94,112'},0.4)`
+                          }}
+                        >
+                          {Icon ? <Icon className="w-10 h-10" /> : <Play className="w-8 h-8" />}
+                        </div>
+                      );
+                    })()}
                   </motion.div>
                   <div>
                     <h3 className="text-3xl font-bold text-white uppercase tracking-wider font-unbounded mb-2">
@@ -527,11 +538,16 @@ const Sets = () => {
                       {/* Thumbnail */}
                       <div className="relative h-64 overflow-hidden">
                         <img 
-                          src={resolveAssetUrl(set.thumbnail)}
+                          src={assetUrl(set.thumbnail)}
                           alt={set.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           loading="lazy"
                           decoding="async"
+                          onError={(event) => {
+                            if (event.currentTarget.dataset.fallback === 'true') return;
+                            event.currentTarget.dataset.fallback = 'true';
+                            event.currentTarget.src = placeholderImage;
+                          }}
                         />
                         
                         {/* Play button overlay */}

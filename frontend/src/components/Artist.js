@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import djData from '../data/djData.json';
-import { resolveAssetUrl } from '../utils/assetUrl';
+import { assetUrl } from '../utils/assets';
+import placeholderImage from '../assets/asset-placeholder.svg';
 
 const Artist = () => {
   const { artist } = djData;
@@ -120,7 +121,7 @@ const Artist = () => {
                   scale: [1, 1.05, 1],
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 20,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -131,11 +132,16 @@ const Artist = () => {
                 boxShadow: '0 0 30px rgba(255,26,64,0.3)'
               }}>
                 <img 
-                  src={resolveAssetUrl(artist.artist_image)}
+                  src={assetUrl(artist.artist_image)}
                   alt="UT Artist"
                   className="w-full h-[360px] sm:h-[500px] lg:h-[680px] object-cover"
                   loading="lazy"
                   decoding="async"
+                  onError={(event) => {
+                    if (event.currentTarget.dataset.fallback === 'true') return;
+                    event.currentTarget.dataset.fallback = 'true';
+                    event.currentTarget.src = placeholderImage;
+                  }}
                 />
                 
                 {/* Gradient overlay */}

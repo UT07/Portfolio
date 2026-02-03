@@ -6,17 +6,17 @@ import professionalData from '../data/professionalData.json';
 const Highlights = () => {
   const { highlights } = professionalData;
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
   return (
-    <section className="py-24 md:py-32 bg-neutral-50 relative overflow-hidden">
+    <section id="highlights" className="py-24 md:py-32 bg-neutral-50 relative overflow-hidden scroll-mt-24">
       {/* Animated background elements */}
       <motion.div
         style={{ y }}
         className="absolute top-20 right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-20"
       />
       <motion.div
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
+        style={{ y: useTransform(scrollYProgress, [0, 1], [0, 30]) }}
         className="absolute bottom-20 left-10 w-64 h-64 bg-neutral-200 rounded-full blur-3xl opacity-20"
       />
 
@@ -26,10 +26,10 @@ const Highlights = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-8"
         >
           <motion.div
-            className="flex items-center gap-4 mb-4"
+            className="flex items-center gap-4 mb-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -49,49 +49,38 @@ const Highlights = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {highlights.map((highlight, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(highlights || []).map((highlight, index) => {
             const Icon = getIcon(highlight.icon);
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={`${highlight.title}-${index}`}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group bg-white border border-neutral-200 rounded-2xl p-8 hover:border-black hover:shadow-2xl transition-all duration-300 cursor-pointer relative overflow-hidden"
+                transition={{ delay: index * 0.05, duration: 0.5 }}
+                whileHover={{ y: -4 }}
+                className="group bg-white border border-neutral-200 rounded-2xl p-6 hover:border-blue-400 hover:shadow-lg transition-all duration-300"
                 data-testid={`highlight-card-${index}`}
               >
-                {/* Animated gradient background on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
-                />
-                
-                <div className="relative z-10">
-                  <motion.div
-                    className="mb-4"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                  </motion.div>
-                  <h3 className="text-xl font-semibold text-black mb-2 group-hover:text-blue-600 transition-colors">
-                    {highlight.title}
-                  </h3>
-                  <p className="text-neutral-600 leading-relaxed">
-                    {highlight.description}
-                  </p>
+                {highlight.category && (
+                  <div className="text-[0.65rem] uppercase tracking-[0.2em] text-neutral-400 font-semibold mb-2">
+                    {highlight.category}
+                  </div>
+                )}
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-blue-600">
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-black mb-1 transition-colors group-hover:text-blue-600">
+                      {highlight.title}
+                    </h3>
+                    <p className="text-sm text-neutral-600">
+                      {highlight.description}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Corner accent */}
-                <motion.div
-                  className="absolute top-0 right-0 w-0 h-0 border-t-[30px] border-r-[30px] border-t-blue-100 border-r-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-                  initial={false}
-                />
               </motion.div>
             );
           })}

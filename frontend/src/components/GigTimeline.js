@@ -3,21 +3,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Clock, Music, Users, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { formatDate } from '../utils/helpers';
-import { resolveAssetUrl } from '../utils/assetUrl';
+import placeholderImage from '../assets/asset-placeholder.svg';
+import { assetUrl } from '../utils/assets';
 import djData from '../data/djData.json';
 import { DayPicker } from 'react-day-picker';
 
 const GigTimeline = () => {
   const { gigs, hero } = djData;
-  const fallbackGigImage = resolveAssetUrl(
-    hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg'
-  );
+  const fallbackGigImage = assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg');
   const [selectedGenre, setSelectedGenre] = useState('all');
   const [selectedCollective, setSelectedCollective] = useState('all');
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
   const [activeGig, setActiveGig] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [failedClips, setFailedClips] = useState({});
 
   const allGenres = useMemo(() => {
     const genres = new Set();
@@ -58,7 +58,7 @@ const GigTimeline = () => {
   }, [emblaApi]);
 
   const resolveGigAsset = useCallback(
-    (url) => resolveAssetUrl(url) || fallbackGigImage,
+    (url) => assetUrl(url) || fallbackGigImage,
     [fallbackGigImage]
   );
 
@@ -84,6 +84,10 @@ const GigTimeline = () => {
       setShowCalendar(false);
     }
   };
+
+  const markClipFailed = useCallback((url) => {
+    setFailedClips((prev) => ({ ...prev, [url]: true }));
+  }, []);
 
   return (
     <section id="gigs" className="py-24 md:py-32 bg-transparent relative overflow-hidden">
@@ -241,9 +245,9 @@ const GigTimeline = () => {
                         loading="lazy"
                         decoding="async"
                         onError={(event) => {
-                          if (!gig.image || event.currentTarget.dataset.fallback === 'true') return;
+                          if (event.currentTarget.dataset.fallback === 'true') return;
                           event.currentTarget.dataset.fallback = 'true';
-                          event.currentTarget.src = gig.image;
+                          event.currentTarget.src = placeholderImage;
                         }}
                       />
                       
@@ -394,9 +398,9 @@ const GigTimeline = () => {
                       loading="lazy"
                       decoding="async"
                       onError={(event) => {
-                        if (!activeGig.image || event.currentTarget.dataset.fallback === 'true') return;
+                        if (event.currentTarget.dataset.fallback === 'true') return;
                         event.currentTarget.dataset.fallback = 'true';
-                        event.currentTarget.src = activeGig.image;
+                        event.currentTarget.src = placeholderImage;
                       }}
                     />
                     <div className="mt-4">
@@ -419,23 +423,32 @@ const GigTimeline = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {activeGig.clips.map((clip, idx) => {
                           if (clip.type === 'video') {
-                            const clipUrl = clip.url || '';
+                            const clipUrl = assetUrl(clip.url || '');
                             const lowerUrl = clipUrl.toLowerCase();
+                            if (failedClips[clipUrl]) {
+                              return (
+                                <a
+                                  key={`clip-${clipUrl}`}
+                                  href={clipUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center justify-center rounded-xl border border-red-500/30 bg-black/40 text-xs uppercase tracking-wider text-red-300 text-center px-3"
+                                >
+                                  Clip unavailable — open in new tab
+                                </a>
+                              );
+                            }
                             if (lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.mov')) {
                               return (
                                 <video
                                   key={idx}
-                                  src={resolveAssetUrl(clipUrl)}
+                                  src={clipUrl}
                                   poster={resolveGigAsset(activeGig.image)}
                                   preload="metadata"
                                   playsInline
                                   controls
                                   className="w-full h-48 object-cover border border-white/10"
-                                  onError={(event) => {
-                                    if (!clipUrl || event.currentTarget.dataset.fallback === 'true') return;
-                                    event.currentTarget.dataset.fallback = 'true';
-                                    event.currentTarget.src = clipUrl;
-                                  }}
+                                  onError={() => markClipFailed(clipUrl)}
                                 />
                               );
                             }
@@ -467,9 +480,9 @@ const GigTimeline = () => {
                                   loading="lazy"
                                   decoding="async"
                                   onError={(event) => {
-                                    if (!clip.thumbnail || event.currentTarget.dataset.fallback === 'true') return;
+                                    if (event.currentTarget.dataset.fallback === 'true') return;
                                     event.currentTarget.dataset.fallback = 'true';
-                                    event.currentTarget.src = clip.thumbnail;
+                                    event.currentTarget.src = placeholderImage;
                                   }}
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-xs uppercase tracking-widest text-white font-space-mono">
@@ -487,10 +500,9 @@ const GigTimeline = () => {
                               loading="lazy"
                               decoding="async"
                               onError={(event) => {
-                                const fallback = clip.url || clip.thumbnail;
-                                if (!fallback || event.currentTarget.dataset.fallback === 'true') return;
+                                if (event.currentTarget.dataset.fallback === 'true') return;
                                 event.currentTarget.dataset.fallback = 'true';
-                                event.currentTarget.src = fallback;
+                                event.currentTarget.src = placeholderImage;
                               }}
                             />
                           );
@@ -542,7 +554,7 @@ const GigTimeline = () => {
                   showOutsideDays
                   modifiers={{ performed: gigDates }}
                   modifiersStyles={{
-                    performed: { backgroundColor: '#d946ef', color: '#0b0b0b' }
+                    performed: { backgroundColor: 'rgb(255, 26, 64)', color: '#0b0b0b' }
                   }}
                   className="text-neutral-200"
                   classNames={{

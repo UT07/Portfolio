@@ -31,7 +31,7 @@ const Contact = () => {
   return (
     <section 
       id="contact" 
-      className={`py-24 md:py-32 relative overflow-hidden ${isProfessional ? 'bg-white' : 'bg-transparent'}`}
+      className={`py-24 md:py-32 relative overflow-hidden scroll-mt-24 ${isProfessional ? 'bg-white' : 'bg-transparent'}`}
     >
       {!isProfessional && <div className="absolute inset-0 bg-black/70 pointer-events-none" />}
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -40,7 +40,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <h2 className={`text-3xl md:text-4xl font-semibold tracking-tight mb-4 ${
             isProfessional 
