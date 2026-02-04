@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Header from './components/Header';
@@ -8,16 +8,23 @@ import Highlights from './components/Highlights';
 import About from './components/About';
 import Education from './components/Education';
 import Experience from './components/Experience';
-import Projects from './components/Projects';
 import TechStackSection from './components/TechStackSection';
 import Certifications from './components/Certifications';
-import Artist from './components/Artist';
-import GigCarousel from './components/GigCarousel';
-import Sets from './components/Sets';
-import PressKit from './components/PressKit';
 import Contact from './components/Contact';
 import { useMediaQuery } from './utils/useMediaQuery';
 import './App.css';
+
+const Projects = React.lazy(() => import('./components/Projects'));
+const Artist = React.lazy(() => import('./components/Artist'));
+const GigCarousel = React.lazy(() => import('./components/GigCarousel'));
+const Sets = React.lazy(() => import('./components/Sets'));
+const PressKit = React.lazy(() => import('./components/PressKit'));
+
+const SectionLoader = () => (
+  <div className="flex items-center justify-center py-24">
+    <div className="w-8 h-8 border-2 border-current border-t-transparent rounded-full animate-spin opacity-50" />
+  </div>
+);
 
 const AppContent = () => {
   const { mode, isProfessional } = useTheme();
@@ -153,7 +160,9 @@ const AppContent = () => {
               <About />
               <TechStackSection />
               <Experience />
-              <Projects />
+              <Suspense fallback={<SectionLoader />}>
+                <Projects />
+              </Suspense>
               <Certifications />
               <Education />
               <Contact />
@@ -167,10 +176,18 @@ const AppContent = () => {
               transition={{ duration: 0.5 }}
             >
               <DJHero />
-              <Artist />
-              <Sets />
-              <GigCarousel />
-              <PressKit />
+              <Suspense fallback={<SectionLoader />}>
+                <Artist />
+              </Suspense>
+              <Suspense fallback={<SectionLoader />}>
+                <Sets />
+              </Suspense>
+              <Suspense fallback={<SectionLoader />}>
+                <GigCarousel />
+              </Suspense>
+              <Suspense fallback={<SectionLoader />}>
+                <PressKit />
+              </Suspense>
               <Contact />
             </motion.div>
           )}

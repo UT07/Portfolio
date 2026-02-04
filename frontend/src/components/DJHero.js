@@ -93,6 +93,8 @@ const DJHero = () => {
         <img
           src={assetUrl(hero.hero_image)}
           alt="UT DJ"
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover opacity-40"
           loading="eager"
           decoding="async"

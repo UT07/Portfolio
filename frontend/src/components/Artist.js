@@ -142,9 +142,11 @@ const Artist = () => {
                 className="relative overflow-hidden border-2 border-red-500/50"
                 style={{ boxShadow: '0 0 30px rgba(255,26,64,0.3)' }}
               >
-                <img 
+                <img
                   src={assetUrl(artist.artist_image)}
                   alt="UT Artist"
+                  width={500}
+                  height={680}
                   className="w-full h-[360px] sm:h-[500px] lg:h-[680px] object-cover"
                   loading="lazy"
                   decoding="async"

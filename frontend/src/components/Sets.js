@@ -16,7 +16,11 @@ const Sets = () => {
     () => assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg'),
     [hero?.hero_image]
   );
-  const feedProxy = process.env.REACT_APP_FEED_PROXY || 'https://api.allorigins.win/raw?url=';
+
+  const useNetlifyFunctions = process.env.REACT_APP_USE_NETLIFY_FUNCTIONS === 'true';
+  const feedProxy = useNetlifyFunctions
+    ? '/.netlify/functions/feed-proxy?url='
+    : (process.env.REACT_APP_FEED_PROXY || 'https://api.allorigins.win/raw?url=');
   const fallbackYouTubeChannelId = 'UCWnMlnsp7eqI8iOCRmule8A';
   const compactFormatter = useMemo(
     () => new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }),
@@ -144,6 +148,10 @@ const Sets = () => {
     });
   }, [fallbackThumbnail, parseYear]);
 
+  const memoizedBuildFallbackStats = useCallback((platform) => {
+    return buildFallbackStats(platform);
+  }, []);
+
   useEffect(() => {
     const scClientId = process.env.REACT_APP_SOUNDCLOUD_CLIENT_ID;
     const scUserId = process.env.REACT_APP_SOUNDCLOUD_USER_ID;
@@ -154,7 +162,114 @@ const Sets = () => {
     const ytChannelId = process.env.REACT_APP_YOUTUBE_CHANNEL_ID || fallbackYouTubeChannelId;
     const ytHandle = process.env.REACT_APP_YOUTUBE_CHANNEL_HANDLE;
 
+    const fetchSoundCloudViaNetlify = async () => {
+      try {
+        let stats = null;
+        try {
+          const userRes = await fetch('/.netlify/functions/soundcloud?action=user');
+          if (userRes.ok) {
+            const userData = await userRes.json();
+            stats = [
+              { label: 'Followers', value: userData?.followers_count },
+              { label: 'Tracks', value: userData?.track_count },
+              { label: 'Likes', value: userData?.public_favorites_count }
+            ].filter((stat) => stat.value !== undefined && stat.value !== null);
+          }
+        } catch {
+          // Continue without stats
+        }
+
+        const tracksRes = await fetch('/.netlify/functions/soundcloud?action=tracks&limit=25');
+        if (!tracksRes.ok) throw new Error('SoundCloud fetch failed');
+        const { tracks } = await tracksRes.json();
+
+        return {
+          name: 'SoundCloud',
+          url: sets.platforms.find((p) => p.name === 'SoundCloud')?.url || 'https://soundcloud.com',
+          logo: '/images/logo-soundcloud.svg',
+          sets: tracks.map((track) => ({
+            title: track.title,
+            url: track.permalink_url,
+            date: parseYear(track.created_at),
+            duration: `${Math.max(1, Math.round(track.duration / 60000))} min`,
+            thumbnail: track.artwork_url ? track.artwork_url.replace('-large', '-t500x500') : fallbackThumbnail,
+            stats: [
+              { label: 'Plays', value: track.playback_count },
+              { label: 'Likes', value: track.likes_count },
+              { label: 'Reposts', value: track.reposts_count }
+            ].filter((stat) => stat.value !== undefined && stat.value !== null)
+          })),
+          stats
+        };
+      } catch {
+        return null;
+      }
+    };
+
+    const fetchYouTubeViaNetlify = async () => {
+      try {
+        const channelRes = await fetch('/.netlify/functions/youtube?action=channel');
+        if (!channelRes.ok) throw new Error('YouTube channel fetch failed');
+        const channelData = await channelRes.json();
+        const playlistId = channelData.uploadsPlaylistId;
+        const channelStats = channelData.statistics;
+
+        if (!playlistId) throw new Error('No uploads playlist found');
+
+        const playlistRes = await fetch(`/.netlify/functions/youtube?action=playlist&playlistId=${playlistId}&maxResults=12`);
+        if (!playlistRes.ok) throw new Error('YouTube playlist fetch failed');
+        const { items } = await playlistRes.json();
+
+        const videoIds = items.map((item) => item.videoId).filter(Boolean);
+        let videoStats = {};
+        if (videoIds.length > 0) {
+          const statsRes = await fetch(`/.netlify/functions/youtube?action=videos&ids=${videoIds.join(',')}`);
+          if (statsRes.ok) {
+            const statsData = await statsRes.json();
+            videoStats = statsData.stats || {};
+          }
+        }
+
+        return {
+          name: 'YouTube',
+          url: `https://www.youtube.com/playlist?list=${playlistId}`,
+          logo: '/images/logo-youtube.svg',
+          sets: items.map((item) => ({
+            title: item.title || 'YouTube set',
+            url: `https://www.youtube.com/watch?v=${item.videoId}`,
+            date: parseYear(item.publishedAt),
+            duration: 'Live',
+            thumbnail: item.thumbnail || fallbackThumbnail,
+            stats: (() => {
+              const stats = videoStats[item.videoId] || {};
+              const list = [
+                { label: 'Views', value: stats.viewCount },
+                { label: 'Likes', value: stats.likeCount },
+                { label: 'Comments', value: stats.commentCount }
+              ].filter((stat) => stat.value !== undefined && stat.value !== null);
+              return list.length > 0 ? list : null;
+            })()
+          })),
+          stats: channelStats
+            ? [
+                channelStats.hiddenSubscriberCount
+                  ? null
+                  : { label: 'Subscribers', value: channelStats.subscriberCount },
+                { label: 'Views', value: channelStats.viewCount },
+                { label: 'Videos', value: channelStats.videoCount }
+              ].filter(Boolean)
+            : null
+        };
+      } catch {
+        return null;
+      }
+    };
+
     const fetchSoundCloud = async () => {
+      if (useNetlifyFunctions) {
+        return fetchSoundCloudViaNetlify();
+      }
+
       let userId = scUserId;
       if (!userId && scProfileUrl) {
         userId = await resolveSoundCloudUserId(scProfileUrl);
@@ -220,11 +335,15 @@ const Sets = () => {
         url: sets.platforms.find((p) => p.name === 'SoundCloud')?.url || 'https://soundcloud.com',
         logo: '/images/logo-soundcloud.svg',
         sets: rssSets,
-        stats: buildFallbackStats({ name: 'SoundCloud', sets: rssSets })
+        stats: memoizedBuildFallbackStats({ name: 'SoundCloud', sets: rssSets })
       };
     };
 
     const fetchYouTube = async () => {
+      if (useNetlifyFunctions) {
+        return fetchYouTubeViaNetlify();
+      }
+
       let playlistId = ytPlaylistId;
       let channelStats = null;
 
@@ -322,7 +441,7 @@ const Sets = () => {
         url: `https://www.youtube.com/channel/${ytChannelId}`,
         logo: '/images/logo-youtube.svg',
         sets: rssSets,
-        stats: buildFallbackStats({ name: 'YouTube', sets: rssSets })
+        stats: memoizedBuildFallbackStats({ name: 'YouTube', sets: rssSets })
       };
     };
 
@@ -360,7 +479,9 @@ const Sets = () => {
     parseSoundCloudRss,
     parseYouTubeRss,
     parseYear,
-    resolveSoundCloudUserId
+    resolveSoundCloudUserId,
+    useNetlifyFunctions,
+    memoizedBuildFallbackStats
   ]);
 
   const openExternal = (url) => {
@@ -537,9 +658,11 @@ const Sets = () => {
                     >
                       {/* Thumbnail */}
                       <div className="relative h-64 overflow-hidden">
-                        <img 
+                        <img
                           src={assetUrl(set.thumbnail)}
                           alt={set.title}
+                          width={500}
+                          height={256}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           loading="lazy"
                           decoding="async"

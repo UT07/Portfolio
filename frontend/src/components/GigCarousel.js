@@ -175,6 +175,8 @@ const GigCarousel = () => {
                           <img
                             src={assetUrl(gig.image)}
                             alt={`${gig.event} cover`}
+                            width={640}
+                            height={256}
                             className="w-full h-64 object-cover"
                             loading="lazy"
                             decoding="async"
