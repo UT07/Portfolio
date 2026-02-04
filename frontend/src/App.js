@@ -43,9 +43,9 @@ const AppContent = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.7 }}
-      className={`min-h-screen relative ${
-        isProfessional 
-          ? 'bg-white text-black font-inter' 
+      className={`min-h-screen relative overflow-x-hidden ${
+        isProfessional
+          ? 'bg-white text-black font-inter'
           : 'bg-black text-white font-space-mono dj-mode'
       }`}
       style={{

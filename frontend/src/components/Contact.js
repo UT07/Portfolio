@@ -45,7 +45,7 @@ const Contact = () => {
           <h2 className={`text-3xl md:text-4xl font-semibold tracking-tight mb-4 ${
             isProfessional 
               ? 'text-black' 
-              : 'text-white font-unbounded uppercase text-4xl md:text-6xl font-bold tracking-widest'
+              : 'text-white font-unbounded uppercase text-4xl md:text-6xl font-bold tracking-wide md:tracking-widest'
           }`}>
             {isProfessional ? 'Contact' : (djData.contact.booking_title || 'Contact')}
           </h2>

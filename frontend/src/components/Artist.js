@@ -46,7 +46,7 @@ const Artist = () => {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 />
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest text-white font-unbounded leading-tight">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wide md:tracking-widest text-white font-unbounded leading-tight">
                 {enablePerWord ? (
                   titleWords.map((word, index) => (
                     <motion.span

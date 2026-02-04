@@ -109,7 +109,7 @@ const GigCarousel = () => {
             <div>
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-1 bg-gradient-to-r from-red-500 to-red-300" />
-                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest text-white font-unbounded">
+                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wide md:tracking-widest text-white font-unbounded">
                   Gig Timeline
                 </h2>
               </div>

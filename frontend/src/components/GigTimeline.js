@@ -123,7 +123,7 @@ const GigTimeline = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             />
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest text-white font-unbounded">
+            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wide md:tracking-widest text-white font-unbounded">
               {['Gig', 'Timeline'].map((word, index) => (
                 <motion.span
                   key={index}

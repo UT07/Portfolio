@@ -54,7 +54,7 @@ const PressKit = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest text-white mb-4 font-unbounded">
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wide md:tracking-widest text-white mb-4 font-unbounded">
             {pressKit.title}
           </h2>
           <p className="text-sm md:text-base font-medium tracking-wide text-neutral-400 font-space-mono">
