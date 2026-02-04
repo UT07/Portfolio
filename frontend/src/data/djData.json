@@ -3,8 +3,8 @@
     "name": "UT",
     "badge": "DJ (Dublin)",
     "headline": "High-energy club music with a silly grin and a serious bounce.",
-    "subheadline": "Fast, bouncy, euphoric sets between hard groove, trance flavours, hard dance pressure, donk, and 240-leaning chaos — built for the room, never on autopilot.",
-    "genres": "Hard Bounce (240 KMH) · Hard Techno · Hard Dance · Trance · Hard Groove · Donk · Tribal / Makina · Melodic Techno",
+    "subheadline": "Fast, bouncy, euphoric sets between hard groove, trance flavours, hard dance pressure, donk, and 240-leaning chaos \u2014 built for the room, never on autopilot.",
+    "genres": "Hard Bounce (240 KMH) \u00b7 Hard Techno \u00b7 Hard Dance \u00b7 Trance \u00b7 Hard Groove \u00b7 Donk \u00b7 Tribal / Makina \u00b7 Melodic Techno",
     "hero_image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3202.jpg",
     "ctas": [
       {
@@ -25,10 +25,10 @@
   },
   "artist": {
     "title": "Raised in India, shaping Dublin's dancefloors",
-    "bio": "I'm UT — a Dublin-based DJ who grew up in India and brings that energy to every set. I treat each performance like a conversation with the crowd. My sound lives in the sweet spot where punchy grooves meet euphoric melodies: hard bounce and hard dance pressure, trancey peaks, and playful curveballs when the room's ready.\n\nI'm not here to maintain a vibe. I'm here to move it — fast mixes, cheeky switches, and momentum that keeps climbing. Whether it's a packed club night, a rooftop session, or a festival stage, the goal is the same: shared release.",
+    "bio": "I'm UT \u2014 a Dublin-based DJ who grew up in India and brings that energy to every set. I treat each performance like a conversation with the crowd. My sound lives in the sweet spot where punchy grooves meet euphoric melodies: hard bounce and hard dance pressure, trancey peaks, and playful curveballs when the room's ready.\n\nI'm not here to maintain a vibe. I'm here to move it \u2014 fast mixes, cheeky switches, and momentum that keeps climbing. Whether it's a packed club night, a rooftop session, or a festival stage, the goal is the same: shared release.",
     "artist_image": "/images/PICTURES/REDLINE%20HORIZON/Cris35mm_4073.jpg",
     "highlights": [
-      "Typical tempo: 155–180 BPM (higher when it makes sense)",
+      "Typical tempo: 155\u2013180 BPM (higher when it makes sense)",
       "Styles: hard bounce, hard techno, hard dance, trance, hard groove, donk, tribal/makina, melodic techno",
       "Sets: high-energy, cheeky, euphoric, crowd-led"
     ]
@@ -36,11 +36,11 @@
   "gigs": [
     {
       "id": "gig-15",
-      "event": "Redline — The Horizon",
+      "event": "Redline \u2014 The Horizon",
       "collective": "Redline",
       "date": "2026-01-23",
       "location": "Racket Space, Dublin, Ireland",
-      "time": "1:00 AM – 2:00 AM",
+      "time": "1:00 AM \u2013 2:00 AM",
       "genre": [
         "Hard Dance",
         "Hard Bounce"
@@ -65,11 +65,11 @@
     },
     {
       "id": "gig-14",
-      "event": "Politeknik — Back to the Future (Terrace Closing)",
+      "event": "Politeknik \u2014 Back to the Future (Terrace Closing)",
       "collective": "Politeknik",
       "date": "2026-01-17",
       "location": "Soundhouse Terrace, Dublin, Ireland",
-      "time": "12:00 AM – 1:00 AM (closing)",
+      "time": "12:00 AM \u2013 1:00 AM (closing)",
       "genre": [
         "Hard Bounce",
         "Donk",
@@ -85,19 +85,19 @@
       "clips": [
         {
           "type": "video",
-          "url": "/videos/POLITEKNIK%20B2F/IMG_0477.MOV"
+          "url": "/videos/POLITEKNIK%20B2F/IMG_0477.mp4"
         },
         {
           "type": "video",
-          "url": "/videos/POLITEKNIK%20B2F/IMG_0478.MOV"
+          "url": "/videos/POLITEKNIK B2F/IMG_0478.mp4"
         },
         {
           "type": "video",
-          "url": "/videos/POLITEKNIK%20B2F/IMG_0479.MOV"
+          "url": "/videos/POLITEKNIK B2F/IMG_0479.mp4"
         },
         {
           "type": "video",
-          "url": "/videos/POLITEKNIK%20B2F/IMG_0480.MOV"
+          "url": "/videos/POLITEKNIK B2F/IMG_0480.mp4"
         }
       ]
     },
@@ -107,7 +107,7 @@
       "collective": "Immersive",
       "date": "2025-10-24",
       "location": "Soundhouse Terrace, Dublin, Ireland",
-      "time": "12:00 AM – 1:00 AM (closing)",
+      "time": "12:00 AM \u2013 1:00 AM (closing)",
       "genre": [
         "Hard Bounce",
         "Donk",
@@ -123,17 +123,17 @@
       "clips": [
         {
           "type": "video",
-          "url": "/videos/IMMERSIVE%20X%20POLITEKNIK/4db8f1318b8f45c08c36cecc16a501e0.mov"
+          "url": "/videos/IMMERSIVE%20X%20POLITEKNIK/4db8f1318b8f45c08c36cecc16a501e0.mp4"
         }
       ]
     },
     {
       "id": "gig-12",
-      "event": "Immersive — EREBUS",
+      "event": "Immersive \u2014 EREBUS",
       "collective": "Immersive",
       "date": "2025-10-03",
       "location": "Racket Space, Dublin, Ireland",
-      "time": "1:00 AM – 2:00 AM",
+      "time": "1:00 AM \u2013 2:00 AM",
       "genre": [
         "Hard Groove",
         "Hard Bounce"
@@ -148,17 +148,17 @@
         },
         {
           "type": "video",
-          "url": "/videos/IMMERSIVE%20EREBUS/a50d0880afc04f09a1836a5e08f17193.mov"
+          "url": "/videos/IMMERSIVE%20EREBUS/a50d0880afc04f09a1836a5e08f17193.mp4"
         }
       ]
     },
     {
       "id": "gig-11",
-      "event": "Electric Picnic — Cerebral Fortress Stage",
+      "event": "Electric Picnic \u2014 Cerebral Fortress Stage",
       "collective": "Festival",
       "date": "2025-09-01",
       "location": "Ireland",
-      "time": "4:30 PM – 5:30 PM",
+      "time": "4:30 PM \u2013 5:30 PM",
       "genre": [
         "Hard Bounce",
         "Hard Trance"
@@ -181,7 +181,7 @@
       "collective": "Underground",
       "date": "2025-08-25",
       "location": "Private",
-      "time": "Daytime · 2 hours",
+      "time": "Daytime \u00b7 2 hours",
       "genre": [
         "Hard Bounce"
       ],
@@ -212,11 +212,11 @@
     },
     {
       "id": "gig-9",
-      "event": "Disconnect — The Unknown",
+      "event": "Disconnect \u2014 The Unknown",
       "collective": "Disconnect",
       "date": "2025-08-16",
       "location": "Opium Garden, Dublin, Ireland",
-      "time": "9:00 PM – 10:00 PM",
+      "time": "9:00 PM \u2013 10:00 PM",
       "genre": [
         "Melodic Techno"
       ],
@@ -227,11 +227,11 @@
     },
     {
       "id": "gig-8",
-      "event": "Redline — The Awakening",
+      "event": "Redline \u2014 The Awakening",
       "collective": "Redline",
       "date": "2025-07-25",
       "location": "Racket Space, Dublin, Ireland",
-      "time": "11:00 PM – 12:00 AM",
+      "time": "11:00 PM \u2013 12:00 AM",
       "genre": [
         "Trance",
         "Hard Dance"
@@ -244,29 +244,29 @@
       "clips": [
         {
           "type": "video",
-          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9045.MOV"
+          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9045.mp4"
         },
         {
           "type": "video",
-          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9046.MOV"
+          "url": "/videos/REDLINE ASCENSION/Copy of IMG_9046.mp4"
         },
         {
           "type": "video",
-          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9047.MOV"
+          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9047.mp4"
         },
         {
           "type": "video",
-          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9049.MOV"
+          "url": "/videos/REDLINE%20ASCENSION/Copy%20of%20IMG_9049.mp4"
         }
       ]
     },
     {
       "id": "gig-7",
-      "event": "Ravemate x D-EVENTZ — Sundown to Shutdown",
+      "event": "Ravemate x D-EVENTZ \u2014 Sundown to Shutdown",
       "collective": "Ravemate",
       "date": "2025-06-20",
       "location": "Hyde Rooftop, Dublin, Ireland",
-      "time": "11:15 PM – 12:15 AM",
+      "time": "11:15 PM \u2013 12:15 AM",
       "genre": [
         "Indo-melodic"
       ],
@@ -288,11 +288,11 @@
     },
     {
       "id": "gig-6",
-      "event": "Redline — The Beginning",
+      "event": "Redline \u2014 The Beginning",
       "collective": "Redline",
       "date": "2025-05-30",
       "location": "Racket Space, Dublin, Ireland",
-      "time": "11:00 PM – 12:00 AM",
+      "time": "11:00 PM \u2013 12:00 AM",
       "genre": [
         "Trance",
         "Hard Dance"
@@ -316,14 +316,14 @@
       "collective": "TRP",
       "date": "2025-05-17",
       "location": "The Grand Social, Dublin, Ireland",
-      "time": "10:00 PM – 11:00 PM",
+      "time": "10:00 PM \u2013 11:00 PM",
       "genre": [
         "Melodic Techno"
       ],
       "tags": [
         "opening act"
       ],
-      "description": "Opening set for TH;EN Music / Afterlife during TRP’s Celestial night.",
+      "description": "Opening set for TH;EN Music / Afterlife during TRP\u2019s Celestial night.",
       "image": "/images/PICTURES/TRP/IMG_4013.jpeg",
       "clips": [
         {
@@ -346,7 +346,7 @@
       "collective": "Competition",
       "date": "2025-03-28",
       "location": "Workman's Cellar Club, Dublin, Ireland",
-      "time": "11:30 PM – 12:00 AM",
+      "time": "11:30 PM \u2013 12:00 AM",
       "genre": [
         "Hard Techno"
       ],
@@ -377,11 +377,11 @@
     },
     {
       "id": "gig-3",
-      "event": "Top Secret Party — Operation Shamrock",
+      "event": "Top Secret Party \u2014 Operation Shamrock",
       "collective": "Top Secret Party",
       "date": "2025-03-16",
       "location": "Dublin, Ireland",
-      "time": "4:00 AM – 5:00 AM",
+      "time": "4:00 AM \u2013 5:00 AM",
       "genre": [
         "Hard Techno"
       ],
@@ -407,7 +407,7 @@
     },
     {
       "id": "gig-2",
-      "event": "Ravemate — Pizza Room",
+      "event": "Ravemate \u2014 Pizza Room",
       "collective": "Ravemate",
       "date": "2025-01-26",
       "location": "Jackie's, Dublin, Ireland",
@@ -437,7 +437,7 @@
       "collective": "Immersive",
       "date": "2025-01-03",
       "location": "Soundhouse, Dublin, Ireland",
-      "time": "11:00 PM – 12:00 AM",
+      "time": "11:00 PM \u2013 12:00 AM",
       "genre": [
         "Hard Techno"
       ],
@@ -451,7 +451,7 @@
         },
         {
           "type": "video",
-          "url": "/videos/IMMERSIVE%20SH/8b7f6dbbe548429fb6a3cafe51e9c3ec.mov"
+          "url": "/videos/IMMERSIVE%20SH/8b7f6dbbe548429fb6a3cafe51e9c3ec.mp4"
         }
       ]
     }
@@ -522,10 +522,10 @@
     "title": "Press Kit",
     "description": "Download materials for promoters, press, and media",
     "bio_short": "UT is a Dublin-based DJ from India known for fast, bouncy sets across hard bounce, hard dance, and trance. He reads the room, lifts the energy, and keeps the pressure rising.",
-    "bio_long": "UT is a Dublin-based DJ who grew up in India and now shapes late-night floors across the city. His sets live between hard bounce, hard dance, trance, and hard groove — tight transitions, playful switch-ups, and a focus on momentum.\n\nTypical tempo sits in the 155–180 BPM range, with higher bursts when the room wants it. Whether it's a packed club night, a rooftop session, or a festival stage, the goal stays the same: build tension, create release, and leave the crowd buzzing.\n\nRecent appearances include Racket Space, Soundhouse Terrace, The Grand Social, Hyde Rooftop, and Electric Picnic. UT is a core member of the Redline collective and has played alongside Immersive, Politeknik, Ravemate, and more.",
+    "bio_long": "UT is a Dublin-based DJ who grew up in India and now shapes late-night floors across the city. His sets live between hard bounce, hard dance, trance, and hard groove \u2014 tight transitions, playful switch-ups, and a focus on momentum.\n\nTypical tempo sits in the 155\u2013180 BPM range, with higher bursts when the room wants it. Whether it's a packed club night, a rooftop session, or a festival stage, the goal stays the same: build tension, create release, and leave the crowd buzzing.\n\nRecent appearances include Racket Space, Soundhouse Terrace, The Grand Social, Hyde Rooftop, and Electric Picnic. UT is a core member of the Redline collective and has played alongside Immersive, Politeknik, Ravemate, and more.",
     "technical_rider": {
       "title": "Technical Rider (Pioneer-focused)",
-      "notes": "Industry-standard club setup preferred. No DJM‑V10.",
+      "notes": "Industry-standard club setup preferred. No DJM\u2011V10.",
       "sections": [
         {
           "title": "Mixers",

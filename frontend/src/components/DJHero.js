@@ -4,10 +4,13 @@ import { ExternalLink, Play } from 'lucide-react';
 import djData from '../data/djData.json';
 import { assetUrl } from '../utils/assets';
 import placeholderImage from '../assets/asset-placeholder.svg';
+import { useMediaQuery } from '../utils/useMediaQuery';
 
 const DJHero = () => {
   const { hero } = djData;
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const reduceAmbient = prefersReducedMotion || isMobile;
   const [replayKey, setReplayKey] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [bouncePlayed, setBouncePlayed] = useState(false);
@@ -107,15 +110,15 @@ const DJHero = () => {
 
       {/* Animated grid overlay */}
       <div className="absolute inset-0 opacity-10">
-        <motion.div
+          <motion.div
           className="absolute inset-0"
           style={{
             backgroundImage:
               'linear-gradient(rgba(255,26,64,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,94,112,0.3) 1px, transparent 1px)',
             backgroundSize: '60px 60px'
           }}
-          animate={prefersReducedMotion ? undefined : { backgroundPosition: ['0px 0px', '60px 60px'] }}
-          transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
+          animate={reduceAmbient ? undefined : { backgroundPosition: ['0px 0px', '60px 60px'] }}
+          transition={reduceAmbient ? undefined : { duration: 80, repeat: Infinity, ease: 'linear' }}
         />
       </div>
 
@@ -123,14 +126,14 @@ const DJHero = () => {
       <motion.div
         className="absolute -top-40 -left-32 w-[520px] h-[520px] rounded-full border border-red-500/30 blur-[1px]"
         style={{ boxShadow: '0 0 80px rgba(255,26,64,0.55)' }}
-        animate={prefersReducedMotion ? undefined : { rotate: 360, scale: [1, 1.03, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
+        animate={reduceAmbient ? undefined : { rotate: 360, scale: [1, 1.03, 1], opacity: [0.2, 0.4, 0.2] }}
+        transition={reduceAmbient ? undefined : { duration: 80, repeat: Infinity, ease: 'linear' }}
       />
       <motion.div
         className="absolute -bottom-48 -right-40 w-[620px] h-[620px] rounded-full border border-red-500/20 blur-[2px]"
         style={{ boxShadow: '0 0 90px rgba(255,26,64,0.45)' }}
-        animate={prefersReducedMotion ? undefined : { rotate: -360, scale: [1, 1.04, 1], opacity: [0.2, 0.35, 0.2] }}
-        transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
+        animate={reduceAmbient ? undefined : { rotate: -360, scale: [1, 1.04, 1], opacity: [0.2, 0.35, 0.2] }}
+        transition={reduceAmbient ? undefined : { duration: 90, repeat: Infinity, ease: 'linear' }}
       />
 
       {/* Neon sweep */}
@@ -140,8 +143,8 @@ const DJHero = () => {
           background:
             'conic-gradient(from 90deg, rgba(255,26,64,0.0), rgba(255,26,64,0.5), rgba(255,26,64,0.0) 60%)'
         }}
-        animate={prefersReducedMotion ? undefined : { rotate: 360 }}
-        transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
+        animate={reduceAmbient ? undefined : { rotate: 360 }}
+        transition={reduceAmbient ? undefined : { duration: 90, repeat: Infinity, ease: 'linear' }}
       />
 
       {/* Content */}
