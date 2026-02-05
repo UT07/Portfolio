@@ -12,3 +12,8 @@ frontend/public/images/THUMBS/
 # Keep small local assets that aren't on S3
 !frontend/public/images/logo-*.svg
 !frontend/public/images/gig-placeholder.svg
+ADMIN_RESTRUCTURE_PROMPT.md
+admin/.env
+frontend/.env
+frontend/.env
+frontend/.env

@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 import { assetUrl } from '../utils/assets';
 import placeholderImage from '../assets/asset-placeholder.svg';
 
 const About = () => {
+  const { data: professionalData } = useProfessionalData();
   const { about } = professionalData;
   const headshotSrc = assetUrl('/images/utkarsh-headshot.jpg');
 

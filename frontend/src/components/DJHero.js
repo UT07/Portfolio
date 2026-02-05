@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ExternalLink, Play } from 'lucide-react';
-import djData from '../data/djData.json';
+import { useDJData } from '../contexts/ContentContext';
 import { assetUrl } from '../utils/assets';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { useMediaQuery } from '../utils/useMediaQuery';
 
 const DJHero = () => {
+  const { data: djData } = useDJData();
   const { hero } = djData;
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useMediaQuery('(max-width: 768px)');

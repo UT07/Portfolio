@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Download, Linkedin, ExternalLink } from 'lucide-react';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 import { assetUrl } from '../utils/assets';
 
 const ProfessionalHero = () => {
+  const { data: professionalData } = useProfessionalData();
   const { hero } = professionalData;
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);

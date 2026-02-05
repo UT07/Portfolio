@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, ExternalLink } from 'lucide-react';
 import { SiSoundcloud, SiYoutube } from 'react-icons/si';
-import djData from '../data/djData.json';
+import { useDJData } from '../contexts/ContentContext';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
 
 const Sets = () => {
+  const { data: djData } = useDJData();
   const { sets, hero } = djData;
   const [remotePlatforms, setRemotePlatforms] = useState(null);
   const [isLoading, setIsLoading] = useState(false);

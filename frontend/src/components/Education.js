@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, GraduationCap, Award, BookOpen, Github, FileText, FileCode } from 'lucide-react';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 import { assetUrl } from '../utils/assets';
 
 const Education = () => {
+  const { data: professionalData } = useProfessionalData();
   const { education } = professionalData;
   const [expandedIndex, setExpandedIndex] = useState(null);
 

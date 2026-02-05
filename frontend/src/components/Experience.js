@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, CheckCircle2 } from 'lucide-react';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 
 const Experience = () => {
+  const { data: professionalData } = useProfessionalData();
   const { experience } = professionalData;
 
   return (

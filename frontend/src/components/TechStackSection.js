@@ -42,9 +42,10 @@ import {
   SiTypescript,
   SiYaml
 } from 'react-icons/si';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 
 const TechStackSection = () => {
+  const { data: professionalData } = useProfessionalData();
   const { skills } = professionalData;
 
   const normalizeSkills = useCallback((value) => {

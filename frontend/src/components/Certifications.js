@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 
 const Certifications = () => {
+  const { data: professionalData } = useProfessionalData();
   const { certifications } = professionalData;
 
   return (

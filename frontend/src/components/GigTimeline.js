@@ -5,10 +5,11 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { formatDate } from '../utils/helpers';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
-import djData from '../data/djData.json';
+import { useDJData } from '../contexts/ContentContext';
 import { DayPicker } from 'react-day-picker';
 
 const GigTimeline = () => {
+  const { data: djData } = useDJData();
   const { gigs, hero } = djData;
   const fallbackGigImage = assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg');
   const [selectedGenre, setSelectedGenre] = useState('all');

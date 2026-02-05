@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import djData from '../data/djData.json';
+import { useDJData } from '../contexts/ContentContext';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
 
 const PressKit = () => {
+  const { data: djData } = useDJData();
   const { pressKit } = djData;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeSection, setActiveSection] = useState(0);

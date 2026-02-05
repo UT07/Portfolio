@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, Github, Linkedin, Music, Video } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import professionalData from '../data/professionalData.json';
-import djData from '../data/djData.json';
+import { useProfessionalData, useDJData } from '../contexts/ContentContext';
 
 const Contact = () => {
   const { isProfessional } = useTheme();
+  const { data: professionalData } = useProfessionalData();
+  const { data: djData } = useDJData();
   const contactData = isProfessional ? professionalData.contact : djData.contact;
   
   const [formData, setFormData] = useState({

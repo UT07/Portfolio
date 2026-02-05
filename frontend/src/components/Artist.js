@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import djData from '../data/djData.json';
+import { useDJData } from '../contexts/ContentContext';
 import { assetUrl } from '../utils/assets';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { useMediaQuery } from '../utils/useMediaQuery';
 
 const Artist = () => {
+  const { data: djData } = useDJData();
   const { artist } = djData;
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useMediaQuery('(max-width: 768px)');

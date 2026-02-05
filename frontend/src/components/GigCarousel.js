@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, ChevronLeft, ChevronRight, Clock, MapPin, Music, X } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { DayPicker } from 'react-day-picker';
-import djData from '../data/djData.json';
+import { useDJData } from '../contexts/ContentContext';
 import { formatDate } from '../utils/helpers';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
 
 const GigCarousel = () => {
+  const { data: djData } = useDJData();
   const { gigs, hero } = djData;
   const fallbackPoster = assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg');
   const [sortOrder, setSortOrder] = useState('desc');

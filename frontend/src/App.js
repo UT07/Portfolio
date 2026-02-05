@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { ContentProvider } from './contexts/ContentContext';
 import Header from './components/Header';
 import ProfessionalHero from './components/ProfessionalHero';
 import DJHero from './components/DJHero';
@@ -200,7 +201,9 @@ const AppContent = () => {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <ContentProvider>
+        <AppContent />
+      </ContentProvider>
     </ThemeProvider>
   );
 }

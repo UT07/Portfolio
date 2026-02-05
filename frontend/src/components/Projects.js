@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, FileText, FileCode } from 'lucide-react';
-import projectsData from '../data/projectsData.json';
+import { useProjectsData } from '../contexts/ContentContext';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
 
 const Projects = () => {
+  const { data: projectsData } = useProjectsData();
   const { featured, github_projects } = projectsData;
   const handleImgError = (event) => {
     if (event.currentTarget.dataset.fallback === 'true') return;

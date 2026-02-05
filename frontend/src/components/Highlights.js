@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { getIcon } from '../utils/helpers';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 
 const Highlights = () => {
+  const { data: professionalData } = useProfessionalData();
   const { highlights } = professionalData;
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -30]);

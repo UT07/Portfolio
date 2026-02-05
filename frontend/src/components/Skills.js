@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import professionalData from '../data/professionalData.json';
+import { useProfessionalData } from '../contexts/ContentContext';
 
 const Skills = () => {
+  const { data: professionalData } = useProfessionalData();
   const { skills } = professionalData;
   const [selectedCategory, setSelectedCategory] = useState(0);
 
