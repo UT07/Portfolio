@@ -16,7 +16,7 @@ class ProjectBase(BaseModel):
     is_published: bool = False
     is_featured: bool = False
     tags: Optional[List[str]] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
 
 
 class ProjectCreate(ProjectBase):
@@ -34,7 +34,7 @@ class ProjectUpdate(BaseModel):
     is_published: Optional[bool] = None
     is_featured: Optional[bool] = None
     tags: Optional[List[str]] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
     section_id: Optional[UUID] = None
 
 

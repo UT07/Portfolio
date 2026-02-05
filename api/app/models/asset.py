@@ -39,7 +39,7 @@ class Asset(Base):
     duration: Mapped[Optional[int]] = mapped_column(Integer)
     alt_text: Mapped[Optional[str]] = mapped_column(String(255))
     caption: Mapped[Optional[str]] = mapped_column(Text)
-    metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSONB)
+    extra_data: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),

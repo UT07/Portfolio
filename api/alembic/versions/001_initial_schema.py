@@ -75,7 +75,7 @@ def upgrade() -> None:
         sa.Column("is_published", sa.Boolean(), default=False, index=True),
         sa.Column("is_featured", sa.Boolean(), default=False),
         sa.Column("tags", postgresql.ARRAY(sa.String(50))),
-        sa.Column("metadata", postgresql.JSONB()),
+        sa.Column("extra_data", postgresql.JSONB()),
         sa.Column(
             "created_at",
             sa.DateTime(timezone=True),
@@ -114,7 +114,7 @@ def upgrade() -> None:
         sa.Column("duration", sa.Integer()),
         sa.Column("alt_text", sa.String(255)),
         sa.Column("caption", sa.Text()),
-        sa.Column("metadata", postgresql.JSONB()),
+        sa.Column("extra_data", postgresql.JSONB()),
         sa.Column(
             "created_at",
             sa.DateTime(timezone=True),

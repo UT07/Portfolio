@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 class AssetBase(BaseModel):
     alt_text: Optional[str] = Field(None, max_length=255)
     caption: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
 
 
 class AssetCreate(AssetBase):
@@ -19,7 +19,7 @@ class AssetUpdate(BaseModel):
     project_id: Optional[UUID] = None
     alt_text: Optional[str] = Field(None, max_length=255)
     caption: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
 
 
 class AssetResponse(BaseModel):
@@ -39,7 +39,7 @@ class AssetResponse(BaseModel):
     duration: Optional[int] = None
     alt_text: Optional[str] = None
     caption: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    extra_data: Optional[Dict[str, Any]] = None
     created_at: datetime
     updated_at: datetime
 

@@ -40,7 +40,7 @@ class Project(Base):
     is_published: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     is_featured: Mapped[bool] = mapped_column(Boolean, default=False)
     tags: Mapped[Optional[List[str]]] = mapped_column(ARRAY(String(50)))
-    metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSONB)
+    extra_data: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),

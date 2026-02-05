@@ -84,7 +84,7 @@ class ContentService:
             "thumbnail_url": project.thumbnail_url,
             "is_featured": project.is_featured,
             "tags": project.tags or [],
-            "metadata": project.metadata,
+            "extra_data": project.extra_data,
             "published_at": project.published_at.isoformat() if project.published_at else None,
             "assets": [
                 ContentService._asset_to_dict(a)
