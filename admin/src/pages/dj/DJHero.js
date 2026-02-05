@@ -101,6 +101,7 @@ export default function DJHero() {
       // Save artist
       if (artistProject) {
         await api.updateProject(artistProject.id, {
+          title: artistProject.title || 'Artist',  // Required field
           subtitle: artist.tagline,
           description: artist.bio,
           content: {

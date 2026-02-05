@@ -1,4 +1,6 @@
-from fastapi import APIRouter, HTTPException, status
+from typing import Optional
+
+from fastapi import APIRouter, Body, HTTPException, Query, status
 
 from app.api.deps import CurrentUser, DBSession
 from app.schemas.user import Token, UserLogin, UserResponse
@@ -20,8 +22,18 @@ async def login(db: DBSession, credentials: UserLogin):
 
 
 @router.post("/refresh", response_model=Token)
-async def refresh_token(db: DBSession, refresh_token: str):
-    tokens = await AuthService.refresh_tokens(db, refresh_token)
+async def refresh_token(
+    db: DBSession,
+    refresh_token: Optional[str] = Body(default=None, embed=True),
+    refresh_token_query: Optional[str] = Query(default=None, alias="refresh_token"),
+):
+    token = refresh_token or refresh_token_query
+    if not token:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="refresh_token is required",
+        )
+    tokens = await AuthService.refresh_tokens(db, token)
     if not tokens:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

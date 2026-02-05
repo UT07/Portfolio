@@ -12,6 +12,7 @@ export default function MediaLibrary() {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [filterType, setFilterType] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [copied, setCopied] = useState(false);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -65,7 +66,8 @@ export default function MediaLibrary() {
 
   const handleCopyUrl = (url) => {
     navigator.clipboard.writeText(url);
-    // Could add a toast notification here
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const getFileIcon = (fileType) => {
@@ -276,10 +278,10 @@ export default function MediaLibrary() {
                 <span className="text-xs text-gray-500">CloudFront URL</span>
                 <button
                   onClick={() => handleCopyUrl(selectedAsset.cloudfront_url)}
-                  className="text-blue-600 hover:text-blue-800 text-xs flex items-center gap-1"
+                  className={`text-xs flex items-center gap-1 ${copied ? 'text-green-600' : 'text-blue-600 hover:text-blue-800'}`}
                 >
                   <Copy className="w-3 h-3" />
-                  Copy
+                  {copied ? 'Copied!' : 'Copy'}
                 </button>
               </div>
               <p className="text-xs text-gray-700 break-all">{selectedAsset.cloudfront_url}</p>

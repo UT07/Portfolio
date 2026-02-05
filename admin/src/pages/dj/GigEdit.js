@@ -24,7 +24,7 @@ export default function GigEdit() {
     location: '',
     date: '',
     time: '',
-    genres: [],
+    genre: [],
     tags: [],
     description: '',
     image: '',
@@ -60,7 +60,7 @@ export default function GigEdit() {
         location: gig.extra_data?.location || '',
         date: gig.content?.date || '',
         time: gig.content?.time || '',
-        genres: gig.content?.genre || [],
+        genre: gig.content?.genre || [],
         tags: gig.tags || [],
         description: gig.description || '',
         image: gig.thumbnail_url || '',
@@ -99,7 +99,7 @@ export default function GigEdit() {
         content: {
           date: formData.date,
           time: formData.time,
-          genre: formData.genres,
+          genre: formData.genre,
           clips: formData.clips,
         },
         thumbnail_url: formData.image || null,
@@ -233,8 +233,8 @@ export default function GigEdit() {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Genres</label>
             <TagInput
-              tags={formData.genres}
-              onChange={(genres) => setFormData({ ...formData, genres })}
+              tags={formData.genre}
+              onChange={(genre) => setFormData({ ...formData, genre })}
               placeholder="Add genres..."
               suggestions={genreSuggestions}
             />
@@ -266,7 +266,7 @@ export default function GigEdit() {
             label="Event Image / Poster"
             value={formData.image}
             onChange={(url) => setFormData({ ...formData, image: url })}
-            projectId={id}
+            projectId={isNew ? null : id}
           />
         </div>
       </div>
@@ -280,7 +280,7 @@ export default function GigEdit() {
         <ClipsManager
           clips={formData.clips}
           onChange={(clips) => setFormData({ ...formData, clips })}
-          projectId={id}
+          projectId={isNew ? null : id}
         />
       </div>
     </div>

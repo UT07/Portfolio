@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Download, Clock } from 'lucide-react';
 import { useDJData } from '../contexts/ContentContext';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
@@ -10,6 +10,7 @@ const PressKit = () => {
   const { pressKit } = djData;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeSection, setActiveSection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const galleryImages = useMemo(
     () => pressKit.gallery?.images ?? [],
     [pressKit.gallery?.images]
@@ -26,12 +27,12 @@ const PressKit = () => {
   };
 
   useEffect(() => {
-    if (resolvedGalleryImages.length === 0) return;
+    if (resolvedGalleryImages.length === 0 || isPaused) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % resolvedGalleryImages.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [resolvedGalleryImages.length]);
+  }, [resolvedGalleryImages.length, isPaused]);
 
   return (
     <section id="presskit" className="py-24 md:py-32 bg-transparent relative overflow-hidden">
@@ -100,7 +101,13 @@ const PressKit = () => {
                 </div>
               </div>
 
-              <div className="relative h-[420px] md:h-[520px] overflow-hidden bg-black">
+              <div
+                className="relative h-[420px] md:h-[520px] overflow-hidden bg-black"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
+              >
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeImage}
@@ -129,8 +136,27 @@ const PressKit = () => {
                   </motion.div>
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                {/* Slide indicator dots */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                  {resolvedGalleryImages.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setCurrentSlide(index)}
+                      aria-label={`Go to slide ${index + 1}`}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === currentSlide
+                          ? 'bg-red-500 w-4'
+                          : 'bg-white/40 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
+
                 <div className="absolute bottom-4 left-4 px-3 py-2 bg-black/60 border border-red-500/40 text-xs text-red-300 font-space-mono uppercase tracking-widest">
                   {currentSlide + 1} / {resolvedGalleryImages.length}
+                  {isPaused && <span className="ml-2 text-neutral-500">Paused</span>}
                 </div>
               </div>
             </motion.div>
@@ -217,7 +243,49 @@ const PressKit = () => {
           </div>
         )}
 
-        
+        {/* Downloads Section */}
+        {pressKit.downloads && pressKit.downloads.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-xl font-bold text-red-400 uppercase tracking-widest font-unbounded mb-6">
+              Downloads
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {pressKit.downloads.map((item, index) => (
+                <div
+                  key={index}
+                  className="border border-red-500/30 bg-black/50 p-5 flex flex-col gap-3"
+                  style={{ boxShadow: '0 0 15px rgba(255,26,64,0.15)' }}
+                >
+                  <p className="text-sm font-bold text-white uppercase tracking-widest font-unbounded">
+                    {item.title}
+                  </p>
+                  {item.description && (
+                    <p className="text-xs text-neutral-400 font-space-mono">{item.description}</p>
+                  )}
+                  {item.placeholder ? (
+                    <span className="mt-auto inline-flex items-center gap-2 px-4 py-2 text-xs font-space-mono uppercase tracking-wider border border-white/10 text-neutral-500 cursor-default">
+                      <Clock className="w-3 h-3" /> Coming Soon
+                    </span>
+                  ) : (
+                    <a
+                      href={item.url || '#'}
+                      download
+                      className="mt-auto inline-flex items-center gap-2 px-4 py-2 text-xs font-space-mono uppercase tracking-wider border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-black transition-colors"
+                    >
+                      <Download className="w-3 h-3" /> Download {item.type || ''}
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
       </div>
     </section>
   );

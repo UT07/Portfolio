@@ -11,7 +11,7 @@ import { assetUrl } from '../utils/assets';
 const GigCarousel = () => {
   const { data: djData } = useDJData();
   const { gigs, hero } = djData;
-  const fallbackPoster = assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg');
+  const fallbackPoster = hero?.hero_image ? assetUrl(hero.hero_image) : placeholderImage;
   const [sortOrder, setSortOrder] = useState('desc');
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -145,17 +145,17 @@ const GigCarousel = () => {
             type="button"
             onClick={scrollPrev}
             aria-label="Previous gig"
-            className="absolute -left-6 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-red-500/50 bg-black/70 text-red-400 transition-colors hover:bg-red-500 hover:text-black md:flex"
+            className="absolute left-2 md:-left-6 top-1/2 z-10 flex h-10 w-10 md:h-12 md:w-12 -translate-y-1/2 items-center justify-center rounded-full border border-red-500/50 bg-black/80 text-red-400 transition-colors hover:bg-red-500 hover:text-black"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
           <button
             type="button"
             onClick={scrollNext}
             aria-label="Next gig"
-            className="absolute -right-6 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-red-500/50 bg-black/70 text-red-400 transition-colors hover:bg-red-500 hover:text-black md:flex"
+            className="absolute right-2 md:-right-6 top-1/2 z-10 flex h-10 w-10 md:h-12 md:w-12 -translate-y-1/2 items-center justify-center rounded-full border border-red-500/50 bg-black/80 text-red-400 transition-colors hover:bg-red-500 hover:text-black"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           <div className="overflow-hidden" ref={emblaRef}>

@@ -1,0 +1,14 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "utworld-api"
+resolve_s3 = true
+s3_prefix = "utworld-api"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+parameter_overrides = "S3Bucket=\"ut-portfolio-website\" CloudfrontDomain=\"d1q048o59d0tgk.cloudfront.net\" CorsOrigins='[\"https://utworld.netlify.app\",\"https://admin-utworld.netlify.app\"]'"
+image_repositories = ["UTWorldAPI=385017713886.dkr.ecr.eu-west-1.amazonaws.com/utworld-api"]
+
+[default.global.parameters]
+region = "eu-west-1"

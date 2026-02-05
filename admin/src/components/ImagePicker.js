@@ -92,14 +92,21 @@ export default function ImagePicker({
           )}
 
           <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => fileInputRef.current?.click()}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50"
-            >
-              <Upload className="w-4 h-4" />
-              Upload
-            </button>
+            {projectId !== null ? (
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                className="flex items-center gap-2 px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50"
+              >
+                <Upload className="w-4 h-4" />
+                Upload
+              </button>
+            ) : (
+              <span className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-400 border border-gray-200 rounded-lg cursor-not-allowed" title="Save first to enable upload">
+                <Upload className="w-4 h-4" />
+                Upload
+              </span>
+            )}
             <button
               type="button"
               onClick={() => {
@@ -112,6 +119,9 @@ export default function ImagePicker({
               URL
             </button>
           </div>
+          {projectId === null && (
+            <p className="text-xs text-gray-500 mt-1">Save the entry first to enable file upload, or use a URL.</p>
+          )}
         </div>
       )}
 

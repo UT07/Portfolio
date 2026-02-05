@@ -12,6 +12,7 @@ import Experience from './components/Experience';
 import TechStackSection from './components/TechStackSection';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import ErrorBoundary from './components/ErrorBoundary';
 import { useMediaQuery } from './utils/useMediaQuery';
 import './App.css';
 
@@ -161,9 +162,11 @@ const AppContent = () => {
               <About />
               <TechStackSection />
               <Experience />
-              <Suspense fallback={<SectionLoader />}>
-                <Projects />
-              </Suspense>
+              <ErrorBoundary>
+                <Suspense fallback={<SectionLoader />}>
+                  <Projects />
+                </Suspense>
+              </ErrorBoundary>
               <Certifications />
               <Education />
               <Contact />
@@ -177,18 +180,26 @@ const AppContent = () => {
               transition={{ duration: 0.5 }}
             >
               <DJHero />
-              <Suspense fallback={<SectionLoader />}>
-                <Artist />
-              </Suspense>
-              <Suspense fallback={<SectionLoader />}>
-                <Sets />
-              </Suspense>
-              <Suspense fallback={<SectionLoader />}>
-                <GigCarousel />
-              </Suspense>
-              <Suspense fallback={<SectionLoader />}>
-                <PressKit />
-              </Suspense>
+              <ErrorBoundary>
+                <Suspense fallback={<SectionLoader />}>
+                  <Artist />
+                </Suspense>
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Suspense fallback={<SectionLoader />}>
+                  <Sets />
+                </Suspense>
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Suspense fallback={<SectionLoader />}>
+                  <GigCarousel />
+                </Suspense>
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <Suspense fallback={<SectionLoader />}>
+                  <PressKit />
+                </Suspense>
+              </ErrorBoundary>
               <Contact />
             </motion.div>
           )}

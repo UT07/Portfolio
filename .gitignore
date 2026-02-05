@@ -17,3 +17,7 @@ admin/.env
 frontend/.env
 frontend/.env
 frontend/.env
+PORTFOLIO_IMPROVEMENTS.md
+BUGFIX_PROMPT.md
+MASTER_PROMPT.md
+DEPLOYMENT_GUIDE.md

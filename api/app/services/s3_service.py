@@ -13,12 +13,14 @@ from app.config import settings
 
 class S3Service:
     def __init__(self):
-        self.s3_client = boto3.client(
-            "s3",
-            aws_access_key_id=settings.aws_access_key_id,
-            aws_secret_access_key=settings.aws_secret_access_key,
-            region_name=settings.aws_region,
-        )
+        # Use explicit credentials if provided (local dev), otherwise use
+        # default credential chain (Lambda IAM role, EC2 instance profile, etc.)
+        client_kwargs = {"region_name": settings.aws_region}
+        if settings.aws_access_key_id and settings.aws_secret_access_key:
+            client_kwargs["aws_access_key_id"] = settings.aws_access_key_id
+            client_kwargs["aws_secret_access_key"] = settings.aws_secret_access_key
+
+        self.s3_client = boto3.client("s3", **client_kwargs)
         self.bucket = settings.s3_bucket
         self.cloudfront_domain = settings.cloudfront_domain
 

@@ -31,6 +31,7 @@ export default function Experience() {
         subtitle: entry.subtitle,
         description: entry.description,
         content: entry.content,
+        display_order: entry.display_order,
       });
     } catch (err) { setError(err.message); }
     finally { setSaving(false); }

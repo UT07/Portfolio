@@ -11,7 +11,7 @@ import { DayPicker } from 'react-day-picker';
 const GigTimeline = () => {
   const { data: djData } = useDJData();
   const { gigs, hero } = djData;
-  const fallbackGigImage = assetUrl(hero?.hero_image || '/images/PICTURES/REDLINE%20HORIZON/Cris35mm_3335.jpg');
+  const fallbackGigImage = hero?.hero_image ? assetUrl(hero.hero_image) : placeholderImage;
   const [selectedGenre, setSelectedGenre] = useState('all');
   const [selectedCollective, setSelectedCollective] = useState('all');
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
@@ -44,6 +44,15 @@ const GigTimeline = () => {
 
     return filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
   }, [gigs, selectedGenre, selectedCollective]);
+
+  const yearRange = useMemo(() => {
+    if (!gigs || gigs.length === 0) return new Date().getFullYear().toString();
+    const years = gigs.map(g => new Date(g.date).getFullYear()).filter(y => !isNaN(y));
+    if (years.length === 0) return new Date().getFullYear().toString();
+    const min = Math.min(...years);
+    const max = Math.max(...years);
+    return min === max ? `${min}` : `${min}–${max}`;
+  }, [gigs]);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -146,7 +155,7 @@ const GigTimeline = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-sm md:text-base font-medium tracking-wide text-neutral-400 font-space-mono"
           >
-            {filteredGigs.length} shows · 2025–2026
+            {filteredGigs.length} shows · {yearRange}
           </motion.p>
         </motion.div>
 

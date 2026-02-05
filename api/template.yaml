@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: UTWorld Portfolio API - FastAPI on Lambda
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+
+Parameters:
+  DatabaseUrl:
+    Type: String
+    NoEcho: true
+  SecretKey:
+    Type: String
+    NoEcho: true
+  S3Bucket:
+    Type: String
+    Default: ut-portfolio-website
+  CloudfrontDomain:
+    Type: String
+    Default: d1q048o59d0tgk.cloudfront.net
+  CorsOrigins:
+    Type: String
+    Default: '["https://utworld.netlify.app","https://admin-utworld.netlify.app"]'
+
+Resources:
+  UTWorldAPI:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Architectures:
+        - x86_64
+      # IAM policy: Lambda gets read/write access to the S3 bucket
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref S3Bucket
+      Events:
+        ApiCatchAll:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+        ApiRoot:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: ANY
+      Environment:
+        Variables:
+          DATABASE_URL: !Ref DatabaseUrl
+          SECRET_KEY: !Ref SecretKey
+          S3_BUCKET: !Ref S3Bucket
+          CLOUDFRONT_DOMAIN: !Ref CloudfrontDomain
+          CORS_ORIGINS: !Ref CorsOrigins
+          ENVIRONMENT: production
+          DEBUG: "false"
+    Metadata:
+      DockerTag: v1
+      DockerContext: .
+      Dockerfile: Dockerfile.lambda
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway URL"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"

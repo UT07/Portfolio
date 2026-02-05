@@ -14,7 +14,13 @@ export default function ClipsManager({ clips = [], onChange, projectId = null, c
   const [urlInput, setUrlInput] = useState('');
   const [showUrlForm, setShowUrlForm] = useState(false);
   const [urlType, setUrlType] = useState('video');
+  const [videoErrors, setVideoErrors] = useState({});
   const fileInputRef = useRef(null);
+
+  // Reset video error state when clips change
+  React.useEffect(() => {
+    setVideoErrors({});
+  }, [clips.length]);
 
   const handleAddUrl = () => {
     if (!urlInput.trim()) return;
@@ -69,19 +75,31 @@ export default function ClipsManager({ clips = [], onChange, projectId = null, c
             <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
               {clip.type === 'video' ? (
                 <div className="relative w-full h-full">
-                  <video
-                    src={clip.url}
-                    className="w-full h-full object-cover"
-                    muted
-                    onMouseEnter={(e) => e.target.play()}
-                    onMouseLeave={(e) => {
-                      e.target.pause();
-                      e.target.currentTime = 0;
-                    }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-colors pointer-events-none">
-                    <Play className="w-8 h-8 text-white opacity-80" />
-                  </div>
+                  {!clip.url || videoErrors[index] ? (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400">
+                      <Play className="w-8 h-8 mb-1" />
+                      <span className="text-xs">{!clip.url ? 'No URL' : 'Cannot preview'}</span>
+                      {clip.url && <span className="text-[10px] mt-1 px-2 text-center truncate max-w-full">{clip.url.split('/').pop()}</span>}
+                    </div>
+                  ) : (
+                    <>
+                      <video
+                        src={clip.url}
+                        className="w-full h-full object-cover"
+                        muted
+                        preload="metadata"
+                        onMouseEnter={(e) => e.target.play().catch(() => {})}
+                        onMouseLeave={(e) => {
+                          e.target.pause();
+                          e.target.currentTime = 0;
+                        }}
+                        onError={() => setVideoErrors(prev => ({ ...prev, [index]: true }))}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-colors pointer-events-none">
+                        <Play className="w-8 h-8 text-white opacity-80" />
+                      </div>
+                    </>
+                  )}
                 </div>
               ) : (
                 <img

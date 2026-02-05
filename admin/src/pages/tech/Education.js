@@ -31,6 +31,7 @@ export default function Education() {
         subtitle: entry.subtitle,
         description: entry.description,
         content: entry.content,
+        display_order: entry.display_order,
       });
       setError(null);
     } catch (err) { setError(err.message); }
@@ -106,6 +107,12 @@ export default function Education() {
                 <div><label className="block text-sm font-medium mb-1">Description</label><textarea value={entry.description || ''} onChange={(e) => updateEntry(i, 'description', e.target.value)} className="w-full px-3 py-2 border rounded-lg" rows={2} /></div>
                 <div><label className="block text-sm font-medium mb-1">Modules</label>
                   <DynamicList items={entry.content?.modules || []} onChange={(v) => updateEntry(i, 'content.modules', v)} renderItem={(item, idx, onChange) => <SimpleListItem value={item} onChange={onChange} />} createItem={() => ''} addLabel="Add Module" />
+                </div>
+                <div><label className="block text-sm font-medium mb-1">Thesis / Final Project</label>
+                  <input type="text" value={entry.content?.thesis || ''} onChange={(e) => updateEntry(i, 'content.thesis', e.target.value)} placeholder="Title of thesis or final project" className="w-full px-3 py-2 border rounded-lg" />
+                </div>
+                <div><label className="block text-sm font-medium mb-1">Leadership & Activities</label>
+                  <DynamicList items={entry.content?.leadership || []} onChange={(v) => updateEntry(i, 'content.leadership', v)} renderItem={(item, idx, onChange) => <SimpleListItem value={item} onChange={onChange} placeholder="Leadership role or activity" />} createItem={() => ''} addLabel="Add Activity" />
                 </div>
                 <div className="flex gap-2 pt-2">
                   <button onClick={() => handleSave(entry)} disabled={saving} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50">{saving ? 'Saving...' : 'Save'}</button>

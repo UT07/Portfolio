@@ -1,13 +1,17 @@
 from functools import lru_cache
+from pathlib import Path
 from typing import List
 
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=str(ENV_PATH),
         env_file_encoding="utf-8",
         case_sensitive=False,
     )
@@ -21,12 +25,12 @@ class Settings(BaseSettings):
     refresh_token_expire_days: int = 7
     algorithm: str = "HS256"
 
-    # AWS S3
-    aws_access_key_id: str
-    aws_secret_access_key: str
+    # AWS S3 (optional — Lambda uses IAM role, local uses explicit keys)
+    aws_access_key_id: str = ""
+    aws_secret_access_key: str = ""
     aws_region: str = "us-east-1"
-    s3_bucket: str
-    cloudfront_domain: str
+    s3_bucket: str = "utworld-assets"
+    cloudfront_domain: str = "d1q048o59d0tgk.cloudfront.net"
 
     # CORS
     cors_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
