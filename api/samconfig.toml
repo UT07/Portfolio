@@ -8,7 +8,7 @@ confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
 disable_rollback = true
 s3_force_path_style = true
-parameter_overrides = "DatabaseUrl=\"postgresql+asyncpg://neondb_owner:npg_DH1EsUYCt9ML@ep-dawn-hall-abtdylnk-pooler.eu-west-2.aws.neon.tech/neondb?ssl=require\" SecretKey=\"90b02fd529318745541e61d1bb7bd0cea67ae00e3375efd254cc38307c291f4b\" S3Bucket=\"ut-portfolio-website\" CloudfrontDomain=\"d1q048o59d0tgk.cloudfront.net\" CorsOrigins='[\"https://utworld.netlify.app\",\"https://admin-utworld.netlify.app\"]'"
+parameter_overrides = "DatabaseUrl=\"CHANGE_ME\" SecretKey=\"CHANGE_ME\" S3Bucket=\"ut-portfolio-website\" CloudfrontDomain=\"d1q048o59d0tgk.cloudfront.net\" CorsOrigins='[\"https://utworld.netlify.app\",\"https://admin-utworld.netlify.app\"]'"
 image_repositories = ["UTWorldAPI=385017713886.dkr.ecr.eu-west-1.amazonaws.com/utworld-api"]
 
 [default.global.parameters]

@@ -52,6 +52,18 @@ echo ""
 echo "   Running sam build..."
 sam build
 
+echo "   Loading secrets from .env..."
+# Source DATABASE_URL and SECRET_KEY from .env (never hardcode these)
+if [ -f .env ]; then
+  export $(grep -E '^(DATABASE_URL|SECRET_KEY)=' .env | xargs)
+fi
+
+if [ -z "$DATABASE_URL" ] || [ -z "$SECRET_KEY" ]; then
+  echo "ERROR: DATABASE_URL and SECRET_KEY must be set in api/.env"
+  echo "See api/.env.example for the required format."
+  exit 1
+fi
+
 echo "   Deploying with sam deploy (using explicit image repo)..."
 sam deploy \
   --stack-name ${STACK_NAME} \
@@ -61,6 +73,8 @@ sam deploy \
   --no-confirm-changeset \
   --no-fail-on-empty-changeset \
   --parameter-overrides \
+    "DatabaseUrl=${DATABASE_URL}" \
+    "SecretKey=${SECRET_KEY}" \
     "S3Bucket=ut-portfolio-website" \
     "CloudfrontDomain=d1q048o59d0tgk.cloudfront.net" \
     "CorsOrigins=[\"https://utworld.netlify.app\",\"https://admin-utworld.netlify.app\"]"

@@ -31,10 +31,33 @@ export default function Sets() {
       const proj = items.find((p) => p.slug === 'sets');
       if (proj) {
         setProject(proj);
+        const c = proj.content || {};
+        // Data is stored as { platforms: [{name, url, logo, sets[]}] }
+        // Normalize to admin's flat structure
+        const platforms = Array.isArray(c.platforms) ? c.platforms : [];
+        const scPlatform = platforms.find(p => p.name === 'SoundCloud');
+        const ytPlatform = platforms.find(p => p.name === 'YouTube');
+
+        // Collect all featured sets from all platforms
+        const allSets = [];
+        platforms.forEach(p => {
+          (p.sets || []).forEach(s => {
+            allSets.push({
+              title: s.title || '',
+              platform: (p.name || '').toLowerCase() === 'youtube' ? 'youtube' : 'soundcloud',
+              url: s.url || '',
+              duration: s.duration || '',
+              date: s.date || '',
+            });
+          });
+        });
+
         setSets({
-          soundcloudUrl: proj.content?.soundcloudUrl || '',
-          youtubePlaylist: proj.content?.youtubePlaylist || '',
-          featuredSets: proj.content?.featuredSets || [],
+          soundcloudUrl: c.soundcloudUrl || scPlatform?.url || '',
+          youtubePlaylist: c.youtubePlaylist || ytPlatform?.url || '',
+          featuredSets: Array.isArray(c.featuredSets) && c.featuredSets.length > 0
+            ? c.featuredSets
+            : allSets,
         });
       }
       setError(null);
@@ -49,8 +72,43 @@ export default function Sets() {
     if (!project) return;
     try {
       setSaving(true);
+      // Build platforms array for frontend compatibility
+      const scSets = sets.featuredSets.filter(s => s.platform === 'soundcloud');
+      const ytSets = sets.featuredSets.filter(s => s.platform === 'youtube');
+      const otherSets = sets.featuredSets.filter(s => !['soundcloud', 'youtube'].includes(s.platform));
+
+      const platforms = [];
+      if (sets.soundcloudUrl || scSets.length > 0) {
+        platforms.push({
+          name: 'SoundCloud',
+          url: sets.soundcloudUrl,
+          logo: '/images/logo-soundcloud.svg',
+          sets: scSets.map(s => ({
+            title: s.title, url: s.url, date: s.date,
+            duration: s.duration, thumbnail: s.thumbnail || '',
+          })),
+        });
+      }
+      if (sets.youtubePlaylist || ytSets.length > 0) {
+        platforms.push({
+          name: 'YouTube',
+          url: sets.youtubePlaylist,
+          logo: '/images/logo-youtube.svg',
+          sets: ytSets.map(s => ({
+            title: s.title, url: s.url, date: s.date,
+            duration: s.duration, thumbnail: s.thumbnail || '',
+          })),
+        });
+      }
+
       await api.updateProject(project.id, {
-        content: sets,
+        content: {
+          // Save in both formats for compatibility
+          platforms,
+          soundcloudUrl: sets.soundcloudUrl,
+          youtubePlaylist: sets.youtubePlaylist,
+          featuredSets: sets.featuredSets,
+        },
       });
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);

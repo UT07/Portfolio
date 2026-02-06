@@ -2,10 +2,12 @@
  * API Service for fetching content from the backend
  */
 
-const LOCAL_API_BASE = 'http://localhost:8000/api/v1';
-const API_BASE =
-  process.env.REACT_APP_API_URL ||
-  (process.env.NODE_ENV === 'development' ? LOCAL_API_BASE : '');
+const PRODUCTION_API = 'https://iouuye2b3b.execute-api.eu-west-1.amazonaws.com/api/v1';
+const LOCAL_API = 'http://localhost:8000/api/v1';
+
+// Use REACT_APP_API_URL if set, otherwise default to production
+// For local development, create a .env.local file with REACT_APP_API_URL=http://localhost:8000/api/v1
+const API_BASE = process.env.REACT_APP_API_URL || PRODUCTION_API;
 
 const ensureApiBase = () => {
   if (!API_BASE) {

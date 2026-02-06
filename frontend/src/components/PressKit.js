@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Download, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useDJData } from '../contexts/ContentContext';
 import placeholderImage from '../assets/asset-placeholder.svg';
 import { assetUrl } from '../utils/assets';
@@ -243,48 +243,7 @@ const PressKit = () => {
           </div>
         )}
 
-        {/* Downloads Section */}
-        {pressKit.downloads && pressKit.downloads.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-xl font-bold text-red-400 uppercase tracking-widest font-unbounded mb-6">
-              Downloads
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {pressKit.downloads.map((item, index) => (
-                <div
-                  key={index}
-                  className="border border-red-500/30 bg-black/50 p-5 flex flex-col gap-3"
-                  style={{ boxShadow: '0 0 15px rgba(255,26,64,0.15)' }}
-                >
-                  <p className="text-sm font-bold text-white uppercase tracking-widest font-unbounded">
-                    {item.title}
-                  </p>
-                  {item.description && (
-                    <p className="text-xs text-neutral-400 font-space-mono">{item.description}</p>
-                  )}
-                  {item.placeholder ? (
-                    <span className="mt-auto inline-flex items-center gap-2 px-4 py-2 text-xs font-space-mono uppercase tracking-wider border border-white/10 text-neutral-500 cursor-default">
-                      <Clock className="w-3 h-3" /> Coming Soon
-                    </span>
-                  ) : (
-                    <a
-                      href={item.url || '#'}
-                      download
-                      className="mt-auto inline-flex items-center gap-2 px-4 py-2 text-xs font-space-mono uppercase tracking-wider border border-red-500/50 text-red-400 hover:bg-red-500 hover:text-black transition-colors"
-                    >
-                      <Download className="w-3 h-3" /> Download {item.type || ''}
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
+        {/* Downloads Section - hidden until real download files are available */}
 
       </div>
     </section>

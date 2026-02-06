@@ -373,28 +373,26 @@ export default function PressKit() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
           {(pressKit.gallery.images || []).map((imgUrl, i) => {
-            const fullUrl = imgUrl.startsWith('http') ? imgUrl : `${CLOUDFRONT_BASE}${imgUrl}`;
+            const fullUrl = imgUrl
+              ? (imgUrl.startsWith('http') ? imgUrl : `${CLOUDFRONT_BASE}${imgUrl}`)
+              : '';
             return (
               <div key={i} className="relative group">
-                <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                  {imgUrl ? (
-                    <img src={fullUrl} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                      <ImageIcon className="w-12 h-12" />
-                    </div>
-                  )}
-                </div>
-                <input
-                  type="text"
-                  value={imgUrl}
-                  onChange={(e) => updateGalleryImage(i, e.target.value)}
-                  placeholder="/images/PICTURES/..."
-                  className="w-full mt-2 px-2 py-1 text-xs border rounded font-mono"
+                <ImagePicker
+                  value={fullUrl}
+                  onChange={(newUrl) => {
+                    // Strip CloudFront base to store relative paths when possible
+                    const relative = newUrl.startsWith(CLOUDFRONT_BASE)
+                      ? newUrl.slice(CLOUDFRONT_BASE.length)
+                      : newUrl;
+                    updateGalleryImage(i, relative);
+                  }}
+                  projectId={project?.id || null}
+                  label={`Image ${i + 1}`}
                 />
                 <button
                   onClick={() => removeGalleryImage(i)}
-                  className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity z-10"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
