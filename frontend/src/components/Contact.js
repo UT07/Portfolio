@@ -8,7 +8,7 @@ const Contact = () => {
   const { isProfessional } = useTheme();
   const { data: professionalData } = useProfessionalData();
   const { data: djData } = useDJData();
-  const contactData = isProfessional ? professionalData.contact : djData.contact;
+  const contactData = (isProfessional ? professionalData?.contact : djData?.contact) || {};
 
   const [formData, setFormData] = useState({
     name: '',

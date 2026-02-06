@@ -16,7 +16,7 @@ export default function FeaturedProjects() {
   const loadData = async () => {
     try {
       setLoading(true);
-      const data = await api.getProjectsByType('tech', 'featured');
+      const data = await api.getProjectsByType('tech', 'featured_project');
       setProjects(data.sort((a, b) => a.display_order - b.display_order));
       setError(null);
     } catch (err) {

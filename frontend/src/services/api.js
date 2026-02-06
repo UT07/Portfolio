@@ -2,12 +2,22 @@
  * API Service for fetching content from the backend
  */
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
+const LOCAL_API_BASE = 'http://localhost:8000/api/v1';
+const API_BASE =
+  process.env.REACT_APP_API_URL ||
+  (process.env.NODE_ENV === 'development' ? LOCAL_API_BASE : '');
+
+const ensureApiBase = () => {
+  if (!API_BASE) {
+    throw new Error('API base URL is not configured.');
+  }
+};
 
 /**
  * Fetch all content from the API
  */
 export async function fetchAllContent() {
+  ensureApiBase();
   const response = await fetch(`${API_BASE}/content`);
   if (!response.ok) {
     throw new Error(`Failed to fetch content: ${response.status}`);
@@ -19,6 +29,7 @@ export async function fetchAllContent() {
  * Fetch content for a specific section
  */
 export async function fetchSectionContent(sectionSlug) {
+  ensureApiBase();
   const response = await fetch(`${API_BASE}/content/${sectionSlug}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch section: ${response.status}`);
@@ -40,9 +51,67 @@ export function transformDJContent(apiData) {
   const sets = getProject('sets');
   const pressKit = getProject('press-kit');
   const contact = getProject('contact');
-  const gigs = projects
-    .filter(p => p.slug.startsWith('gig-'))
-    .sort((a, b) => new Date(b.content?.date || 0) - new Date(a.content?.date || 0));
+  const normalizeGigKey = (gig) => {
+    if (gig?.title && gig?.content?.date) {
+      return `${gig.title}__${gig.content.date}`;
+    }
+    if (gig?.slug) {
+      return gig.slug.replace(/^gig-gig-/, 'gig-');
+    }
+    return gig?.id;
+  };
+
+  const mergeClips = (a = [], b = []) => {
+    const seen = new Set();
+    const merged = [];
+    [...a, ...b].forEach((clip) => {
+      if (!clip?.url) return;
+      if (seen.has(clip.url)) return;
+      seen.add(clip.url);
+      merged.push(clip);
+    });
+    return merged;
+  };
+
+  const mergeTags = (a = [], b = []) => {
+    const set = new Set([...a, ...b].filter(Boolean));
+    return Array.from(set);
+  };
+
+  const gigProjects = projects.filter((p) => p.slug?.startsWith('gig-'));
+  const gigMap = new Map();
+  gigProjects.forEach((gig) => {
+    const key = normalizeGigKey(gig);
+    const existing = gigMap.get(key);
+    if (!existing) {
+      gigMap.set(key, gig);
+      return;
+    }
+
+    const existingClips = existing.content?.clips || [];
+    const currentClips = gig.content?.clips || [];
+    const existingScore = existingClips.length + (existing.assets?.length || 0);
+    const currentScore = currentClips.length + (gig.assets?.length || 0);
+
+    const primary = currentScore > existingScore ? gig : existing;
+    const secondary = primary === gig ? existing : gig;
+
+    const merged = {
+      ...primary,
+      tags: mergeTags(primary.tags, secondary.tags),
+      content: {
+        ...primary.content,
+        clips: mergeClips(primary.content?.clips || [], secondary.content?.clips || [])
+      },
+      thumbnail_url: primary.thumbnail_url || secondary.thumbnail_url,
+      extra_data: primary.extra_data || secondary.extra_data
+    };
+    gigMap.set(key, merged);
+  });
+
+  const gigs = Array.from(gigMap.values()).sort(
+    (a, b) => new Date(b.content?.date || 0) - new Date(a.content?.date || 0)
+  );
 
   return {
     hero: hero ? {

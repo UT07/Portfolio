@@ -1,4 +1,5 @@
 import asyncio
+import os
 from typing import AsyncGenerator, Generator
 
 import pytest
@@ -13,10 +14,12 @@ from app.models import Asset, Project, Section, User
 from app.utils.security import hash_password
 
 
-TEST_DATABASE_URL = settings.database_url.replace(
-    settings.database_url.split("/")[-1],
-    "test_" + settings.database_url.split("/")[-1],
-)
+TEST_DATABASE_URL = os.getenv("TEST_DATABASE_URL")
+if not TEST_DATABASE_URL:
+    TEST_DATABASE_URL = settings.database_url.replace(
+        settings.database_url.split("/")[-1],
+        "test_" + settings.database_url.split("/")[-1],
+    )
 
 engine = create_async_engine(TEST_DATABASE_URL, echo=False)
 async_session_maker = async_sessionmaker(

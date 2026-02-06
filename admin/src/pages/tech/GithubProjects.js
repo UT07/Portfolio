@@ -16,14 +16,23 @@ export default function GithubProjects() {
   const loadData = async () => {
     try {
       setLoading(true);
-      const projects = await api.getProjectsBySectionSlug('tech', false);
-      const items = projects.items || [];
-      const proj = items.find((p) => p.slug === 'github-projects');
-      if (proj) {
-        setProject(proj);
-        setRepos(proj.content?.repos || []);
-        setUsername(proj.content?.username || '');
-      }
+      const data = await api.getProjectsByType('tech', 'github_project');
+      // Transform individual github_project records into repos list
+      const repoList = data.map(p => ({
+        id: p.id,
+        name: p.title,
+        description: p.description,
+        language: p.subtitle || '',
+        stars: p.content?.stars || 0,
+        url: p.content?.repo || '',
+        stack: p.content?.stack || [],
+        demo: p.content?.demo || '',
+        category: p.extra_data?.category || ''
+      }));
+      setRepos(repoList);
+      setUsername(data[0]?.content?.username || '');
+      // Store the raw projects for update operations
+      setProject(data);
       setError(null);
     } catch (err) {
       setError(err.message);
@@ -33,12 +42,29 @@ export default function GithubProjects() {
   };
 
   const handleSave = async () => {
-    if (!project) return;
+    if (!project || !Array.isArray(project)) return;
     try {
       setSaving(true);
-      await api.updateProject(project.id, {
-        content: { repos, username },
-      });
+      // Update each github project individually
+      for (let i = 0; i < project.length; i++) {
+        const p = project[i];
+        const repo = repos.find(r => r.id === p.id);
+        if (repo) {
+          await api.updateProject(p.id, {
+            title: repo.name,
+            description: repo.description,
+            subtitle: repo.language,
+            content: {
+              ...p.content,
+              stars: repo.stars,
+              repo: repo.url,
+              stack: repo.stack,
+              demo: repo.demo,
+              username
+            }
+          });
+        }
+      }
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } catch (err) {

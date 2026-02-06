@@ -90,7 +90,7 @@ export default function FeaturedProjectEdit() {
           demo: formData.demo,
           features: formData.features,
         },
-        extra_data: { type: 'featured' },
+        extra_data: { type: 'featured_project' },
         is_published: formData.is_published,
       };
 
@@ -208,7 +208,7 @@ export default function FeaturedProjectEdit() {
             label="Project Image"
             value={formData.image}
             onChange={(url) => setFormData({ ...formData, image: url })}
-            projectId={id}
+            projectId={isNew ? null : id}
           />
         </div>
       </div>

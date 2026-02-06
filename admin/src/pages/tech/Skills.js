@@ -28,7 +28,22 @@ export default function Skills() {
       const proj = items.find((p) => p.slug === 'skills');
       if (proj) {
         setProject(proj);
-        setCategories(proj.content?.categories || []);
+        // Normalize categories: handle both flat items array and nested skills object
+        const rawCategories = proj.content?.categories || [];
+        const normalized = rawCategories.map(cat => {
+          // If category already has a flat items array, use it
+          if (Array.isArray(cat.items)) return cat;
+          // If category has a nested skills object, flatten it
+          if (cat.skills && typeof cat.skills === 'object') {
+            const flatItems = [];
+            Object.values(cat.skills).forEach(arr => {
+              if (Array.isArray(arr)) flatItems.push(...arr);
+            });
+            return { ...cat, items: flatItems };
+          }
+          return { ...cat, items: [] };
+        });
+        setCategories(normalized);
       }
       setError(null);
     } catch (err) {

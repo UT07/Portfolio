@@ -13,8 +13,11 @@ import projectsDataStatic from '../data/projectsData.json';
 
 const ContentContext = createContext(null);
 
-// Check if API is enabled
-const USE_API = process.env.REACT_APP_USE_API === 'true';
+// Check if API is enabled (explicit flag wins, otherwise infer from API URL)
+const API_URL = process.env.REACT_APP_API_URL;
+const USE_API = process.env.REACT_APP_USE_API
+  ? process.env.REACT_APP_USE_API === 'true'
+  : Boolean(API_URL);
 
 export function ContentProvider({ children }) {
   const [djData, setDjData] = useState(djDataStatic);

@@ -7,13 +7,15 @@ import { useMediaQuery } from '../utils/useMediaQuery';
 
 const Artist = () => {
   const { data: djData } = useDJData();
-  const { artist } = djData;
+  const { artist } = djData || {};
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const enableAmbient = !prefersReducedMotion && !isMobile;
   const enablePerWord = !prefersReducedMotion && !isMobile;
 
-  const titleWords = artist.title.split(' ');
+  if (!artist) return null;
+
+  const titleWords = (artist.title || '').split(' ');
 
   return (
     <section id="artist" className="py-24 md:py-32 bg-transparent relative overflow-hidden">

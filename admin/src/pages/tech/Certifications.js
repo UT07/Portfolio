@@ -20,7 +20,16 @@ export default function Certifications() {
       const proj = items.find((p) => p.slug === 'certifications');
       if (proj) {
         setProject(proj);
-        setCerts(proj.content?.items || []);
+        // Normalize field names: DB may use code/year/verify_url, admin uses credentialId/date/link
+        const rawItems = proj.content?.items || [];
+        const normalized = rawItems.map(c => ({
+          name: c.name || '',
+          issuer: c.issuer || '',
+          date: c.date || c.year || '',
+          credentialId: c.credentialId || c.code || '',
+          link: c.link || c.verify_url || '',
+        }));
+        setCerts(normalized);
       }
       setError(null);
     } catch (err) {
@@ -34,8 +43,19 @@ export default function Certifications() {
     if (!project) return;
     try {
       setSaving(true);
+      // Save with both field name formats for compatibility
+      const itemsToSave = certs.map(c => ({
+        name: c.name,
+        issuer: c.issuer,
+        date: c.date,
+        year: c.date,
+        credentialId: c.credentialId,
+        code: c.credentialId,
+        link: c.link,
+        verify_url: c.link,
+      }));
       await api.updateProject(project.id, {
-        content: { items: certs },
+        content: { items: itemsToSave },
       });
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);

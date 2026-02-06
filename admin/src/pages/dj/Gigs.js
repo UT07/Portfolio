@@ -29,7 +29,28 @@ export default function Gigs() {
 
       // Filter to gigs only
       const gigItems = items.filter((p) => p.extra_data?.type === 'gig' || p.slug.startsWith('gig-'));
-      setGigs(gigItems);
+
+      // Deduplicate gigs by title + date (DB may have duplicate records)
+      const seen = new Map();
+      const dedupedGigs = [];
+      gigItems.forEach(gig => {
+        const key = `${gig.title}__${gig.content?.date || ''}`;
+        const existing = seen.get(key);
+        if (!existing) {
+          seen.set(key, gig);
+          dedupedGigs.push(gig);
+        } else {
+          // Keep the one with more clips/data
+          const existingClips = existing.content?.clips?.length || 0;
+          const currentClips = gig.content?.clips?.length || 0;
+          if (currentClips > existingClips) {
+            const idx = dedupedGigs.indexOf(existing);
+            dedupedGigs[idx] = gig;
+            seen.set(key, gig);
+          }
+        }
+      });
+      setGigs(dedupedGigs);
       setError(null);
     } catch (err) {
       setError(err.message);

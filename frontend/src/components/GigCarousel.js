@@ -161,11 +161,14 @@ const GigCarousel = () => {
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {sortedGigs.map((gig) => {
-                const clips = gig.clips ? gig.clips.slice(0, 4) : [];
+                // Filter to clips with a URL (assetUrl will resolve relative paths to CDN)
+                const clips = (gig.clips || []).filter(clip => clip?.url);
                 const slots = [...clips];
-                const minSlots = clips.length === 0 ? 4 : Math.max(2, clips.length);
-                while (slots.length < minSlots) {
-                  slots.push({ placeholder: true, index: slots.length + 1 });
+                // Only add placeholders if there are zero real clips
+                if (clips.length === 0) {
+                  while (slots.length < 4) {
+                    slots.push({ placeholder: true, index: slots.length + 1 });
+                  }
                 }
 
                 return (
@@ -237,13 +240,13 @@ const GigCarousel = () => {
                         <h4 className="text-lg font-semibold text-red-400 uppercase tracking-widest mb-4 font-unbounded">
                           Clips from the night
                         </h4>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className={`grid gap-3 ${slots.length <= 4 ? 'grid-cols-2' : 'grid-cols-2 lg:grid-cols-3'}`}>
                           {slots.map((clip, index) => {
                             if (clip.placeholder) {
                               return (
                                 <div
                                   key={`placeholder-${index}`}
-                                  className="flex items-center justify-center rounded-xl border border-red-500/20 bg-black/40 text-sm text-neutral-500"
+                                  className="flex items-center justify-center rounded-xl border border-red-500/20 bg-black/40 text-sm text-neutral-500 h-32"
                                 >
                                   Clip {index + 1}
                                 </div>

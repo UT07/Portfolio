@@ -1,19 +1,37 @@
 #!/usr/bin/env python3
 """
 Migrate existing JSON content to the API database.
+
+Defaults are safe: it will create missing items and skip existing ones unless
+--overwrite is passed.
 """
 import json
-import requests
-from datetime import datetime
+import os
+import sys
+from pathlib import Path
 
-API_BASE = "http://localhost:8000/api/v1"
-CLOUDFRONT_BASE = "https://d1q048o59d0tgk.cloudfront.net/assets"
+import requests
+
+API_BASE = os.getenv("API_BASE", "http://localhost:8000/api/v1")
+CLOUDFRONT_BASE = os.getenv(
+    "CLOUDFRONT_BASE",
+    "https://d1q048o59d0tgk.cloudfront.net/assets",
+)
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@utworld.com")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "UTadmin2024!")
+
+OVERWRITE = "--overwrite" in sys.argv
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+API_DIR = SCRIPT_DIR.parent
+ROOT_DIR = API_DIR.parent
+
 
 # Login and get token
 def get_token():
     resp = requests.post(
         f"{API_BASE}/auth/login",
-        json={"email": "admin@utworld.com", "password": "UTadmin2024!"}
+        json={"email": ADMIN_EMAIL, "password": ADMIN_PASSWORD},
     )
     resp.raise_for_status()
     return resp.json()["access_token"]
@@ -28,6 +46,62 @@ def get_sections(token):
     items = data.get("items", data) if isinstance(data, dict) else data
     return {s["slug"]: s["id"] for s in items}
 
+
+def create_section(token, data):
+    resp = requests.post(
+        f"{API_BASE}/sections",
+        headers=auth_headers(token),
+        json=data,
+    )
+    if resp.status_code in (200, 201):
+        return resp.json()
+    print(f"Error creating section: {resp.text}")
+    return None
+
+
+def ensure_sections(token):
+    sections = get_sections(token)
+    if "dj" not in sections:
+        created = create_section(
+            token,
+            {
+                "slug": "dj",
+                "title": "DJ",
+                "description": "DJ content and gigs",
+                "display_order": 1,
+                "is_active": True,
+            },
+        )
+        if created:
+            sections["dj"] = created["id"]
+    if "tech" not in sections:
+        created = create_section(
+            token,
+            {
+                "slug": "tech",
+                "title": "Tech",
+                "description": "Professional and technical content",
+                "display_order": 0,
+                "is_active": True,
+            },
+        )
+        if created:
+            sections["tech"] = created["id"]
+    return sections
+
+
+def get_projects_by_section(token, section_slug):
+    resp = requests.get(
+        f"{API_BASE}/projects/by-section/{section_slug}",
+        params={"published_only": "false"},
+        headers=auth_headers(token),
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    items = data.get("items", data) if isinstance(data, dict) else data
+    return {p["slug"]: p for p in items}
+
+
 def create_project(token, section_id, data):
     resp = requests.post(
         f"{API_BASE}/projects",
@@ -39,28 +113,59 @@ def create_project(token, section_id, data):
     print(f"Error creating project: {resp.text}")
     return None
 
+
+def update_project(token, project_id, data):
+    resp = requests.put(
+        f"{API_BASE}/projects/{project_id}",
+        headers=auth_headers(token),
+        json=data,
+    )
+    if resp.status_code == 200:
+        return resp.json()
+    print(f"Error updating project: {resp.text}")
+    return None
+
+
+def upsert_project(token, section_id, existing, data):
+    slug = data.get("slug")
+    if existing and slug in existing:
+        if OVERWRITE:
+            return update_project(token, existing[slug]["id"], data)
+        print(f"  ↪︎ Skipping existing {slug}")
+        return existing[slug]
+    return create_project(token, section_id, data)
+
+
+def with_cdn(path):
+    if not path:
+        return None
+    if path.startswith("http"):
+        return path
+    return f"{CLOUDFRONT_BASE}{path}"
+
 def main():
     token = get_token()
     print("✓ Authenticated")
 
-    sections = get_sections(token)
+    sections = ensure_sections(token)
     print(f"✓ Found sections: {list(sections.keys())}")
 
     # Load JSON data
-    with open("../frontend/src/data/djData.json") as f:
+    with open(ROOT_DIR / "frontend" / "src" / "data" / "djData.json") as f:
         dj_data = json.load(f)
-    with open("../frontend/src/data/professionalData.json") as f:
+    with open(ROOT_DIR / "frontend" / "src" / "data" / "professionalData.json") as f:
         pro_data = json.load(f)
-    with open("../frontend/src/data/projectsData.json") as f:
+    with open(ROOT_DIR / "frontend" / "src" / "data" / "projectsData.json") as f:
         projects_data = json.load(f)
 
     print("✓ Loaded content files")
 
     # ========== DJ SECTION ==========
     dj_section_id = sections["dj"]
+    existing_dj = get_projects_by_section(token, "dj")
 
     # DJ Hero
-    create_project(token, dj_section_id, {
+    upsert_project(token, dj_section_id, existing_dj, {
         "slug": "hero",
         "title": dj_data["hero"]["name"],
         "subtitle": dj_data["hero"]["badge"],
@@ -70,7 +175,7 @@ def main():
             "genres": dj_data["hero"]["genres"],
             "ctas": dj_data["hero"]["ctas"]
         },
-        "thumbnail_url": f"{CLOUDFRONT_BASE}{dj_data['hero']['hero_image']}",
+        "thumbnail_url": with_cdn(dj_data["hero"]["hero_image"]),
         "display_order": 1,
         "is_published": True,
         "is_featured": True,
@@ -79,7 +184,7 @@ def main():
     print("  ✓ Created DJ hero")
 
     # DJ Artist
-    create_project(token, dj_section_id, {
+    upsert_project(token, dj_section_id, existing_dj, {
         "slug": "artist",
         "title": "Artist",
         "subtitle": dj_data["artist"]["title"],
@@ -87,7 +192,7 @@ def main():
         "content": {
             "highlights": dj_data["artist"]["highlights"]
         },
-        "thumbnail_url": f"{CLOUDFRONT_BASE}{dj_data['artist']['artist_image']}",
+        "thumbnail_url": with_cdn(dj_data["artist"]["artist_image"]),
         "display_order": 2,
         "is_published": True,
         "tags": ["artist", "bio"]
@@ -96,8 +201,9 @@ def main():
 
     # DJ Gigs - each gig as a project
     for i, gig in enumerate(dj_data["gigs"]):
-        create_project(token, dj_section_id, {
-            "slug": f"gig-{gig['id']}",
+        gig_slug = gig["id"] if gig["id"].startswith("gig-") else f"gig-{gig['id']}"
+        upsert_project(token, dj_section_id, existing_dj, {
+            "slug": gig_slug,
             "title": gig["event"],
             "subtitle": f"{gig['collective']} · {gig['location']}",
             "description": gig["description"],
@@ -107,7 +213,7 @@ def main():
                 "genre": gig["genre"],
                 "clips": gig.get("clips", [])
             },
-            "thumbnail_url": f"{CLOUDFRONT_BASE}{gig['image']}" if gig.get("image") else None,
+            "thumbnail_url": with_cdn(gig.get("image")),
             "display_order": 10 + i,
             "is_published": True,
             "tags": gig.get("tags", []) + gig.get("genre", []),
@@ -120,7 +226,7 @@ def main():
     print(f"  ✓ Created {len(dj_data['gigs'])} gigs")
 
     # DJ Sets
-    create_project(token, dj_section_id, {
+    upsert_project(token, dj_section_id, existing_dj, {
         "slug": "sets",
         "title": dj_data["sets"]["title"],
         "description": dj_data["sets"]["description"],
@@ -134,7 +240,7 @@ def main():
     print("  ✓ Created DJ sets")
 
     # DJ Press Kit
-    create_project(token, dj_section_id, {
+    upsert_project(token, dj_section_id, existing_dj, {
         "slug": "press-kit",
         "title": dj_data["pressKit"]["title"],
         "description": dj_data["pressKit"]["description"],
@@ -152,7 +258,7 @@ def main():
     print("  ✓ Created DJ press kit")
 
     # DJ Contact
-    create_project(token, dj_section_id, {
+    upsert_project(token, dj_section_id, existing_dj, {
         "slug": "contact",
         "title": "Contact",
         "subtitle": dj_data["contact"]["booking_title"],
@@ -169,9 +275,10 @@ def main():
 
     # ========== TECH SECTION ==========
     tech_section_id = sections["tech"]
+    existing_tech = get_projects_by_section(token, "tech")
 
     # Tech Hero
-    create_project(token, tech_section_id, {
+    upsert_project(token, tech_section_id, existing_tech, {
         "slug": "hero",
         "title": pro_data["hero"]["name"],
         "subtitle": pro_data["hero"]["title"],
@@ -180,7 +287,7 @@ def main():
             "subtext": pro_data["hero"]["subtext"],
             "ctas": pro_data["hero"]["ctas"]
         },
-        "thumbnail_url": f"{CLOUDFRONT_BASE}{pro_data['hero']['headshot']}",
+        "thumbnail_url": with_cdn(pro_data["hero"]["headshot"]),
         "display_order": 1,
         "is_published": True,
         "is_featured": True,
@@ -189,7 +296,7 @@ def main():
     print("  ✓ Created Tech hero")
 
     # Tech Highlights
-    create_project(token, tech_section_id, {
+    upsert_project(token, tech_section_id, existing_tech, {
         "slug": "highlights",
         "title": "Highlights",
         "description": "Key achievements and metrics",
@@ -203,7 +310,7 @@ def main():
     print("  ✓ Created Tech highlights")
 
     # Tech About
-    create_project(token, tech_section_id, {
+    upsert_project(token, tech_section_id, existing_tech, {
         "slug": "about",
         "title": pro_data["about"]["title"],
         "description": pro_data["about"]["paragraphs"][0],
@@ -218,7 +325,7 @@ def main():
 
     # Tech Education
     for i, edu in enumerate(pro_data["education"]):
-        create_project(token, tech_section_id, {
+        upsert_project(token, tech_section_id, existing_tech, {
             "slug": f"education-{i+1}",
             "title": edu["institution"],
             "subtitle": edu["degree"],
@@ -241,7 +348,7 @@ def main():
 
     # Tech Experience
     for i, exp in enumerate(pro_data["experience"]):
-        create_project(token, tech_section_id, {
+        upsert_project(token, tech_section_id, existing_tech, {
             "slug": f"experience-{i+1}",
             "title": exp["company"],
             "subtitle": exp["role"],
@@ -261,7 +368,7 @@ def main():
     print(f"  ✓ Created {len(pro_data['experience'])} experience entries")
 
     # Tech Skills
-    create_project(token, tech_section_id, {
+    upsert_project(token, tech_section_id, existing_tech, {
         "slug": "skills",
         "title": "Skills",
         "description": "Technical skills and expertise",
@@ -275,7 +382,7 @@ def main():
     print("  ✓ Created Tech skills")
 
     # Tech Certifications
-    create_project(token, tech_section_id, {
+    upsert_project(token, tech_section_id, existing_tech, {
         "slug": "certifications",
         "title": "Certifications",
         "description": "Professional certifications and credentials",
@@ -289,7 +396,7 @@ def main():
     print("  ✓ Created Tech certifications")
 
     # Tech Contact
-    create_project(token, tech_section_id, {
+    upsert_project(token, tech_section_id, existing_tech, {
         "slug": "contact",
         "title": "Contact",
         "description": "Get in touch",
@@ -302,7 +409,7 @@ def main():
 
     # Featured Projects
     for i, proj in enumerate(projects_data["featured"]):
-        create_project(token, tech_section_id, {
+        upsert_project(token, tech_section_id, existing_tech, {
             "slug": f"project-{proj['title'].lower().replace(' ', '-').replace(':', '')[:50]}",
             "title": proj["title"],
             "subtitle": proj["category"],
@@ -328,7 +435,7 @@ def main():
     order = 50
     for category, projs in projects_data["github_projects"].items():
         for proj in projs:
-            create_project(token, tech_section_id, {
+            upsert_project(token, tech_section_id, existing_tech, {
                 "slug": f"github-{proj['name'].lower().replace(' ', '-')[:40]}",
                 "title": proj["name"],
                 "subtitle": category.replace("_", " ").title(),
