@@ -30,7 +30,7 @@ function Dashboard() {
       const gigs = djItems.filter(p => p.extra_data?.type === 'gig');
 
       setStats({
-        techProjects: techItems.filter(p => p.extra_data?.type === 'featured').length,
+        techProjects: techItems.filter(p => p.extra_data?.type === 'featured_project').length,
         djGigs: gigs.length,
         assets: assets.items?.length || assets.length || 0,
         publishedGigs: gigs.filter(g => g.is_published).length,

@@ -18,7 +18,9 @@ const Sets = () => {
     [hero?.hero_image]
   );
 
-  const useNetlifyFunctions = process.env.REACT_APP_USE_NETLIFY_FUNCTIONS === 'true';
+  const useNetlifyFunctions =
+    process.env.REACT_APP_USE_NETLIFY_FUNCTIONS === 'true' ||
+    (typeof window !== 'undefined' && window.location?.hostname?.includes('netlify.app'));
   const feedProxy = useNetlifyFunctions
     ? '/.netlify/functions/feed-proxy?url='
     : (process.env.REACT_APP_FEED_PROXY || 'https://api.allorigins.win/raw?url=');
