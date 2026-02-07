@@ -7,7 +7,13 @@ const LOCAL_API = 'http://localhost:8000/api/v1';
 
 // Use REACT_APP_API_URL if set, otherwise default to production
 // For local development, create a .env.local file with REACT_APP_API_URL=http://localhost:8000/api/v1
-const API_BASE = process.env.REACT_APP_API_URL || PRODUCTION_API;
+const RAW_API_BASE = process.env.REACT_APP_API_URL || PRODUCTION_API;
+const normalizeApiBase = (value) => {
+  if (!value) return '';
+  const trimmed = value.replace(/\/+$/, '');
+  return trimmed.includes('/api/v1') ? trimmed : `${trimmed}/api/v1`;
+};
+const API_BASE = normalizeApiBase(RAW_API_BASE);
 
 const ensureApiBase = () => {
   if (!API_BASE) {
